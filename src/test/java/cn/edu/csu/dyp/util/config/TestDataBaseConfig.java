@@ -10,9 +10,9 @@ public class TestDataBaseConfig{
         Assert.assertEquals(res.getDriver(),"com.mysql.jdbc.Driver");
         Assert.assertEquals(res.getHost(),"localhost");
         Assert.assertEquals(res.getPort(),"3306");
-        Assert.assertEquals(res.getDataBaseName(),"test");
-        Assert.assertEquals(res.getUsername(),"root");
-        Assert.assertEquals(res.getPassword(),"");
+        Assert.assertEquals(res.getDataBaseName(),"web");
+        Assert.assertEquals(res.getUsername(),"webUser");
+        Assert.assertEquals(res.getPassword(),"webPassword");
 
     }
 }

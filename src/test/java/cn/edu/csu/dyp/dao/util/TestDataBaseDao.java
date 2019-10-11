@@ -1,33 +1,25 @@
 package cn.edu.csu.dyp.dao.util;
 
-
+import cn.edu.csu.dyp.dao.userDao.IsUserExistDao;
+import cn.edu.csu.dyp.dao.userDao.RegisterDao;
+import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.service.UserService;
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import static org.junit.Assert.fail;
-
 public class TestDataBaseDao {
-    @Test(expected = Test.None.class)
-    public void test(){
-        try(DataBaseDao tst = new DataBaseDao()) {
-            tst.query(new DBI() {
-                @Override
-                public boolean query(Statement statement) {
-                    try(ResultSet res = statement.executeQuery("select * from test")){
-                        while(res.next()) {
-                            System.out.println(res.getString("username")+" "+res.getString("password"));
-                        }
-                        return true;
-                    }
-                    catch (SQLException e) {
-                        fail("Exception found");
-                    }
-                    return false;
-                }
-            });
+//    @Test
+    public void testRegister() {
+        try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+            Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"test","123456",null,"Jack"))));
+        }
+    }
+
+    @Test
+    public void testExist() {
+        try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+            Assert.assertTrue(dataBaseDao.query(IsUserExistDao.isUserExistQuery,new IsUserExistDao("admin")));
+            Assert.assertFalse(dataBaseDao.query(IsUserExistDao.isUserExistQuery,new IsUserExistDao("tst")));
         }
     }
 }

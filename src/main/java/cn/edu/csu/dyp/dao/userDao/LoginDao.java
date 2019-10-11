@@ -1,12 +1,15 @@
 package cn.edu.csu.dyp.dao.userDao;
 
 import cn.edu.csu.dyp.dao.util.DBIP;
+import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.service.UserService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDao implements DBIP {
+public class LoginDao implements DBIP<User> {
+    public static final String loginQuery="select * from userInfo where username=?";//table name need modify!!!!!!!!!!
     private String username;
     private String password;
 
@@ -16,21 +19,26 @@ public class LoginDao implements DBIP {
     }
 
     @Override
-    public boolean query(PreparedStatement preparedStatement) {
+    public User query(PreparedStatement preparedStatement) {
+        User user=null;
         try {
-            preparedStatement.setString(1,username);//need modify!!!!!!!!!!
+            preparedStatement.setString(1,username);
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
 
         try(ResultSet res = preparedStatement.executeQuery()) {
-            if(res.next() && res.getString(1).equals(password)) {
-                return true;
+            if(res.next() && res.getString("password").equals(password)) {
+                String userId=res.getString("userId");
+                String username=res.getString("username");
+                String phoneNumber=res.getString("phoneNumber");
+                String nickname=res.getString("nickname");
+                user=new User(userId,username,null,phoneNumber,nickname);
             }
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-        return false;
+        return user;
     }
 }

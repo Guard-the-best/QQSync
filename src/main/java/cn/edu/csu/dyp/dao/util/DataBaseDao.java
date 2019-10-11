@@ -6,7 +6,7 @@ import cn.edu.csu.dyp.util.config.DataBasePojo;
 import java.io.Closeable;
 import java.sql.*;
 
-public class DataBaseDao implements Closeable {
+public class DataBaseDao<T> implements Closeable {
     private DataBasePojo config;
     private String driver;
     private String databaseHost;
@@ -80,14 +80,13 @@ public class DataBaseDao implements Closeable {
     }
 
     //query
-    public boolean query(DBI interrogator){
-        boolean res = false;
+    public T query(DBI<T> interrogator){
+        T res = null;
         try{
             System.out.println("[query]1/4querying database...");
             if(conn!=null)stat = conn.createStatement();
             if(stat!=null) {
-                if(interrogator.query(stat))
-                    res=true;
+                res=interrogator.query(stat);
             }
             System.out.println("[query]2/4finished query");
         }
@@ -98,16 +97,15 @@ public class DataBaseDao implements Closeable {
         return res;
     }
 
-    public boolean query(String sqlQuery, DBIP interrogator){
-        boolean res=false;
+    public T query(String sqlQuery, DBIP<T> interrogator){
+        T res=null;
         try{
-            System.out.println("[query]1/3querying database...");
+            System.out.println("[query]1/4querying database...");
             if(conn!=null)preStat = conn.prepareStatement(sqlQuery);
             if(preStat!=null) {
-                if(interrogator.query(preStat))
-                    res=true;
+                res=interrogator.query(preStat);
             }
-            System.out.println("[query]2/3finished query");
+            System.out.println("[query]2/4finished query");
         } catch (SQLException sqlException) {
             System.err.println("[query]query failed");
         }
