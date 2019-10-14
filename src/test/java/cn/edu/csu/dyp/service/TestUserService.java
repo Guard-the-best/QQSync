@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.service;
 
 import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.service.util.ModifyInfoStat;
 import cn.edu.csu.dyp.service.util.RegisterStat;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,8 +21,10 @@ public class TestUserService {
         Assert.assertEquals(RegisterStat.UsernameUsed,userService.register(new User(null,"test","123456",null,"Jack")));
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testModify() {
         UserService userService = new UserService();
-        User user=userService.login("admin", "123456");
+        Assert.assertEquals(ModifyInfoStat.Success,userService.modifyInfo(new User(null,"admin","123456",null,"Pony")));
+        Assert.assertEquals(ModifyInfoStat.Success,userService.modifyInfo(new User(null,"admin","123456","110",null)));
     }
 }

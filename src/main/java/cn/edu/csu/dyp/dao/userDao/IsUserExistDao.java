@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class IsUserExistDao implements DBIP<Boolean> {
-    public static final String isUserExistQuery="select userId from userInfo where username=?";
+    private static final String isUserExistQuery="select userId from userInfo where username=?";
     private String username;
 
     public IsUserExistDao(String username) {
@@ -16,7 +16,7 @@ public class IsUserExistDao implements DBIP<Boolean> {
 
     @Override
     public Boolean query(PreparedStatement preparedStatement) {
-        Boolean ret=false;
+        boolean ret=false;
         try {
             preparedStatement.setString(1,username);
         } catch (SQLException sqlException) {
@@ -30,5 +30,10 @@ public class IsUserExistDao implements DBIP<Boolean> {
             sqlException.printStackTrace();
         }
         return ret;
+    }
+
+    @Override
+    public String sqlQueryString() {
+        return isUserExistQuery;
     }
 }

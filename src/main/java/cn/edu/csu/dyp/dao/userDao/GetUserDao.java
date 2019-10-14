@@ -10,7 +10,7 @@ import java.sql.Statement;
 @Deprecated
 public class GetUserDao implements DBI<User> {
     private String userId;
-    public static final String getUserQuery="select * from userInfo where userId=%s";
+    private static final String getUserQuery="select * from userInfo where userId=%s";
 
     public GetUserDao(String userId) {
         this.userId = userId;

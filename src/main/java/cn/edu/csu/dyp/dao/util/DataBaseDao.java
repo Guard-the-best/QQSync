@@ -7,7 +7,6 @@ import java.io.Closeable;
 import java.sql.*;
 
 public class DataBaseDao<T> implements Closeable {
-    private DataBasePojo config;
     private String driver;
     private String databaseHost;
     private String databasePort;
@@ -20,14 +19,16 @@ public class DataBaseDao<T> implements Closeable {
     private PreparedStatement preStat=null;
 
     public DataBaseDao(){
-        config=DataBaseConfig.config();
-        driver=config.getDriver();
-        databaseHost=config.getHost();
-        databasePort=config.getPort();
-        databaseName=config.getDataBaseName();
-        username=config.getUsername();
-        password=config.getPassword();
-        connect();
+        DataBasePojo config = DataBaseConfig.config();
+        if (config != null) {
+            driver= config.getDriver();
+            databaseHost= config.getHost();
+            databasePort= config.getPort();
+            databaseName= config.getDataBaseName();
+            username= config.getUsername();
+            password= config.getPassword();
+            connect();
+        }
     }
 
     //connect
@@ -97,11 +98,11 @@ public class DataBaseDao<T> implements Closeable {
         return res;
     }
 
-    public T query(String sqlQuery, DBIP<T> interrogator){
+    public T query(DBIP<T> interrogator){
         T res=null;
         try{
             System.out.println("[query]1/4querying database...");
-            if(conn!=null)preStat = conn.prepareStatement(sqlQuery);
+            if(conn!=null)preStat = conn.prepareStatement(interrogator.sqlQueryString());
             if(preStat!=null) {
                 res=interrogator.query(preStat);
             }

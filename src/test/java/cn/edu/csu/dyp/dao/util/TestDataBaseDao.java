@@ -18,8 +18,8 @@ public class TestDataBaseDao {
     @Test
     public void testExist() {
         try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
-            Assert.assertTrue(dataBaseDao.query(IsUserExistDao.isUserExistQuery,new IsUserExistDao("admin")));
-            Assert.assertFalse(dataBaseDao.query(IsUserExistDao.isUserExistQuery,new IsUserExistDao("tst")));
+            Assert.assertTrue(dataBaseDao.query(new IsUserExistDao("admin")));
+            Assert.assertFalse(dataBaseDao.query(new IsUserExistDao("tst")));
         }
     }
 }

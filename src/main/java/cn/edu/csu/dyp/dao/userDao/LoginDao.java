@@ -2,14 +2,13 @@ package cn.edu.csu.dyp.dao.userDao;
 
 import cn.edu.csu.dyp.dao.util.DBIP;
 import cn.edu.csu.dyp.model.User;
-import cn.edu.csu.dyp.service.UserService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDao implements DBIP<User> {
-    public static final String loginQuery="select * from userInfo where username=?";//table name need modify!!!!!!!!!!
+    private static final String loginQuery="select * from userInfo where username=?";
     private String username;
     private String password;
 
@@ -40,5 +39,10 @@ public class LoginDao implements DBIP<User> {
             sqlException.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public String sqlQueryString() {
+        return loginQuery;
     }
 }
