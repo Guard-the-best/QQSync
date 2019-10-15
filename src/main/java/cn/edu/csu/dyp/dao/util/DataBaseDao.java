@@ -10,6 +10,7 @@ public class DataBaseDao<T> implements Closeable {
     private String driver;
     private String databaseHost;
     private String databasePort;
+    private String databaseParameter;
     private String databaseName;
     private String username;
     private String password;
@@ -24,6 +25,7 @@ public class DataBaseDao<T> implements Closeable {
             driver= config.getDriver();
             databaseHost= config.getHost();
             databasePort= config.getPort();
+            databaseParameter=config.getParameter();
             databaseName= config.getDataBaseName();
             username= config.getUsername();
             password= config.getPassword();
@@ -33,7 +35,7 @@ public class DataBaseDao<T> implements Closeable {
 
     //connect
     private void connect(){
-        String fullUrl = "jdbc:mysql://"+databaseHost+":"+databasePort+"/"+databaseName+"?useSSL=false";
+        String fullUrl = "jdbc:mysql://"+databaseHost+":"+databasePort+"/"+databaseName+"?"+databaseParameter;
         try{
             System.out.println("[connect]1/3setting driver...");
             Class.forName(driver);

@@ -11,10 +11,11 @@ public class DataBaseConfig{
             String driver=prop.getProperty("db.driver");
             String host=prop.getProperty("db.host");
             String port=prop.getProperty("db.port");
+            String parameter=prop.getProperty("db.parameter");
             String dataBaseName=prop.getProperty("db.name");
             String username=prop.getProperty("db.username");
             String password=prop.getProperty("db.password");
-            return new DataBasePojo(driver,host,port,dataBaseName,username,password);
+            return new DataBasePojo(driver,host,port,parameter,dataBaseName,username,password);
         }
         catch (IOException e) {
             System.err.println("[loader] load database config failed");

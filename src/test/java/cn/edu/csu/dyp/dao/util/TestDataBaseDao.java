@@ -11,7 +11,7 @@ public class TestDataBaseDao {
     @Test
     public void testRegister() {
         try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
-            Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"test","123456",null,"Jack"))));
+            Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"admin","123456",null,"Jacky"))));
         }
     }
 
