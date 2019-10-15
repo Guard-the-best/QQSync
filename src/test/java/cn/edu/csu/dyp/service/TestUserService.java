@@ -17,6 +17,7 @@ public class TestUserService {
     @Test
     public void testRegister() {
         UserService userService = new UserService();
+        userService.register(new User(null,"test","123456",null,"Jack"));
         Assert.assertEquals(RegisterStat.Success,userService.register(new User(null,"test","123456",null,"Jack")));
         Assert.assertEquals(RegisterStat.UsernameUsed,userService.register(new User(null,"test","123456",null,"Jack")));
     }

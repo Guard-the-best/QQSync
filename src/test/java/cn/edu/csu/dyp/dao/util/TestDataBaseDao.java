@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestDataBaseDao {
-//    @Test
+    @Test
     public void testRegister() {
         try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
             Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"test","123456",null,"Jack"))));
