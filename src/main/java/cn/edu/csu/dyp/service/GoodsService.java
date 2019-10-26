@@ -1,6 +1,6 @@
 package cn.edu.csu.dyp.service;
 
-import cn.edu.csu.dyp.dao.goodsDao.ShowCategoryDao;
+import cn.edu.csu.dyp.dao.goodsDao.GetCategoryDao;
 import cn.edu.csu.dyp.dao.util.DataBaseDao;
 import cn.edu.csu.dyp.model.goods.Category;
 import cn.edu.csu.dyp.model.goods.Item;
@@ -12,7 +12,7 @@ public class GoodsService {
     public List<Category> getCategories() {
         List<Category> res;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
-            res = dataBaseDao.query(new ShowCategoryDao());
+            res = dataBaseDao.query(new GetCategoryDao());
         }
         return res;
     }
@@ -25,12 +25,20 @@ public class GoodsService {
         return null;
     }
 
-    public Item getItem(String itemId) {
+    public Item getItemById(String itemId) {
         return null;
 
     }
 
-    public List<Product> searchProduct(String key) {
+    public Category getCategoryByProduct(String productId) {
+        return null;
+    }
+
+    public Product getProductByItem(String itemId) {
+        return null;
+    }
+
+    public List<Product> searchProductByKey(String key) {
         return null;
 
     }
