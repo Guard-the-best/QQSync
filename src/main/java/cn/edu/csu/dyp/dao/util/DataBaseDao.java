@@ -6,7 +6,7 @@ import cn.edu.csu.dyp.util.config.DataBasePojo;
 import java.io.Closeable;
 import java.sql.*;
 
-public class DataBaseDao<T> implements Closeable {
+public class DataBaseDao implements Closeable {
     private String driver;
     private String databaseHost;
     private String databasePort;
@@ -83,7 +83,7 @@ public class DataBaseDao<T> implements Closeable {
     }
 
     //query
-    public T query(DBI<T> interrogator){
+    public <T> T query(DBI<T> interrogator){
         T res = null;
         try{
             System.out.println("[query]1/4querying database...");
@@ -100,7 +100,7 @@ public class DataBaseDao<T> implements Closeable {
         return res;
     }
 
-    public T query(DBIP<T> interrogator){
+    public <T> T query(DBIP<T> interrogator){
         T res=null;
         try{
             System.out.println("[query]1/4querying database...");

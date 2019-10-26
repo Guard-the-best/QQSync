@@ -13,7 +13,7 @@ public class UserService {
 
     public User login(String username, String password) {
         User user;
-        try(DataBaseDao<User> dataBaseDAO = new DataBaseDao<>()) {
+        try(DataBaseDao dataBaseDAO = new DataBaseDao()) {
            user=dataBaseDAO.query(new LoginDao(username,password));
         }
         return user;
@@ -21,7 +21,7 @@ public class UserService {
 
     public RegisterStat register(User user) {//字符合法和密码哈希写在前端
         RegisterStat res=RegisterStat.InternalServerError;
-        try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             if(dataBaseDao.query(new IsUserExistDao(user.getUsername())))
                 res=RegisterStat.UsernameUsed;
             else if(dataBaseDao.query(new RegisterDao(user))) {
@@ -54,7 +54,7 @@ public class UserService {
             }
             else {
                 parameter.setUserId(oldUser.getUserId());
-                try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+                try(DataBaseDao dataBaseDao = new DataBaseDao()) {
                     if(dataBaseDao.query(new ModifyInfoDao(parameter)))
                         res=ModifyInfoStat.Success;
                 }
