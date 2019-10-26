@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetCategoryDao implements DBI<List<Category>> {
-    private static final String showCategoryQuery = "select * from categoryInfo";
+public class GetCategoriesDao implements DBI<List<Category>> {
+    private static final String query = "select * from categoryInfo";
 
     @Override
     public List<Category> query(Statement statement) {
         List<Category> res = new ArrayList<>();
-        try (ResultSet resultSet = statement.executeQuery(showCategoryQuery)) {
+        try (ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
                 String name = resultSet.getString("categoryName");
                 String id = resultSet.getString("categoryId");
