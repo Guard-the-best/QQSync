@@ -26,12 +26,12 @@ public class LoginDao implements DBIP<User> {
             sqlException.printStackTrace();
         }
 
-        try(ResultSet res = preparedStatement.executeQuery()) {
-            if(res.next() && res.getString("password").equals(password)) {
-                String userId=res.getString("userId");
-                String username=res.getString("username");
-                String phoneNumber=res.getString("phoneNumber");
-                String nickname=res.getString("nickname");
+        try(ResultSet resultSet = preparedStatement.executeQuery()) {
+            if(resultSet.next() && resultSet.getString("password").equals(password)) {
+                String userId=resultSet.getString("userId");
+                String username=resultSet.getString("username");
+                String phoneNumber=resultSet.getString("phoneNumber");
+                String nickname=resultSet.getString("nickname");
                 user=new User(userId,username,null,phoneNumber,nickname);
             }
         }

@@ -23,8 +23,8 @@ public class IsUserExistDao implements DBIP<Boolean> {
             sqlException.printStackTrace();
         }
 
-        try(ResultSet res = preparedStatement.executeQuery()) {
-            if(res.next())ret=true;
+        try(ResultSet resultSet = preparedStatement.executeQuery()) {
+            if(resultSet.next())ret=true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();

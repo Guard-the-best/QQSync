@@ -19,6 +19,15 @@ public class UserService {
         return user;
     }
 
+    public Boolean isUsernameExist(String username) {
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
+            if(dataBaseDao.query(new IsUserExistDao(username))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public RegisterStat register(User user) {//字符合法和密码哈希写在前端
         RegisterStat res=RegisterStat.InternalServerError;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
