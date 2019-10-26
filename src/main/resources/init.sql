@@ -1,4 +1,6 @@
+DROP DATABASE IF EXISTS web;
 create database web;
+DROP USER IF EXISTS 'webUser'@'%';
 create user 'webUser'@'%' identified by 'webPassword';
 grant all on web.* to 'webUser'@'%';
 
@@ -62,7 +64,7 @@ CREATE TABLE `orderInfo`
     `orderDate`     DATETIME     NOT NULL,
     `shipAddressId` INT UNSIGNED NOT NULL,
     `billAddressId` INT UNSIGNED NOT NULL,
-    `status`        INT UNSIGNED NOT NULL,-- submitted, confirmed, ...
+    `status`        INT UNSIGNED NOT NULL DEFAULT 0,-- submitted, confirmed, ...
     PRIMARY KEY (`orderId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -75,10 +77,10 @@ CREATE TABLE `lineInfo`
 (
     `lineId`   INT UNSIGNED AUTO_INCREMENT,
     -- Based on property `status`. In the cart, it store userId. After ordered, it store orderId.
-    `parentId` INT UNSIGNED NOT NULL, -- userId or orderId
-    `status`   INT UNSIGNED NOT NULL, -- In cart: 0; Ordered: 1; ...
+    `parentId` INT UNSIGNED NOT NULL,           -- userId or orderId
     `itemId`   INT UNSIGNED NOT NULL,
-    `quantity` INT UNSIGNED NOT NULL,
+    `quantity` INT UNSIGNED NOT NULL DEFAULT 1,
+    `status`   INT UNSIGNED NOT NULL DEFAULT 0, -- In cart: 0; Ordered: 1; ...
     PRIMARY KEY (`lineId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -111,9 +113,9 @@ DROP TABLE IF EXISTS `itemInfo`;
 CREATE TABLE `itemInfo`
 (
     `itemId`    INT UNSIGNED AUTO_INCREMENT,
-    `productId` INT UNSIGNED NOT NULL,
-    `listPrice` INT UNSIGNED NOT NULL,
-    `inventory` INT UNSIGNED NOT NULL,
+    `productId` INT UNSIGNED            NOT NULL,
+    `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
+    `inventory` INT UNSIGNED            NOT NULL,
     `attr1`     VARCHAR(100),
     `attr2`     VARCHAR(100),
     `attr3`     VARCHAR(100),
