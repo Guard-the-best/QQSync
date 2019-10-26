@@ -5,7 +5,7 @@ import cn.edu.csu.dyp.dao.userDao.LoginDao;
 import cn.edu.csu.dyp.dao.userDao.ModifyInfoDao;
 import cn.edu.csu.dyp.dao.userDao.RegisterDao;
 import cn.edu.csu.dyp.dao.util.DataBaseDao;
-import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.util.ModifyInfoStat;
 import cn.edu.csu.dyp.service.util.RegisterStat;
 

@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.model;
+package cn.edu.csu.dyp.model.goods;
 
 public class Item {
     private String itemId;

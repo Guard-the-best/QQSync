@@ -1,6 +1,6 @@
 package cn.edu.csu.dyp.web.servlet;
 
-import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.UserService;
 import cn.edu.csu.dyp.service.util.RegisterStat;
 

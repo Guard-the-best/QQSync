@@ -1,6 +1,6 @@
 package cn.edu.csu.dyp.service;
 
-import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.util.ModifyInfoStat;
 import cn.edu.csu.dyp.service.util.RegisterStat;
 import org.junit.Assert;

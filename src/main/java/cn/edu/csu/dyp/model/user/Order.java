@@ -1,4 +1,6 @@
-package cn.edu.csu.dyp.model;
+package cn.edu.csu.dyp.model.user;
+
+import cn.edu.csu.dyp.model.user.Address;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.dao.userDao;
 
 import cn.edu.csu.dyp.dao.util.DBI;
-import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.model.user.User;
 
 import java.sql.SQLException;
 import java.sql.Statement;

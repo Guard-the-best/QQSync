@@ -2,7 +2,7 @@ package cn.edu.csu.dyp.dao.util;
 
 import cn.edu.csu.dyp.dao.userDao.IsUserExistDao;
 import cn.edu.csu.dyp.dao.userDao.RegisterDao;
-import cn.edu.csu.dyp.model.User;
+import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;

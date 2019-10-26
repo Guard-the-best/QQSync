@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.model;
+package cn.edu.csu.dyp.model.user;
 
 public class User {
     private String userId;

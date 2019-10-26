@@ -1,4 +1,6 @@
-package cn.edu.csu.dyp.model;
+package cn.edu.csu.dyp.model.user;
+
+import cn.edu.csu.dyp.model.Location;
 
 public class Address {
     private String userId;

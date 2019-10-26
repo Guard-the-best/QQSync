@@ -1,4 +1,4 @@
-<%@ page import="cn.edu.csu.dyp.model.User" %><%--
+<%@ page import="cn.edu.csu.dyp.model.user.User" %><%--
   Created by IntelliJ IDEA.
   User: chris
   Date: 2019/10/14
