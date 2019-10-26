@@ -1,7 +1,8 @@
 package cn.edu.csu.dyp.model;
 
 public class Category {
-    String name;
+    private String categoryId;
+    private String name;
 
     public Category(String name) {
         this.name = name;
