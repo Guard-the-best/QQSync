@@ -81,6 +81,15 @@
         <servlet-name>toModifyInfoServlet</servlet-name>
         <url-pattern>/toModifyInfoServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>toChangePassword</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toChangePassword</servlet-name>
+        <url-pattern>/toChangePassword</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

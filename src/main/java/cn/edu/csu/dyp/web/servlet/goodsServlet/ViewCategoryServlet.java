@@ -24,10 +24,10 @@ public class ViewCategoryServlet extends HttpServlet {
         Category category = goodsService.getCategoryById(categoryId);
         List<Product> productList= goodsService.getProductsByCategory(categoryId);
 
-        session.setAttribute("category", category);
-        session.setAttribute("productList", productList);
+        request.setAttribute("category", category);
+        request.setAttribute("productList", productList);
 
-        response.sendRedirect(CATEGORY_PAGE);
+        request.getRequestDispatcher(CATEGORY_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
