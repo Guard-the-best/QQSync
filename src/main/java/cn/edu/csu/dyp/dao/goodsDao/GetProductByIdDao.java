@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Deprecated
 public class GetProductByIdDao implements DBI<Product> {
     private static final String query = "select * from productInfo where productId=%s";
     private String productId;

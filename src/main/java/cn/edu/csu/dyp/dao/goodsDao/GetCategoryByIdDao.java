@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Deprecated
 public class GetCategoryByIdDao implements DBI<Category> {
     private static final String query = "select * from categoryInfo where categoryId=%s";
     private String categoryId;

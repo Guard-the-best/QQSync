@@ -9,18 +9,10 @@ import cn.edu.csu.dyp.model.goods.Product;
 import java.util.List;
 
 public class GoodsService {
-    public List<Category> getCategories() {
-        List<Category> res;
-        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
-            res = dataBaseDao.query(new GetCategoriesDao());
-        }
-        return res;
-    }
-
-    public List<Product> getProductsByCategory(String categoryId) {
+    public List<Product> getProductsByCategory(String categoryName) {
         List <Product> res;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
-            res = dataBaseDao.query(new GetProductsByCategoryDao(categoryId));
+            res = dataBaseDao.query(new GetProductsByCategoryDao(categoryName));
         }
         return res;
     }
@@ -41,6 +33,7 @@ public class GoodsService {
         return res;
     }
 
+    @Deprecated
     public Product getProductById(String productId) {
         Product res;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
@@ -49,6 +42,7 @@ public class GoodsService {
         return res;
     }
 
+    @Deprecated
     public Category getCategoryById(String categoryId) {
         Category res;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {

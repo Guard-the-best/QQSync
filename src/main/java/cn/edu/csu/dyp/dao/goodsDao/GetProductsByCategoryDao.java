@@ -10,19 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetProductsByCategoryDao implements DBI<List<Product>> {
-    private static final String query = "select productId,productName from productInfo where categoryId=%s";
+    private static final String query = "select * from productInfo where categoryName=%s";
 
-    public GetProductsByCategoryDao(String categoryId) {
-        this.categoryId = categoryId;
+    public GetProductsByCategoryDao(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    private String categoryId;
+    private String categoryName;
 
     @Override
     public List<Product> query(Statement statement) {
         List<Product> res = new ArrayList<>();
-        try(ResultSet resultSet = statement.executeQuery(String.format(query,categoryId))) {
+        try(ResultSet resultSet = statement.executeQuery(String.format(query,categoryName))) {
             while (resultSet.next()) {
+                String categoryId = resultSet.getString("categoryId");
                 String productId = resultSet.getString("productId");
                 String productName = resultSet.getString("productName");
                 res.add(new Product(categoryId,productId,productName));

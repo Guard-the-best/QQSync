@@ -96,7 +96,8 @@ CREATE TABLE `categoryInfo`
 (
     `categoryId`   INT UNSIGNED AUTO_INCREMENT,
     `categoryName` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`categoryId`)
+    PRIMARY KEY (`categoryId`),
+    KEY (`categoryName`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
