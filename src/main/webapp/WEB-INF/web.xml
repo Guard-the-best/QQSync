@@ -4,17 +4,22 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+<!--    <welcome-file-list>-->
+<!--        <welcome-file>welcome.jsp</welcome-file>-->
+<!--    </welcome-file-list>-->
+<!--    <welcome-file-list>-->
+<!--        <welcome-file>login.jsp</welcome-file>-->
+<!--    </welcome-file-list>-->
     <servlet>
-        <servlet-name>Entrance</servlet-name>
+        <servlet-name>main</servlet-name>
         <servlet-class>cn.edu.csu.dyp.web.servlet.Main</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Entrance</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/error/404.html</location>
-    </error-page>
+    <welcome-file-list>
+        <welcome-file>main</welcome-file>
+    </welcome-file-list>
 </web-app>
