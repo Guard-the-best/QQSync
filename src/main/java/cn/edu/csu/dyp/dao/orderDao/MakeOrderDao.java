@@ -18,12 +18,12 @@ public class MakeOrderDao implements DBI<Void> {
     @Override
     public Void query(Statement statement) {
         int res=-1;
-        try {
-            res = statement.executeUpdate(String.format(query,order.getUserId(),order.getShipAddress().getAddressId(),order.getBillAddress().getAddressId(),order.getStatus().ordinal()));
-        }
-        catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
+//        try {
+//            res = statement.executeUpdate(String.format(query,order.getUserId(),order.getShipAddress().getAddressId(),order.getBillAddress().getAddressId(),order.getStatus().ordinal()));
+//        }
+//        catch (SQLException sqlException) {
+//            sqlException.printStackTrace();
+//        }
         return null;
     }
 }

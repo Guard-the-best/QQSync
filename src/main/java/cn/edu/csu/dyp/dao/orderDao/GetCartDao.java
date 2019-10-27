@@ -26,7 +26,7 @@ public class GetCartDao implements DBI<List<LineItem>> {
                 String lineId = resultSet.getString("lineId");
                 String itemId = resultSet.getString("itemId");
                 int quantity = resultSet.getInt("quantity");
-                res.add(new LineItem(lineId,userId,itemId,quantity,0));
+//                res.add(new LineItem(lineId,userId,itemId,quantity,0));
             }
         }
         catch (SQLException sqlException) {

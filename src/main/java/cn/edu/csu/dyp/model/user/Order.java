@@ -5,37 +5,28 @@ import cn.edu.csu.dyp.service.util.OrderStat;
 import java.util.Date;
 
 public class Order {
-    private String orderId;
     private String userId;
     private Date orderDate;
     private Address shipAddress;
     private Address billAddress;
     private OrderStat status;
-    private String[]  lineItemIds;
+    private LineItem[]  lineItemIds;
 
-    public Order(String orderId, String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status) {
-        this.orderId = orderId;
+    public Order(String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status, LineItem[] lineItemIds) {
         this.userId = userId;
         this.orderDate = orderDate;
         this.shipAddress = shipAddress;
         this.billAddress = billAddress;
         this.status = status;
-    }
-
-    public String[] getLineItemIds() {
-        return lineItemIds;
-    }
-
-    public void setLineItemIds(String[] lineItemIds) {
         this.lineItemIds = lineItemIds;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public LineItem[] getLineItemIds() {
+        return lineItemIds;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setLineItemIds(LineItem[] lineItemIds) {
+        this.lineItemIds = lineItemIds;
     }
 
     public String getUserId() {
