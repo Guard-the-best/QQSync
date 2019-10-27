@@ -3,6 +3,7 @@ package cn.edu.csu.dyp.web.servlet.userServlet;
 import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.UserService;
 import cn.edu.csu.dyp.service.util.ModifyInfoStat;
+import javafx.util.Pair;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import java.io.IOException;
 @WebServlet(name = "ModifyInfoServlet")
 public class ModifyInfoServlet extends HttpServlet {
     // 需要填入
-    private static final String MODIFY_INFO_PAGE = "";
+    private static final String MODIFY_INFO_PAGE = "/WEB-INF/jsp/AfterLogin/confirmedPersonInfo.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -25,9 +26,11 @@ public class ModifyInfoServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String nickname = request.getParameter("nickname");
 
-        ModifyInfoStat modifyInfoStat = new UserService().modifyInfo(new User(userId, username, password, phoneNumber, nickname));
+        // ModifyInfoStat modifyInfoStat = new UserService().modifyInfo(new User(userId, username, password, phoneNumber, nickname));
+        Pair<User, ModifyInfoStat> pair = new UserService().modifyInfo(new User(userId, username, password, phoneNumber, nickname));
 
-        request.setAttribute("status", modifyInfoStat.toString());
+        request.setAttribute("status", pair.getValue().toString());
+        session.setAttribute("user", pair.getKey());
         request.getRequestDispatcher(MODIFY_INFO_PAGE).forward(request, response);
     }
 

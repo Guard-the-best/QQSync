@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.web.servlet.skipServlet;
+package cn.edu.csu.dyp.web.servlet.userServlet;
 
 import cn.edu.csu.dyp.model.user.Order;
 import cn.edu.csu.dyp.service.OrderService;

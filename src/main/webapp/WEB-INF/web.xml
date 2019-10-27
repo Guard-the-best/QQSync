@@ -66,11 +66,20 @@
     
     <servlet>
         <servlet-name>toCartServlet</servlet-name>
-        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToCartServlet</servlet-class>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.ViewCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>toCartServlet</servlet-name>
         <url-pattern>/toCart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>toModifyInfoServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToModifyInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toModifyInfoServlet</servlet-name>
+        <url-pattern>/toModifyInfoServlet</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

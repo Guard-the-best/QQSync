@@ -21,11 +21,9 @@ public class RegisterServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String nickname = request.getParameter("nickname");
 
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
         RegisterStat registerStat = new UserService().register(new User(null, username, password, phoneNumber, nickname));
 
-        out.print(registerStat.toString());
+        response.sendRedirect("/toLogin");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
