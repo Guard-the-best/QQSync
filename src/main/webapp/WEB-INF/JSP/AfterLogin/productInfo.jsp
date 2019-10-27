@@ -9,12 +9,12 @@
 
                     <!-- Shopping cart table -->
                     <div class="table-responsive">
-                        <form>
+                        <form id="productInfo" action="javascript:void(0)" method="post">
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Payment Details</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Payment Details</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -46,7 +46,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="CardNumber" name="CardNumber" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -59,14 +59,14 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="expiryDate" name="expiryDate" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 </tbody>
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Billing Address</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Billing Address</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -80,7 +80,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="FirstName2" name="FirstName2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -93,7 +93,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="LastName2" name="LastName2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -101,12 +101,12 @@
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h6 class="mb-0">Address1:</h6>
+                                                <h6 class="mb-0">Address:</h6>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="Address2" name="Address2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -114,12 +114,12 @@
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h6 class="mb-0">Address2:</h6>
+                                                <h6 class="mb-0">Phone Number:</h6>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="PhoneNumber2" name="PhoneNumber2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -132,7 +132,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="City2" name="City2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -145,20 +145,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
-                                        <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h6 class="mb-0">Zip:</h6>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="State2" name="State2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -171,7 +158,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="Country2" name="Country2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -181,7 +168,7 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success" onclick="changepassword()" value="Confirm"/>
+                            <input type="submit" class="btn btn-success" onclick="submitAndProductSearch()" value="Confirm"/>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -198,24 +185,20 @@
     </div>
 </div>
 <script>
-    function changepassword() {
-        var origin = $("#origin").val();
-        var newdata = $("#new").val();
-        var confirm = $("#confirm").val();
+
+    function postProductData() {
         $.ajax({
             type: "post",
-            url: "/meeting/dochangepassword",
-            data: {
-                "origin": origin,
-                "new": newdata,
-                "confirm": confirm
-            },
-            error: function (request) {
-
-            },
+            url: "servlet",
+            data: $('#productInfo').serialize(),
             success: function (data) {
-                alert("更新成功！");
+                console.log(data);
             }
         })
+    }
+
+    function submitAndProductSearch(){
+        postProductData();
+        searchPage('confirmServlet');
     }
 </script>

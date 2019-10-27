@@ -96,6 +96,7 @@
 
 <body>
 <div id="formWrapper">
+
 <%--    此处用于Ajax内容变化--%>
 
 </div>
@@ -117,9 +118,6 @@
     }
     getPage('/toLogin')
 </script>
-
-
-
 </html>
 
 

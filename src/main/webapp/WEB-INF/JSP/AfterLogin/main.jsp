@@ -31,7 +31,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="logAndregister.jsp">首页</a>
+        <a class="navbar-brand js-scroll-trigger" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">首页</a>
         <button class="navbar-toggler navbar-toggler-right"
                 type="button" data-toggle="collapse"
                 data-target="#navbarResponsive"
@@ -45,19 +45,19 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#about">宠物<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">鹦鹉</a></li>
-                        <li><a class="dropdown-item" href="#">猫猫</a></li>
-                        <li><a class="dropdown-item" href="#">狗狗</a></li>
-                        <li><a class="dropdown-item" href="#">鱼儿</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">鹦鹉</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">猫猫</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">狗狗</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">鱼儿</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#about">个人中心<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">购物车&nbsp<span class="badge badge-secondary">4</span></a></li>
-                        <li><a class="dropdown-item" href="#">个人信息</a></li>
-                        <li><a class="dropdown-item" href="#">我的订单</a></li>
-                        <li><a class="dropdown-item" href="#">修改密码</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">4</span></a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">个人信息</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">我的订单</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">修改密码</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -74,6 +74,10 @@
 <%--        </button>--%>
         </div>
     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="直接跳转到welcome">退出登录</a>
+<%--                    退出登录直接跳转到欢迎界面--%>
                 </li>
             </ul>
         </div>
@@ -175,17 +179,18 @@
 </body>
 
 <script>
-    function serachpage(url) {
+    function searchPage(url) {
         $.ajax({
-            type: "post",
+            type: "get",
             url: url,
             data: "",
+            cache: false,
             success: function (data) {
                 $("#changePart").html(data);
             }
         })
     }
-    serachpage('/toCarousel')
+    searchPage("给爷重定向到carousel的servlet")
 </script>
 
 </html>

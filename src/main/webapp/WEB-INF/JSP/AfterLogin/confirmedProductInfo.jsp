@@ -14,7 +14,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Payment Details</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Payment Details</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -66,7 +66,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Billing Address</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Billing Address</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -184,7 +184,7 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success btn-sm" onclick="changepassword()" value="Modify"/>
+                            <input type="submit" class="btn btn-success btn-sm" onclick="searchPage('productInfoServlet')" value="Modify"/>
 
                         </form>
                     </div>
@@ -197,25 +197,4 @@
         </div>
     </div>
 </div>
-<script>
-    function changepassword() {
-        var origin = $("#origin").val();
-        var newdata = $("#new").val();
-        var confirm = $("#confirm").val();
-        $.ajax({
-            type: "post",
-            url: "/meeting/dochangepassword",
-            data: {
-                "origin": origin,
-                "new": newdata,
-                "confirm": confirm
-            },
-            error: function (request) {
 
-            },
-            success: function (data) {
-                alert("更新成功！");
-            }
-        })
-    }
-</script>

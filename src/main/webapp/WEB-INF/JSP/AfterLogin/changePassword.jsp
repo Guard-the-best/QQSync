@@ -42,22 +42,13 @@
 
 <script>
     function changepassword() {
-        var origin = $("#origin").val();
-        var newdata = $("#new").val();
-        var confirm = $("#confirm").val();
         $.ajax({
             type: "post",
-            url: "/meeting/dochangepassword",
-            data: {
-                "origin": origin,
-                "new": newdata,
-                "confirm": confirm
-            },
-            error: function(request) {
-
-            },
+            url: "/servlet",
+            data: $('#changepasswordfrom').serialize(),
             success: function(data) {
-                alert("更新成功！");
+                console.log(data);
+                alert("修改密码成功！");
             }
         })
     }

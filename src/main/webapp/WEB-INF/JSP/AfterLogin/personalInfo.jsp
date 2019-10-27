@@ -9,12 +9,12 @@
 
                     <!-- Shopping cart table -->
                     <div class="table-responsive">
-                        <form>
+                        <form id="personInfo" action="javascript:void(0)" method="post">
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Profile Information</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Profile Information</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -60,7 +60,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase">Billing Address</div>
+                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Billing Address</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -74,7 +74,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="FirstName" name="FirstName" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -87,32 +87,43 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
-                                        <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
+                                        <input id="LastName" name="LastName" id type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Address1:</h5>
+                                                <h5 class="mb-0">NickName:</h5>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="NickName" name="NickName" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Address2:</h5>
+                                                <h5 class="mb-0">Address:</h5>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="Address" name="Address" type="text" style="width:50%;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="border-0">
+                                        <div class="p-2">
+                                            <div class="ml-3 d-inline-block align-middle">
+                                                <h5 class="mb-0">Phone Number:</h5>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle">
+                                        <input id="PhoneNumber" name="PhoneNumber" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 <tr>
@@ -124,7 +135,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="City" name="City" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 <tr>
@@ -136,21 +147,10 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="State" name="State" type="text" style="width:50%;">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Zip:</h5>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
@@ -160,7 +160,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input type="text" style="width:50%;">
+                                        <input id="Country" name="Country" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -169,11 +169,11 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success" onclick="changepassword()" value="Save"/>
+                            <input type="submit" class="btn btn-success btn-sm" onclick="submitAndSearch()" value="Save"/>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="reset" class="btn btn-info" value="Reset"/>
+                            <input type="reset" class="btn btn-info btn-sm" value="Reset"/>
                         </form>
                     </div>
                     <!-- End -->
@@ -186,24 +186,20 @@
     </div>
 </div>
 <script>
-    function changepassword() {
-        var origin = $("#origin").val();
-        var newdata = $("#new").val();
-        var confirm = $("#confirm").val();
+
+    function postPersonData() {
         $.ajax({
             type: "post",
-            url: "/meeting/dochangepassword",
-            data: {
-                "origin": origin,
-                "new": newdata,
-                "confirm": confirm
-            },
-            error: function (request) {
-
-            },
+            url: "servlet",
+            data: $('#personInfo').serialize(),
             success: function (data) {
-                alert("更新成功！");
+                console.log(data);
             }
         })
+    }
+
+    function submitAndSearch(){
+        postPersonData();
+        searchPage('confirmServlet');
     }
 </script>

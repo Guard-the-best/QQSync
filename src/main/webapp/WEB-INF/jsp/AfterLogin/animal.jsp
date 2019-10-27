@@ -1,7 +1,4 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-1">
+
 <table class="table table-hover table-dark">
     <thead>
     <tr>
@@ -11,8 +8,11 @@
     </thead>
     <tbody>
     <%--    要用foreach循环--%>
+<c:forEach items="${list}" var="emp">
+
+</c:forEach>
     <tr>
-        <th scope="row"><a href="#">ES-1</a></th>
+        <th scope="row"><a onclick="searchPage(url)" href="javascript:void(0)">ES-1</a></th>
         <td>Mark</td>
     </tr>
     <tr>
@@ -26,7 +26,4 @@
     </tbody>
 </table>
 
-</div>
-<div class="col-md-1"></div>
-</div>
-</div>
+

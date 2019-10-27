@@ -6,7 +6,7 @@
 
                     <!-- Shopping cart table -->
                     <div class="table-responsive">
-                        <form>
+                        <form id="addQ" action="javascript:void (0)" method="post">
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -25,35 +25,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                                    <td class="border-0 align-middle"><strong>
-                                        <br />
-                                        <div class="input-group mb-3">
-                                            <input type="text" style="width:50%;">
-                                            &nbsp&nbsp&nbsp&nbsp
-                                            <button>
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-
-                                        </div>
-                                    </strong></td>
-                                    <td class="border-0 align-middle"><a href="#" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a></td>
-                                </tr>
+                               <c:forEach items="${list}" var="emp">
                                 <tr>
                                     <th scope="row">
                                         <div class="p-2">
                                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                                                <h5 class="mb-0"><a onclick="checkAnimal(${list.animalid})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
                                             </div>
                                         </div>
                                     </th>
@@ -61,9 +39,9 @@
                                     <td class="align-middle"><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input type="text" style="width:50%;">
+                                            <input  id="Goods${Item.Id}" type="text" style="width:50%;">
                                             &nbsp&nbsp&nbsp&nbsp
-                                            <button>
+                                            <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
                                             </button>
 
@@ -72,29 +50,7 @@
                                     <td class="align-middle"><a href="#" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="p-2">
-                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Gray Nike running shoe</a></h5><span class="text-muted font-weight-normal font-italic">Category: Fashion</span>
-                                            </div>
-                                        </div>
-                                    <td class="align-middle"><strong>$79.00</strong></td>
-                                    <td class="align-middle"><strong>
-                                        <br />
-                                        <div class="input-group mb-3">
-                                            <input type="text" style="width:50%;">
-                                            &nbsp&nbsp&nbsp&nbsp
-                                            <button>
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-
-                                        </div>
-                                    </strong></td>
-                                    <td class="align-middle"><a href="#" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                               </c:forEach>
                                 </tbody>
                             </table>
                         </form>
@@ -108,7 +64,10 @@
                     <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
                     <div class="p-4">
                         <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
-                        <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                        <label>
+                            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                        </label>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -130,3 +89,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    function addQuantity() {
+        $.ajax({
+            type: "post",
+            url: "servlet",
+            data: $('#addQ').serialize(),
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    }
+
+    function checkAnimal(animalid) {
+        $.ajax({
+            type: "post",
+            url: "/animalItemServlet?animalid=" + animalid,
+            data: {},
+            success: function (data) {
+            }
+        })
+    }
+</script>
