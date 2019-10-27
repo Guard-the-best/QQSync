@@ -2,7 +2,7 @@
 
     <div id="form">
         <div class="logo">
-            <h1 class="text-center head">用户登录</h1>
+            <h1 class="text-center head">User Login</h1>
         </div>
         <div class="form-item">
             <p class="formLabel">UserID...</p>
@@ -26,14 +26,14 @@
         var formInputs = $('input[type="email"],input[type="password"]');
         formInputs.focus(function() {
             $(this).parent().children('p.formLabel').addClass('formTop');
-            $('div#login').addClass('darken-bg');
+            $('div#formWrapper').addClass('darken-bg');
             $('div.logo').addClass('logo-active');
         });
         formInputs.focusout(function() {
             if ($.trim($(this).val()).length == 0){
                 $(this).parent().children('p.formLabel').removeClass('formTop');
             }
-            $('div#login').removeClass('darken-bg');
+            $('div#formWrapper').removeClass('darken-bg');
             $('div.logo').removeClass('logo-active');
         });
         $('p.formLabel').click(function(){

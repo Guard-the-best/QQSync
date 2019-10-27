@@ -96,7 +96,6 @@
 
 <body>
 <div id="formWrapper">
-
 <%--    此处用于Ajax内容变化--%>
 
 </div>
@@ -104,10 +103,6 @@
 
 <script>
     function getPage(url) {
-
-        console.log(sessionStorage.getItem("pageIndex"));
-        console.log(url);
-        // if (url != undefined && url != null) {
         $.ajax({
             type: "get",
             data: "",
@@ -120,8 +115,11 @@
         })
         // }
     }
-    getPage('/.../登陆的servlet')
+    getPage('/toLogin')
 </script>
+
+
+
 </html>
 
 

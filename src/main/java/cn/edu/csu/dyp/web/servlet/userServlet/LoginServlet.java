@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         }
         else {
             // May need to leave a message in request.
-            request.getRequestDispatcher(LOGIN_FORM);
+            request.getRequestDispatcher(LOGIN_FORM).forward(request, response);
         }
 
     }

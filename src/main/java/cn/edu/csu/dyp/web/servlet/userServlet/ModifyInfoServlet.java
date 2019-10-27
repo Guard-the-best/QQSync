@@ -28,7 +28,7 @@ public class ModifyInfoServlet extends HttpServlet {
         ModifyInfoStat modifyInfoStat = new UserService().modifyInfo(new User(userId, username, password, phoneNumber, nickname));
 
         request.setAttribute("status", modifyInfoStat.toString());
-        request.getRequestDispatcher(MODIFY_INFO_PAGE);
+        request.getRequestDispatcher(MODIFY_INFO_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

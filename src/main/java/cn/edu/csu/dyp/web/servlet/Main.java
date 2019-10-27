@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class Main extends HttpServlet {
-    private static String defaultPage="/WEB-INF/JSP/AfterLogin/main.jsp";
+    private static String defaultPage="/WEB-INF/jsp/BeforeLogin/welcome.jsp";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
