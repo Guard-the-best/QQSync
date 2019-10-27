@@ -19,12 +19,12 @@ public class OrderService {
         }
     }
 
-    Order getOrder(String orderId) {
+    public Order getOrder(String orderId) {
         return null;
 
     }
 
-    List<Order> getOrderByUser(String userId) {
+    public List<Order> getOrderByUser(String userId) {
         return null;
 
     }
