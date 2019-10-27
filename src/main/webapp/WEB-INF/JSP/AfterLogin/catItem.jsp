@@ -1,3 +1,7 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
 <table class="table table-hover">
     <thead>
     <tr>
@@ -49,3 +53,7 @@
     </tr>
     </tbody>
 </table>
+</div>
+<div class="col-md-1"></div>
+</div>
+</div>
