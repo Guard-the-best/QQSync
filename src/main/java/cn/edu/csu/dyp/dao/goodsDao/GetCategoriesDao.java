@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class GetCategoriesDao implements DBI<List<Category>> {
     private static final String query = "select * from categoryInfo";
 

@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ToCartServlet")
-public class ToCartServlet extends HttpServlet {
-    private static final String CART_PAGE = "WEB-INF/jsp/AfterLogin/cart.jsp";
+@WebServlet(name = "ToRegisterServlet")
+public class ToRegisterServlet extends HttpServlet {
+    private static final String REGISTER_PAGE = "/WEB-INF/jsp/BeforeLogin/register.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(CART_PAGE);
+        request.getRequestDispatcher(REGISTER_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

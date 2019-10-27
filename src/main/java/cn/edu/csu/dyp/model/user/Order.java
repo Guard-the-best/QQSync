@@ -1,24 +1,33 @@
 package cn.edu.csu.dyp.model.user;
 
-import cn.edu.csu.dyp.model.user.Address;
+import cn.edu.csu.dyp.service.util.OrderStat;
 
 import java.util.Date;
 
 public class Order {
     private String orderId;
-    private String name;
+    private String userId;
+    private Date orderDate;
     private Address shipAddress;
     private Address billAddress;
-    private Date orderDate;
-    private int status;
+    private OrderStat status;
+    private String[]  lineItemIds;
 
-    public Order(String name, Address shipAddress, Address billAddress, Date orderDate, int status) {
-        this.orderId = null;
-        this.name = name;
+    public Order(String orderId, String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.orderDate = orderDate;
         this.shipAddress = shipAddress;
         this.billAddress = billAddress;
-        this.orderDate = orderDate;
         this.status = status;
+    }
+
+    public String[] getLineItemIds() {
+        return lineItemIds;
+    }
+
+    public void setLineItemIds(String[] lineItemIds) {
+        this.lineItemIds = lineItemIds;
     }
 
     public String getOrderId() {
@@ -29,12 +38,20 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Address getShipAddress() {
@@ -53,19 +70,11 @@ public class Order {
         this.billAddress = billAddress;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public int getStatus() {
+    public OrderStat getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(OrderStat status) {
         this.status = status;
     }
 }

@@ -17,8 +17,9 @@ CREATE TABLE `locationInfo`
     `locationId`   INT UNSIGNED AUTO_INCREMENT,
     `parentId`     INT UNSIGNED NOT NULL,
     `locationName` VARCHAR(100) NOT NULL,
-    `level`        INT UNSIGNED NOT NULL,-- country,province,city,county
-    PRIMARY KEY (`locationId`)
+    `level`        INT UNSIGNED NOT NULL,-- province,city,county,village
+    PRIMARY KEY (`locationId`),
+    KEY (`locationName`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -95,7 +96,8 @@ CREATE TABLE `categoryInfo`
 (
     `categoryId`   INT UNSIGNED AUTO_INCREMENT,
     `categoryName` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`categoryId`)
+    PRIMARY KEY (`categoryId`),
+    KEY (`categoryName`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
