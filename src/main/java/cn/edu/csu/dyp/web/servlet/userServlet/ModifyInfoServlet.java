@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.web.servlet;
+package cn.edu.csu.dyp.web.servlet.userServlet;
 
 import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.UserService;
