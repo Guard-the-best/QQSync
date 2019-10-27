@@ -15,11 +15,12 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     // ----Need to fill the location---- //
-    private static final String LOGIN_FORM = "";
-    private static final String INDEX_FORM = "";
+//    private static final String LOGIN_PAGE = "/WEB-INF/jsp/BeforeLogin/login.jsp";
+    private static final String LOGIN_PAGE = "/toLoginAndRegister";
+    private static final String INDEX_PAGE = "/toMain";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String username = request.getParameter("email");
         String password = request.getParameter("password");
 
         User user = new UserService().login(username, password);
@@ -27,11 +28,11 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect(INDEX_FORM);
+            response.sendRedirect(INDEX_PAGE);
         }
         else {
             // May need to leave a message in request.
-            request.getRequestDispatcher(LOGIN_FORM).forward(request, response);
+            request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
         }
 
     }

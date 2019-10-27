@@ -175,16 +175,17 @@
 </body>
 
 <script>
-    function serachempbypage(page) {
+    function serachpage(url) {
         $.ajax({
             type: "post",
-            url: "/meeting/serachemp",
-            data: {},
+            url: url,
+            data: "",
             success: function (data) {
-                $("#mainPage").html(data);
+                $("#changePart").html(data);
             }
         })
     }
+    serachpage('/toCarousel')
 </script>
 
 </html>
