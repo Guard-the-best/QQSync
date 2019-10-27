@@ -27,7 +27,7 @@ private String orderId;
                 Date orderDate = resultSet.getDate("orderDate");
                 String shipAddressId = resultSet.getString("shipAddressId");
                 String billAddressId = resultSet.getString("billAddressId");
-                int order
+//                int order
             }
         }
         catch (SQLException sqlException) {

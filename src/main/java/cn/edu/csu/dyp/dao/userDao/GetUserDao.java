@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@Deprecated
+
 public class GetUserDao implements DBI<User> {
     private String userId;
     private static final String getUserQuery="select * from userInfo where userId=%s";

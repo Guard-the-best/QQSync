@@ -5,7 +5,6 @@ public class User {
     private String username;
     private String password;
     private String phoneNumber;
-
     private String nickname;
 
     public User() {
