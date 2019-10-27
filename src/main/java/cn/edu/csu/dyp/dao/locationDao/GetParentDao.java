@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.dao.locationDao;
 
 import cn.edu.csu.dyp.dao.util.DBI;
-import cn.edu.csu.dyp.model.location.Location;
+import cn.edu.csu.archieve.model.location.Location;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

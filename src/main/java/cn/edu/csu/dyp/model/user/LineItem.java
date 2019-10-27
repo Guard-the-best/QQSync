@@ -1,42 +1,22 @@
 package cn.edu.csu.dyp.model.user;
 
+import cn.edu.csu.dyp.model.goods.Item;
+
 public class LineItem {
-    String lineId;
-    String parentId;
-    String itemId;
+    Item item;
     int quantity;
-    int status;
 
-    public LineItem(String lineId, String parentId, String itemId, int quantity, int status) {
-        this.lineId = lineId;
-        this.parentId = parentId;
-        this.itemId = itemId;
+    public LineItem(Item item, int quantity) {
+        this.item = item;
         this.quantity = quantity;
-        this.status = status;
     }
 
-    public String getLineId() {
-        return lineId;
+    public Item getItem() {
+        return item;
     }
 
-    public void setLineId(String lineId) {
-        this.lineId = lineId;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public int getQuantity() {
@@ -45,13 +25,5 @@ public class LineItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 }

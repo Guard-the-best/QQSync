@@ -1,48 +1,24 @@
 package cn.edu.csu.dyp.model.user;
 
-import cn.edu.csu.dyp.model.location.DetailLocation;
+import cn.edu.csu.archieve.model.location.DetailLocation;
 
 public class Address {
-    private String addressId;
-    private String userId;
-    private boolean isDefault;
     private String name;
     private String phoneNumber;
-    private DetailLocation detailLocation;
+    private String province;
+    private String city;
+    private String county;
+    private String village;
     private String detailedAddress;
 
-    public Address(String addressId, String userId, boolean isDefault, String name, String phoneNumber, DetailLocation detailLocation, String detailedAddress) {
-        this.addressId = addressId;
-        this.userId = userId;
-        this.isDefault = isDefault;
+    public Address(String name, String phoneNumber, String province, String city, String county, String village, String detailedAddress) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.detailLocation = detailLocation;
+        this.province = province;
+        this.city = city;
+        this.county = county;
+        this.village = village;
         this.detailedAddress = detailedAddress;
-    }
-
-    public String getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
     }
 
     public String getName() {
@@ -61,12 +37,36 @@ public class Address {
         this.phoneNumber = phoneNumber;
     }
 
-    public DetailLocation getDetailLocation() {
-        return detailLocation;
+    public String getProvince() {
+        return province;
     }
 
-    public void setDetailLocation(DetailLocation detailLocation) {
-        this.detailLocation = detailLocation;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
     }
 
     public String getDetailedAddress() {

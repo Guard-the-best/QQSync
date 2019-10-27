@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.model.location;
+package cn.edu.csu.archieve.model.location;
 
 public class Location {
     private String locationId;

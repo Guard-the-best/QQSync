@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.service;
 
 import cn.edu.csu.dyp.dao.userDao.*;
 import cn.edu.csu.dyp.dao.util.DataBaseDao;
+import cn.edu.csu.dyp.model.user.Address;
 import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.util.ModifyInfoStat;
 import cn.edu.csu.dyp.service.util.RegisterStat;
@@ -103,5 +104,20 @@ public class UserService {
             }
         }
         return res;
+    }
+
+    public Address getAddress(String userId) {
+        Address res =null;
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
+
+        }
+        return res;
+    }
+
+    /*
+    * 没有输入判断，全部替换（因为dyp说是表单）
+    * */
+    public void setAddress(Address address) {
+
     }
 }

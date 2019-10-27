@@ -1,7 +1,7 @@
-package cn.edu.csu.dyp.model.location;
+package cn.edu.csu.archieve.model.location;
 
 public class DetailLocation {
-    private String locationId;
+    @Deprecated private String locationId;
     private String province;
     private String city;
     private String county;
