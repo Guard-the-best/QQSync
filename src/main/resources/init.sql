@@ -63,12 +63,12 @@ CREATE TABLE `addressInfo`
 DROP TABLE IF EXISTS `orderInfo`;
 CREATE TABLE `orderInfo`
 (
-    `orderId`       INT UNSIGNED AUTO_INCREMENT,
-    `userId`        INT UNSIGNED NOT NULL,
-    `orderDate`     DATETIME     NOT NULL,
-    `shipAddressId` INT UNSIGNED NOT NULL,
-    `billAddressId` INT UNSIGNED NOT NULL,
-    `status`        INT UNSIGNED NOT NULL DEFAULT 0,-- submitted, confirmed, ...
+    `orderId`     INT UNSIGNED AUTO_INCREMENT,
+    `userId`      INT UNSIGNED NOT NULL,
+    `orderDate`   DATETIME     NOT NULL,
+    `shipAddress` VARCHAR(256) NOT NULL,
+    `billAddress` VARCHAR(256) NOT NULL,
+    `status`      INT NOT NULL DEFAULT 0,-- prepared,submitted, confirmed, ...
     PRIMARY KEY (`orderId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -86,7 +86,7 @@ CREATE TABLE `lineInfo`
     `quantity` INT UNSIGNED NOT NULL DEFAULT 1,
     `status`   INT UNSIGNED NOT NULL DEFAULT 0, -- In cart: 0; Ordered: 1; ...
     PRIMARY KEY (`lineId`),
-    KEY(`status`)
+    KEY (`status`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

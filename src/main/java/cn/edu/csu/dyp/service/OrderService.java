@@ -8,7 +8,7 @@ import cn.edu.csu.dyp.model.user.Order;
 
 public class OrderService {
     /*
-     * Date sql自动填写
+     * Date sql自动填写,lineItem only use itemId and quantity
      * */
     public boolean makeOrder(String userId, String shipAddress, String billAddress, List<LineItem> lineItems) {
         return false;
