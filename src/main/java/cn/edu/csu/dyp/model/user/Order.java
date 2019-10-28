@@ -8,12 +8,12 @@ import java.util.List;
 public class Order {
     private String userId;
     private Date orderDate;
-    private Address shipAddress;
-    private Address billAddress;
+    private String shipAddress;
+    private String billAddress;
     private OrderStat status;
     private List<LineItem> lineItemIds;
 
-    public Order(String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status, List<LineItem> lineItemIds) {
+    public Order(String userId, Date orderDate, String shipAddress, String billAddress, OrderStat status, List<LineItem> lineItemIds) {
         this.userId = userId;
         this.orderDate = orderDate;
         this.shipAddress = shipAddress;
@@ -46,19 +46,19 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Address getShipAddress() {
+    public String getShipAddress() {
         return shipAddress;
     }
 
-    public void setShipAddress(Address shipAddress) {
+    public void setShipAddress(String shipAddress) {
         this.shipAddress = shipAddress;
     }
 
-    public Address getBillAddress() {
+    public String getBillAddress() {
         return billAddress;
     }
 
-    public void setBillAddress(Address billAddress) {
+    public void setBillAddress(String billAddress) {
         this.billAddress = billAddress;
     }
 
