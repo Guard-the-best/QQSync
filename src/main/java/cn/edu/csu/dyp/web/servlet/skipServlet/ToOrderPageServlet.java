@@ -1,7 +1,8 @@
-package cn.edu.csu.dyp.web.servlet.cartServlet;
+package cn.edu.csu.dyp.web.servlet.skipServlet;
 
+import cn.edu.csu.dyp.model.user.Order;
 import cn.edu.csu.dyp.model.user.User;
-import cn.edu.csu.dyp.service.CartService;
+import cn.edu.csu.dyp.service.OrderService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
-@WebServlet(name = "AddToCartServlet")
-public class AddToCartServlet extends HttpServlet {
+@WebServlet(name = "ToCheckOrderServlet")
+public class ToOrderPageServlet extends HttpServlet {
+    private static final String ORDER_PAGE = "/WEB-INF/jsp/AfterLogin/orderItem.jsp";
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        OrderService orderService = new OrderService();
         User user = (User)session.getAttribute("user");
-        String itemId = request.getParameter("itemId");
-        CartService cartService = new CartService();
-        PrintWriter out = response.getWriter();
 
-        cartService.addToCart(user.getUserId(), itemId);
+        List<Order> orderList = orderService.getOrderByUser(user.getUserId());
+        request.setAttribute("order", orderList);
+        request.setAttribute("orderLength", orderList.size());
 
+        request.getRequestDispatcher(ORDER_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
