@@ -28,10 +28,12 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            System.out.println(user.getUsername());
             response.sendRedirect(INDEX_PAGE);
         }
         else {
             // May need to leave a message in request.
+            System.out.println("wrongPassword");
             request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
         }
 

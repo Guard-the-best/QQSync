@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "ShowCategoryServlet")
 public class ViewCategoryServlet extends HttpServlet {
-    private static final String CATEGORY_PAGE = "";
+    private static final String CATEGORY_PAGE = "/WEB-INF/jsp/AfterLogin/animal.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GoodsService goodsService = new GoodsService();

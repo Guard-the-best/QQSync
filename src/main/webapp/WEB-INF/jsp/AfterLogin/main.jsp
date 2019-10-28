@@ -110,7 +110,6 @@
 <div id = changePart>
 
 
-
 <%--    Ajax--%>
 </div>
 

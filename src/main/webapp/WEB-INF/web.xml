@@ -99,6 +99,15 @@
         <servlet-name>toConfirmOrderServlet</servlet-name>
         <url-pattern>/toConfirmOrder</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>viewCategoryServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.goodsServlet.ViewCategoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewCategoryServlet</servlet-name>
+        <url-pattern>/viewCategory</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>
