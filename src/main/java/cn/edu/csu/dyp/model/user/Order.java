@@ -6,28 +6,38 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
+    private String orderId;
     private String userId;
     private Date orderDate;
     private String shipAddress;
     private String billAddress;
     private OrderStat status;
-    private List<LineItem> lineItemIds;
+    private List<LineItem> lineItemList;
 
-    public Order(String userId, Date orderDate, String shipAddress, String billAddress, OrderStat status, List<LineItem> lineItemIds) {
+    public Order(String orderId, String userId, Date orderDate, String shipAddress, String billAddress, OrderStat status, List<LineItem> lineItemList) {
+        this.orderId = orderId;
         this.userId = userId;
         this.orderDate = orderDate;
         this.shipAddress = shipAddress;
         this.billAddress = billAddress;
         this.status = status;
-        this.lineItemIds = lineItemIds;
+        this.lineItemList = lineItemList;
     }
 
-    public List<LineItem> getLineItemIds() {
-        return lineItemIds;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setLineItemIds(List<LineItem> lineItemIds) {
-        this.lineItemIds = lineItemIds;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public List<LineItem> getLineItemList() {
+        return lineItemList;
+    }
+
+    public void setLineItemList(List<LineItem> lineItemList) {
+        this.lineItemList = lineItemList;
     }
 
     public String getUserId() {
