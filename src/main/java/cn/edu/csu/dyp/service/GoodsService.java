@@ -52,8 +52,11 @@ public class GoodsService {
     }
 
     public List<Product> searchProductByKey(String key) {
-        return null;
-
+        List<Product> res;
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
+            res =dataBaseDao.query(new SearchProductByKeyDao(key));
+        }
+        return res;
     }
 
 }
