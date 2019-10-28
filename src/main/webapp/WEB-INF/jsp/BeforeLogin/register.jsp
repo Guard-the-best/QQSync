@@ -1,4 +1,11 @@
-
+<style>
+    .okmsg{
+    color:green;
+}
+    .errormsg{
+        color:red;
+    }
+</style>
 
 <div id="register">
 
@@ -8,7 +15,8 @@
         </div>
         <div class="form-item">
             <p class="formLabel">UserID...</p>
-            <input type="text" name="registerID" id="registerID" class="form-style" autocomplete="off"/>
+            <input type="text" name="registerID" id="registerID" class="form-style" onblur="checkUserName()" autocomplete="off"/>
+            <span id="isExistInfo"></span>
         </div>
         <div class="form-item">
             <p class="formLabel">Password...</p>
@@ -46,4 +54,25 @@
             $(this).parent().children('.form-style').focus();
         });
     });
+
+    function checkUserName() {
+        var username = document.getElementById('registerID').value;
+        $.ajax({
+            type: "post",
+            url: "/animalItemServlet?username=" + username,
+            data: {},
+            success: function (data) {
+                var msg =document.getElementById('isExistInfo');
+                if(data=='Exist'){
+                    msg.classList.add('okmsg');
+                    msg.innerText='Valid UserName';
+                }
+                else if(data=='Not Exist'){
+                    msg.classList.add('errormsg');
+                    msg.innerText='Invalid UserName';
+                }
+            }
+        })
+    }
+
 </script>

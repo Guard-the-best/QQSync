@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "AddToCartServlet")
-public class AddToCartServlet extends HttpServlet {
+@WebServlet(name = "RemoveFormCartServlet")
+public class RemoveFormCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         String itemId = request.getParameter("itemId");
         CartService cartService = new CartService();
-        PrintWriter out = response.getWriter();
+        cartService.removeItem(user.getUserId(), itemId);
 
-        cartService.addToCart(user.getUserId(), itemId);
-
+        request.getRequestDispatcher("/toCart");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+
     }
 }

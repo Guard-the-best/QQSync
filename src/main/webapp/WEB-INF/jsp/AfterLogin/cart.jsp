@@ -25,13 +25,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                               <c:forEach items="${list}" var="emp">
+                               <c:forEach items="${Item}" var="itemCart">
                                 <tr>
                                     <th scope="row">
                                         <div class="p-2">
                                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a onclick="checkAnimal(${list.animalid})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.productId})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
                                             </div>
                                         </div>
                                     </th>
@@ -39,7 +39,7 @@
                                     <td class="align-middle"><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input  id="Goods${Item.Id}" type="text" style="width:50%;">
+                                            <input onblur="checkNum()" id="${Item.productId}" type="text" style="width:50%;">
                                             &nbsp&nbsp&nbsp&nbsp
                                             <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
@@ -109,6 +109,23 @@
             data: {},
             success: function (data) {
             }
+        })
+    }
+    
+    function checkNum() {
+        var length = ${itemLength};
+        var itemCart = ${Item};
+        var number = new Array();
+        for (i = 0; i < length; i++) {
+
+            number[i] = document.getElementById(itemCart[i].productId);
+        }
+        $.ajax({
+            type: "post",
+            url:  'servlet',
+            data: $('#addQ').serialize(),
+            success: function (data) {
+                }
         })
     }
 </script>
