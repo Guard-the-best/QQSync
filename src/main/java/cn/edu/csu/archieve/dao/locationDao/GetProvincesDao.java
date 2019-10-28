@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.dao.locationDao;
+package cn.edu.csu.archieve.dao.locationDao;
 
 import cn.edu.csu.dyp.dao.util.DBI;
 

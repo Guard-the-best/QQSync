@@ -6,14 +6,18 @@ import java.util.List;
 
 public class CartService {
     /*
-    * Output:是否成功，删除过多（不能删不存在的）会成功，添加超库存会失败，库存还可以前端判断
+    * Output:添加超库存会失败，库存还可以前端判断
     * */
-    public boolean modifyCart(String userId,String itemId,int delta) {
-        return false;
+    public boolean addToCart(String userId,String itemId) {
     }
 
+    /*
+     * Output:添加超库存会失败，库存还可以前端判断
+     * */
     public boolean changeNumber(String userId,String itemId,int newQuantity) {
-        return false;
+    }
+
+    public boolean removeItem()(String userId,String itemId) {
     }
 
     public int getNumber(String userId) {
