@@ -54,9 +54,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#about">个人中心<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">${cartLength}</span></a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">个人信息</a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">我的订单</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/toCart')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">${cartLength}</span></a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/toModifyInfoServlet')" href="javascript:void(0)">个人信息</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/toOrderPage')" href="javascript:void(0)">我的订单</a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">修改密码</a></li>
                     </ul>
                 </li>

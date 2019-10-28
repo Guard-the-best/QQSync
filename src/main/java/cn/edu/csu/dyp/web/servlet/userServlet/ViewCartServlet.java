@@ -27,7 +27,7 @@ public class ViewCartServlet extends HttpServlet {
         List<LineItem> cart = cartService.getCart(user.getUserId());
         request.setAttribute("itemCart", cart);
 
-        request.getRequestDispatcher(CART_PAGE);
+        request.getRequestDispatcher(CART_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

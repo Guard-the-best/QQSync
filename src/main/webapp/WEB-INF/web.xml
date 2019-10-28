@@ -110,12 +110,21 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>registerServelet</servlet-name>
+        <servlet-name>registerServlet</servlet-name>
         <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>registerServelet</servlet-name>
+        <servlet-name>registerServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>toOrderPageServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToOrderPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toOrderPageServlet</servlet-name>
+        <url-pattern>/toOrderPage</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

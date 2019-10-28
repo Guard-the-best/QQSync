@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "ToCheckOrderServlet")
 public class ToOrderPageServlet extends HttpServlet {
-    private static final String ORDER_PAGE = "/WEB-INF/jsp/AfterLogin/orderItem.jsp";
+    private static final String ORDER_PAGE = "WEB-INF/jsp/AfterLogin/orderItem.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -23,8 +23,16 @@ public class ToOrderPageServlet extends HttpServlet {
         User user = (User)session.getAttribute("user");
 
         List<Order> orderList = orderService.getOrderByUser(user.getUserId());
-        request.setAttribute("order", orderList);
-        request.setAttribute("orderLength", orderList.size());
+        int orderLength = 0;
+
+        if (orderList != null) {
+            orderLength = orderList.size();
+        }
+
+        System.out.println(orderLength);
+
+//        request.setAttribute("order", orderList);
+        request.setAttribute("orderLength", orderLength);
 
         request.getRequestDispatcher(ORDER_PAGE).forward(request, response);
     }
