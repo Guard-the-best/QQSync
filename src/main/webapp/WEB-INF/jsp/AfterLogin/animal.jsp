@@ -8,13 +8,12 @@
     </thead>
     <tbody>
     <%--    要用foreach循环--%>
-<c:forEach items="${list}" var="emp">
-
-</c:forEach>
+<c:forEach items="${product}" var="productCategory">
     <tr>
-        <th scope="row"><a onclick="searchPage(url)" href="javascript:void(0)">ES-1</a></th>
-        <td>Mark</td>
+        <th scope="row"><a onclick="searchPage(url)" href="javascript:void(0)">${productCategory.categoryId}</a></th>
+        <td>${productCategory.productId}</td>
     </tr>
+</c:forEach>
     <tr>
         <th scope="row"><a href="#">ES-2</a></th></th>
         <td>Jacob</td>

@@ -18,10 +18,16 @@
                                         <div class="p-2 px-3 text-uppercase">ProductID</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Quantity</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Date</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Price</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Address</div>
                                     </th>
                                 </tr>
                                 </thead>

@@ -54,7 +54,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#about">个人中心<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">4</span></a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">${cartLength}</span></a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">个人信息</a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">我的订单</a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">修改密码</a></li>
@@ -67,11 +67,20 @@
 <%--                    搜索--%>
                     <br />
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search...">
+        <input onblur="checkSearchInfo()" id="searchInfo" name="searchInfo" type="text" class="form-control" placeholder="Search...">
         <div class="input-group-append">
 <%--            <button class="btn btn-secondary">--%>
 
 <%--        </button>--%>
+        </div>
+        <div>
+        <c:if test="${productLength!=0}">
+        <c:forEach items="${prodcut}" var="productSearch">
+        <span><a onclick="searchPage('animalItemServlet')" href="javascript:void(0)" id="${productSearch.itemId}">
+            ${productSearch.productName}
+        </a></span>
+        </c:forEach>
+        </c:if>
         </div>
     </div>
                 </li>
@@ -179,6 +188,18 @@
 </body>
 
 <script>
+
+    function checkSearchInfo() {
+        var info = document.getElementById('searchInfo').value;
+        $.ajax({
+            type: "post",
+            url: "/animalItemServlet?info=" + info,
+            data: {},
+            success: function (Data) {
+            }
+        })
+    }
+
     function searchPage(url) {
         $.ajax({
             type: "get",
@@ -190,7 +211,7 @@
             }
         })
     }
-    searchPage("给爷重定向到carousel的servlet")
+    searchPage('/toCarousel')
 </script>
 
 </html>

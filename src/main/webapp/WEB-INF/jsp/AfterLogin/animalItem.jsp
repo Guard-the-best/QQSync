@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <table class="table table-hover">
     <thead>
@@ -11,17 +12,17 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach>
+    <c:forEach items="${Item}" var="itemResult">
     <tr>
         <th scope="row"><br />1</th>
-        <td><br />Mark</td>
-        <td><br />Otto</td>
-        <td><br />$20</td>
+        <td><br />${itemResult.itemId}</td>
+        <td><br />${itemResult.productId}</td>
+        <td><br />$ ${itemResult.listPrice}</td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" onclick="searchPage('cartServlet')" href="javascript:void(0)">Buy</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="searchPage2(${itemResult.productId})" href="javascript:void(0)">Buy</button>
         </td>
         <td>
-            <button onclick="checkAnimal2(${Item.animalId})" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Cart</button>
+            <button onclick="checkAnimal2(${itemResult.productId})" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Cart</button>
         </td>
     </tr>
     </c:forEach>
@@ -53,6 +54,18 @@
             url: "/animalItemServlet?animalid=" + animalid,
             data: {},
             success: function (data) {
+            }
+        })
+    }
+
+    function searchPage2(animalId) {
+        $.ajax({
+            type: "get",
+            url: "servlet?animalId=" + animalId,
+            data: "",
+            cache: false,
+            success: function (data) {
+                $("#changePart").html(data);
             }
         })
     }
