@@ -109,7 +109,7 @@ public class UserService {
     public Address getAddress(String userId) {
         Address res =null;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
-
+            res = dataBaseDao.query(new GetAddressDao(userId));
         }
         return res;
     }
@@ -117,7 +117,11 @@ public class UserService {
     /*
     * 没有输入判断，全部替换（因为dyp说是表单）
     * */
-    public void setAddress(Address address) {
-
+    public boolean setAddress(String userId, Address address) {
+        boolean res = false;
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
+            res = dataBaseDao.query(new SetAddressDao(userId,address));
+        }
+        return res;
     }
 }

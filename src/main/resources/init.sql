@@ -11,17 +11,17 @@ use web;
 -- location
 -- --------------------------------------------------
 -- --------------------------------------------------
-DROP TABLE IF EXISTS `locationInfo`;
-CREATE TABLE `locationInfo`
-(
-    `locationId`   INT UNSIGNED AUTO_INCREMENT,
-    `parentId`     INT UNSIGNED NOT NULL,
-    `locationName` VARCHAR(100) NOT NULL,
-    `level`        INT UNSIGNED NOT NULL,-- province,city,county,village
-    PRIMARY KEY (`locationId`),
-    KEY (`locationName`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+# DROP TABLE IF EXISTS `locationInfo`;
+# CREATE TABLE `locationInfo`
+# (
+#     `locationId`   INT UNSIGNED AUTO_INCREMENT,
+#     `parentId`     INT UNSIGNED NOT NULL,
+#     `locationName` VARCHAR(100) NOT NULL,
+#     `level`        INT UNSIGNED NOT NULL,-- province,city,county,village
+#     PRIMARY KEY (`locationId`),
+#     KEY (`locationName`)
+# ) ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8;
 
 -- --------------------------------------------------
 -- --------------------------------------------------
@@ -45,10 +45,13 @@ CREATE TABLE `addressInfo`
 (
     `addressId`       INT UNSIGNED AUTO_INCREMENT,
     `userId`          INT UNSIGNED NOT NULL,
-    `isDefault`       BOOLEAN      NOT NULL,
+#     `isDefault`       BOOLEAN      NOT NULL,
     `name`            VARCHAR(100) NOT NULL,
     `phoneNumber`     VARCHAR(100) NOT NULL,
-    `locationId`      INT UNSIGNED NOT NULL,-- level4
+    `province`        VARCHAR(100) NOT NULL,
+    `city`            VARCHAR(100) NOT NULL,
+    `county`          VARCHAR(100) NOT NULL,
+    `village`         VARCHAR(100) NOT NULL,
     `detailedAddress` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`addressId`)
 ) ENGINE = InnoDB
