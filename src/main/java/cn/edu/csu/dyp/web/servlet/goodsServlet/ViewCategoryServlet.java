@@ -20,9 +20,13 @@ public class ViewCategoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GoodsService goodsService = new GoodsService();
         String categoryId = request.getParameter("categoryId");
+        System.out.println(categoryId);
         HttpSession session = request.getSession();
         Category category = goodsService.getCategoryById(categoryId);
-        List<Product> productList= goodsService.getProductsByCategory(categoryId);
+        List<Product> productList= goodsService.getProductsByCategory(category.getCategoryName());
+
+        System.out.println(productList.toString());
+//        System.out.println(productList.get(0).getProductName());
 
         request.setAttribute("category", category);
         request.setAttribute("productList", productList);

@@ -23,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
 
         RegisterStat registerStat = new UserService().register(new User(null, username, password, phoneNumber, nickname));
 
-        response.sendRedirect("/toLogin");
+        request.getRequestDispatcher("/toLogin").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,24 +19,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Card Type:</h5>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <label>
-                                            <select>
-                                                <option value="volvo">Visa</option>
-                                                <option value="saab">WeChat</option>
-                                                <option value="opel">Alipay</option>
-                                            </select>
-                                        </label>
-                                    </td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <th scope="row" class="border-0">--%>
+<%--                                        <div class="p-2">--%>
+<%--                                            <div class="ml-3 d-inline-block align-middle">--%>
+<%--                                                <h5 class="mb-0">Card Type:</h5>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </th>--%>
+<%--                                    <td class="border-0 align-middle">--%>
+<%--                                        <label>--%>
+<%--                                            <select>--%>
+<%--                                                <option value="volvo">Visa</option>--%>
+<%--                                                <option value="saab">WeChat</option>--%>
+<%--                                                <option value="opel">Alipay</option>--%>
+<%--                                            </select>--%>
+<%--                                        </label>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">

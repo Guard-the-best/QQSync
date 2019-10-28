@@ -25,7 +25,7 @@ public class ViewCartServlet extends HttpServlet {
         // 根据user相关属性搜索购物车并setAttribute
         CartService cartService = new CartService();
         List<LineItem> cart = cartService.getCart(user.getUserId());
-        request.setAttribute("cart", cart);
+        request.setAttribute("itemCart", cart);
 
         request.getRequestDispatcher(CART_PAGE);
     }

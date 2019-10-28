@@ -76,4 +76,9 @@ public class Address {
     public void setDetailedAddress(String detailedAddress) {
         this.detailedAddress = detailedAddress;
     }
+
+    @Override
+    public String toString() {
+        return name + '\'' + phoneNumber + '\'' + province + '\'' + city + '\'' + county + '\'' + village + '\'' + detailedAddress;
+    }
 }

@@ -108,6 +108,15 @@
         <servlet-name>viewCategoryServlet</servlet-name>
         <url-pattern>/viewCategory</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>registerServelet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerServelet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

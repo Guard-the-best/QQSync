@@ -33,10 +33,11 @@ public class MakeOrderServlet extends HttpServlet {
 
         List<LineItem> cart = new CartService().getCart(user.getUserId());
 
-        boolean ifSucceed = new OrderService().makeOrder(user.getUserId(), address, address, cart);
+        boolean ifSucceed = new OrderService().makeOrder(user.getUserId(), address.toString(), address.toString(), cart);
 
-        Order order = new Order(user.getUserId(), new Date(), address, address, OrderStat.Success, cart);
+        Order order = new Order(null, user.getUserId(), new Date(), address.toString(), address.toString(), OrderStat.Success, cart);
         request.setAttribute("order", order);
+        request.setAttribute("Address", address);
 
         request.getRequestDispatcher(CONFIRM_ORDER_PAGE).forward(request, response);
     }

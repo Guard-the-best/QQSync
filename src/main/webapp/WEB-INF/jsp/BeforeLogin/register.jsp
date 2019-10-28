@@ -10,6 +10,7 @@
 <div id="register">
 
     <div id="form">
+        <form id="registerForm" action="javascript:void (0)" method="post">
         <div class="logo">
             <h1 class="text-center head">Register</h1>
         </div>
@@ -29,10 +30,12 @@
             <!-- <div class="pw-view"><i class="fa fa-eye"></i></div> -->
         </div>
         <div class="form-item">
-            <input type="submit" class="login pull-right" value="Regist">
+            <input onclick="submitRegisterInfo()" type="submit" class="login pull-right" value="Regist">
             <div class="clear-fix"></div>
         </div>
+        </form>
     </div>
+
 </div>
 
 <script>
@@ -71,6 +74,20 @@
                     msg.classList.add('errormsg');
                     msg.innerText='Invalid UserName';
                 }
+            }
+        })
+    }
+
+
+    function submitRegisterInfo() {
+        $.ajax({
+            type: "post",
+            url: "/register",
+            data: $('#registerForm').serialize(),
+            success: function (data) {
+                console.log(data);
+                $("#formWrapper").html(data);
+                alert("注册成功！")
             }
         })
     }

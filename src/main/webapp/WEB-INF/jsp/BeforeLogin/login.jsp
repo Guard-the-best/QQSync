@@ -15,7 +15,7 @@
                 <p><a href="#" ><small>Forgot Password ?</small></a></p>
             </div>
             <div class="form-item">
-                <p class="pull-left"><a onclick="getPage(url)" href="javascript:void(0)"><small>Register</small></a></p>
+                <p class="pull-left"><a onclick="getPage2(url)" href="javascript:void(0)"><small>Register</small></a></p>
                 <input type="submit" class="login pull-right" value="Log In">
                 <div class="clear-fix"></div>
             </div>
@@ -41,4 +41,19 @@
             $(this).parent().children('.form-style').focus();
         });
     });
+
+
+    function getPage2(url) {
+        $.ajax({
+            type: "get",
+            data: "",
+            url: url,
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                $("#formWrapper").html(data);
+            }
+        })
+        // }
+    }
 </script>
