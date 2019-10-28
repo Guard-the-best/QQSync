@@ -3,6 +3,7 @@ package cn.edu.csu.dyp.model.user;
 import cn.edu.csu.dyp.service.util.OrderStat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private String userId;
@@ -10,9 +11,9 @@ public class Order {
     private Address shipAddress;
     private Address billAddress;
     private OrderStat status;
-    private LineItem[]  lineItemIds;
+    private List<LineItem> lineItemIds;
 
-    public Order(String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status, LineItem[] lineItemIds) {
+    public Order(String userId, Date orderDate, Address shipAddress, Address billAddress, OrderStat status, List<LineItem> lineItemIds) {
         this.userId = userId;
         this.orderDate = orderDate;
         this.shipAddress = shipAddress;
@@ -21,11 +22,11 @@ public class Order {
         this.lineItemIds = lineItemIds;
     }
 
-    public LineItem[] getLineItemIds() {
+    public List<LineItem> getLineItemIds() {
         return lineItemIds;
     }
 
-    public void setLineItemIds(LineItem[] lineItemIds) {
+    public void setLineItemIds(List<LineItem> lineItemIds) {
         this.lineItemIds = lineItemIds;
     }
 

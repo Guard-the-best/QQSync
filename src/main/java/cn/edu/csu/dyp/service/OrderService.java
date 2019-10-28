@@ -12,9 +12,9 @@ import cn.edu.csu.dyp.model.user.Order;
 
 public class OrderService {
     /*
-    * Date sql自动填写
-    * */
-    public boolean makeOrder(String userId, Address shipAddress,Address billAddress,LineItem[] lineItems) {
+     * Date sql自动填写
+     * */
+    public boolean makeOrder(String userId, Address shipAddress, Address billAddress, List<LineItem> lineItems) {
         return false;
     }
 
