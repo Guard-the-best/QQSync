@@ -12,6 +12,14 @@ public class CartService {
         return false;
     }
 
+    public boolean changeNumber(String userId,String itemId,int newQuantity) {
+        return false;
+    }
+
+    public int getNumber(String userId) {
+        return 0;
+    }
+
     /*
     * 不方便的操作可以每次修改都调用一次？
     * 在购物车页面进行物品数量删减可以不调用？
