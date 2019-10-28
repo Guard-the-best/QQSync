@@ -9,15 +9,18 @@ public class CartService {
     * Output:添加超库存会失败，库存还可以前端判断
     * */
     public boolean addToCart(String userId,String itemId) {
+        return false;
     }
 
     /*
      * Output:添加超库存会失败，库存还可以前端判断
      * */
     public boolean changeNumber(String userId,String itemId,int newQuantity) {
+        return false;
     }
 
-    public boolean removeItem()(String userId,String itemId) {
+    public boolean removeItem(String userId,String itemId) {
+        return false;
     }
 
     public int getNumber(String userId) {
