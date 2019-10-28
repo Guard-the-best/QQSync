@@ -85,7 +85,8 @@ CREATE TABLE `lineInfo`
     `itemId`   INT UNSIGNED NOT NULL,
     `quantity` INT UNSIGNED NOT NULL DEFAULT 1,
     `status`   INT UNSIGNED NOT NULL DEFAULT 0, -- In cart: 0; Ordered: 1; ...
-    PRIMARY KEY (`lineId`)
+    PRIMARY KEY (`lineId`),
+    KEY(`status`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
