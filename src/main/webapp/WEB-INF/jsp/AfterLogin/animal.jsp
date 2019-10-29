@@ -11,7 +11,7 @@
     <%--    要用foreach循环--%>
 <c:forEach items="${productList}" var="productCategory">
     <tr>
-        <th scope="row"><a onclick="searchPage4(url)" href="javascript:void(0)">${productCategory.productId}</a></th>
+        <th scope="row"><a onclick="searchPage4(${productCategory.productId})" href="javascript:void(0)">${productCategory.productId}</a></th>
         <td>${productCategory.productName}</td>
     </tr>
 </c:forEach>
@@ -26,10 +26,10 @@
     </tbody>
 </table>
 <script>
-    function searchPage4(url) {
+    function searchPage4(Id1) {
         $.ajax({
             type: "get",
-            url: url,
+            url: '/viewProduct?productId=' + Id1,
             data: "",
             cache: false,
             success: function (data) {

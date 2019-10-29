@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${Item}" var="itemResult">
+    <c:forEach items="${itemList}" var="itemResult">
     <tr>
         <th scope="row"><br />1</th>
         <td><br />${itemResult.itemId}</td>

@@ -135,6 +135,15 @@
         <servlet-name>searchProductByKeyServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>viewProductServelet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.goodsServlet.ViewProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewProductServelet</servlet-name>
+        <url-pattern>/viewProduct</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

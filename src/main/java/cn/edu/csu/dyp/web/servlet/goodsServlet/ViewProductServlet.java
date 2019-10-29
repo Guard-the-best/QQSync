@@ -14,17 +14,18 @@ import java.util.List;
 
 @WebServlet(name = "ViewProductServlet")
 public class ViewProductServlet extends HttpServlet {
-    private static final String PRODUCT_PAGE = "";
+    private static final String PRODUCT_PAGE = "WEB-INF/jsp/AfterLogin/animalItem.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productId = request.getParameter("productId");
+        System.out.println(productId);
         HttpSession session = request.getSession();
         GoodsService goodsService = new GoodsService();
 
         List<Item> itemList = goodsService.getItemsByProduct(productId);
         session.setAttribute("itemList", itemList);
 
-        response.sendRedirect(PRODUCT_PAGE);
+        request.getRequestDispatcher(PRODUCT_PAGE).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
