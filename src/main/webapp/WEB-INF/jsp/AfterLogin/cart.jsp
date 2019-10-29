@@ -66,7 +66,7 @@
                     <div class="p-4">
                         <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
                         <label>
-                            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                            <textarea id="ps" name="ps" cols="30" rows="2" class="form-control"></textarea>
                         </label>
 
                     </div>
@@ -76,13 +76,12 @@
                     <div class="p-4">
                         <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                         <ul class="list-unstyled mb-4">
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong id="totalPrice1" name="totalPrice1">$${totalPrice}</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                <h5 class="font-weight-bold">$400.00</h5>
+                                <h5 class="font-weight-bold" id="totalPrice2" name="totalPrice2">$${totalPrice}</h5>
                             </li>
-                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        </ul><a onclick="searchPage8('/viewCategory')" href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                     </div>
                 </div>
             </div>
@@ -126,7 +125,24 @@
             url:  'servlet',
             data: $('#addQ').serialize(),
             success: function (data) {
+                var totalPrice1 =document.getElementById('totalPrice1');
+                    totalPrice1.innerText=data;
+                var totalPrice2 =document.getElementById('totalPrice2');
+                totalPrice2.innerText=data;
                 }
         })
     }
+
+    function searchPage8() {
+        $.ajax({
+            type: "get",
+            url: '/search?key='
+            data: "",
+            cache: false,
+            success: function (data) {
+                $("#changePart").html(data);
+            }
+        })
+    }
+
 </script>

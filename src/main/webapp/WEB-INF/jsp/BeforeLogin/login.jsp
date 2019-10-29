@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div id="login">
     <form action="/login" method="post">
         <div id="form">
@@ -5,6 +7,14 @@
                 <h1 class="text-center head">User Login</h1>
             </div>
             <div class="form-item">
+                <c:if test="${loginError!=null}">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">
+                            &times;   </button>
+                            ${loginError} </div>
+
+                </c:if>
                 <p class="formLabel">UserID...</p>
                 <input type="text" name="email" id="email" class="form-style" autocomplete="off"/>
             </div>

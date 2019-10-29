@@ -1,4 +1,4 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
