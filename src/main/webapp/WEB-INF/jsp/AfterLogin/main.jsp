@@ -45,10 +45,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#about">宠物<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">鹦鹉</a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">猫猫</a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">狗狗</a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">鱼儿</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/viewCategory?categoryId=')" href="javascript:void(0)">鹦鹉</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/viewCategory?categoryId=')" href="javascript:void(0)">猫猫</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/viewCategory?categoryId=101')" href="javascript:void(0)">狗狗</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/viewCategory?categoryId=')" href="javascript:void(0)">鱼儿</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -57,7 +57,7 @@
                         <li><a class="dropdown-item" onclick="searchPage('/toCart')" href="javascript:void(0)">购物车&nbsp<span class="badge badge-secondary">${cartLength}</span></a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/toModifyInfoServlet')" href="javascript:void(0)">个人信息</a></li>
                         <li><a class="dropdown-item" onclick="searchPage('/toOrderPage')" href="javascript:void(0)">我的订单</a></li>
-                        <li><a class="dropdown-item" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">修改密码</a></li>
+                        <li><a class="dropdown-item" onclick="searchPage('/toChangePassword')" href="javascript:void(0)">修改密码</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -69,9 +69,9 @@
     <div class="input-group">
         <input onblur="checkSearchInfo()" id="searchInfo" name="searchInfo" type="text" class="form-control" placeholder="Search...">
         <div class="input-group-append">
-<%--            <button class="btn btn-secondary">--%>
+            <button class="btn btn-secondary" onclick="searchPage('/search')" href="javascript:void(0)">
 
-<%--        </button>--%>
+        </button>
         </div>
         <div>
         <c:if test="${productLength!=0}">
@@ -192,7 +192,7 @@
         var info = document.getElementById('searchInfo').value;
         $.ajax({
             type: "post",
-            url: "/animalItemServlet?info=" + info,
+            url: "/search?key=" + info,
             data: {},
             success: function (Data) {
             }
