@@ -43,9 +43,9 @@
         left:50%;
         top:50%;
         margin-left:-180px;
-        margin-top:-200px;
+        margin-top:-300px;
     }
-    div.form-item{position: relative; display: block; margin-bottom: 40px;}
+    div.form-item{position: relative; display: block; margin-bottom: 30px;}
     input{transition: all .2s ease;}
     input.form-style{
         color:#8a8a8a;

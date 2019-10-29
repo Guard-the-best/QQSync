@@ -25,6 +25,14 @@
                 <p><a href="#" ><small>Forgot Password ?</small></a></p>
             </div>
             <div class="form-item">
+                <p class="formLabel">Verification</p>
+
+                <input type="text" class="form-style" name="image" id="image" style="width: 60%;">
+                <a onclick="shuaXin()"><img src="/VerifyCodeServlet"></a>
+
+            </div>
+            <br />
+            <div class="form-item">
                 <p class="pull-left"><a onclick="getPage2(url)" href="javascript:void(0)"><small>Register</small></a></p>
                 <input type="submit" class="login pull-right" value="Log In">
                 <div class="clear-fix"></div>
