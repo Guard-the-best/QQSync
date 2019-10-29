@@ -7,8 +7,10 @@ import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.util.ModifyInfoStat;
 import cn.edu.csu.dyp.service.util.RegisterStat;
 import javafx.util.Pair;
+import org.apache.log4j.Logger;
 
 public class UserService {
+    private static Logger logger=Logger.getLogger(DataBaseDao.class);
 
     /*
      * Output
@@ -19,6 +21,7 @@ public class UserService {
         try(DataBaseDao dataBaseDAO = new DataBaseDao()) {
            user=dataBaseDAO.query(new LoginDao(username,password));
         }
+        if(user!=null)logger.info(user.getUsername()+" login");
         return user;
     }
 
@@ -42,6 +45,7 @@ public class UserService {
                 res=RegisterStat.UsernameUsed;
             else if(dataBaseDao.query(new RegisterDao(user))) {
                 res=RegisterStat.Success;
+                logger.info(user.getUsername()+" registered");
             }
         }
         return res;
@@ -81,6 +85,7 @@ public class UserService {
                     if(dataBaseDao.query(new ModifyInfoDao(parameter))) {
                         res = dataBaseDao.query(new GetUserDao(oldUser.getUserId()));
                         resStat=ModifyInfoStat.Success;
+                        logger.info(user.getUsername()+" modified info");
                     }
                 }
             }
@@ -101,6 +106,7 @@ public class UserService {
             try(DataBaseDao dataBaseDao = new DataBaseDao()) {
                 if(dataBaseDao.query(new ModifyPasswordDao(oldUser.getUserId(),newPassword)))
                     res =ModifyInfoStat.Success;
+                logger.info(oldUsername+" modified password");
             }
         }
         return res;
@@ -122,6 +128,7 @@ public class UserService {
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             res = dataBaseDao.query(new SetAddressDao(userId,address));
         }
+        if(res)logger.info(userId+" modified address");
         return res;
     }
 }

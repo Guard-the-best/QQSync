@@ -5,11 +5,13 @@ import cn.edu.csu.dyp.dao.goodsDao.GetItemByIdDao;
 import cn.edu.csu.dyp.dao.util.DataBaseDao;
 import cn.edu.csu.dyp.model.user.LineItem;
 import javafx.util.Pair;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartService {
+    private static Logger logger=Logger.getLogger(DataBaseDao.class);
     public boolean addToCart(String userId,String itemId) {
         boolean res =false;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {

@@ -32,3 +32,4 @@ dependency-reduced-pom.xml
 
 .vscode/
 src/main/python/getcitys/__pycache__/__main__.cpython-36.pyc
+/log/

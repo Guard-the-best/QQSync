@@ -13,8 +13,10 @@ import cn.edu.csu.dyp.dao.util.DataBaseDao;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.user.LineItem;
 import cn.edu.csu.dyp.model.user.Order;
+import org.apache.log4j.Logger;
 
 public class OrderService {
+    private static Logger logger=Logger.getLogger(DataBaseDao.class);
     /*
      * Date sql自动填写,lineItem only use itemId and quantity
      * */
@@ -23,8 +25,10 @@ public class OrderService {
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             if(dataBaseDao.query(new AddOrderDao(userId,shipAddress,billAddress))){
                 String orderId = dataBaseDao.query(new GetOrderIdDao(userId));
-                if (orderId!=null && dataBaseDao.query(new ModifyItemStatusDao(userId,orderId,lineItems)))
+                if (orderId!=null && dataBaseDao.query(new ModifyItemStatusDao(userId,orderId,lineItems))) {
                     res =true;
+                    logger.info(userId+ "make new order");
+                }
             }
         }
         return res;

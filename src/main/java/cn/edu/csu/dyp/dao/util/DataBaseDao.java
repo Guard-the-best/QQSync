@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.dao.util;
 
 import cn.edu.csu.dyp.util.config.DataBaseConfig;
 import cn.edu.csu.dyp.util.config.DataBasePojo;
+import org.apache.log4j.Logger;
 
 import java.io.Closeable;
 import java.sql.*;
@@ -18,6 +19,8 @@ public class DataBaseDao implements Closeable {
     private Connection conn=null;
     private Statement stat=null;
     private PreparedStatement preStat=null;
+
+    private static Logger logger=Logger.getLogger(DataBaseDao.class);
 
     public DataBaseDao(){
         DataBasePojo config = DataBaseConfig.config();
@@ -37,17 +40,16 @@ public class DataBaseDao implements Closeable {
     private void connect(){
         String fullUrl = "jdbc:mysql://"+databaseHost+":"+databasePort+"/"+databaseName+"?"+databaseParameter;
         try{
-            System.out.println("[connect]1/3setting driver...");
             Class.forName(driver);
-            System.out.println("[connect]2/3connecting database...");
             conn = DriverManager.getConnection(fullUrl,username,password);
-            System.out.println("[connect]3/3connect database success");
+            logger.info("[connect]connect database success");
         }
         catch (SQLException sqlException){
-            System.err.println("[connect]connect failed");
+//            logger.error("[connect]connect failed");
+                logger.error("[connect]connect failed");
         }
         catch (ClassNotFoundException driverException){
-            System.err.println("[connect]driver error");
+            logger.error("[connect]driver error");
         }
     }
 
@@ -56,29 +58,25 @@ public class DataBaseDao implements Closeable {
     public void close(){
         try{
             if(conn!=null){
-                System.out.println("[close]1/2closing database...");
                 conn.close();
                 conn=null;
-                System.out.println("[close]2/2closed");
+                logger.info("[close]database closed");
             }
         }
         catch (SQLException sqlException){
-            System.err.println("[close]close failed");
+            logger.error("[close]close failed");
         }
-        System.out.println();
     }
 
     private void closeState() {
         try {
-            System.out.println("[query]3/4closing query...");
             if(stat!=null)stat.close();
             stat=null;
             if(preStat!=null)preStat.close();
             preStat=null;
-            System.out.println("[query]4/4query closed");
         }
         catch (SQLException sqlException) {
-            System.err.println("[query]query close failed");
+            logger.error("[query]query close failed");
         }
     }
 
@@ -86,15 +84,13 @@ public class DataBaseDao implements Closeable {
     public <T> T query(DBI<T> interrogator){
         T res = null;
         try{
-            System.out.println("[query]1/4querying database...");
             if(conn!=null)stat = conn.createStatement();
             if(stat!=null) {
                 res=interrogator.query(stat);
             }
-            System.out.println("[query]2/4finished query");
         }
         catch (SQLException sqlException){
-            System.err.println("[query]query failed");
+            logger.error("[query]query failed");
         }
         closeState();
         return res;
@@ -103,14 +99,12 @@ public class DataBaseDao implements Closeable {
     public <T> T query(DBIP<T> interrogator){
         T res=null;
         try{
-            System.out.println("[query]1/4querying database...");
             if(conn!=null)preStat = conn.prepareStatement(interrogator.sqlQueryString());
             if(preStat!=null) {
                 res=interrogator.query(preStat);
             }
-            System.out.println("[query]2/4finished query");
         } catch (SQLException sqlException) {
-            System.err.println("[query]query failed");
+            logger.error("[query]query failed");
         }
         closeState();
         return res;

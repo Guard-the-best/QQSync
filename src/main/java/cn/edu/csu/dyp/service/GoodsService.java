@@ -5,10 +5,12 @@ import cn.edu.csu.dyp.dao.util.DataBaseDao;
 import cn.edu.csu.dyp.model.goods.Category;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class GoodsService {
+    private static Logger logger=Logger.getLogger(DataBaseDao.class);
     public List<Product> getProductsByCategory(String categoryName) {
         List <Product> res;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
