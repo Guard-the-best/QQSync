@@ -13,6 +13,7 @@ import java.util.List;
 public class CartService {
     private static Logger logger=Logger.getLogger(DataBaseDao.class);
     public boolean addToCart(String userId,String itemId) {
+        logger.info(userId + " added " + itemId);
         boolean res =false;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             int val = dataBaseDao.query(new IsItemExistDao(userId,itemId));
@@ -27,6 +28,7 @@ public class CartService {
     }
 
     public boolean changeNumber(String userId,String itemId,int newQuantity) {
+        logger.info(userId + " modify " + itemId);
         boolean res =false;
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             if(dataBaseDao.query(new IsItemExistDao(userId,itemId))==0)
@@ -37,6 +39,7 @@ public class CartService {
     }
 
     public boolean removeItem(String userId,String itemId) {
+        logger.info(userId + " remove " + itemId);
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             if(dataBaseDao.query(new IsItemExistDao(userId,itemId))==0)
                 return false;
