@@ -35,6 +35,8 @@ public class GoodsServiceTest {
 
     @Test
     public void searchProductByKey() {
+        List<Product> list= new GoodsService().searchProductByKey("o");
+        list.size();
     }
 
 }

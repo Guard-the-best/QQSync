@@ -20,7 +20,7 @@ public class SearchProductByKeyDao implements DBI<List<Product>> {
     @Override
     public List<Product> query(Statement statement) {
         List<Product> res = new ArrayList<>();
-        try(ResultSet resultSet = statement.executeQuery(String.format(query,"%"+key+"%s"))) {
+        try(ResultSet resultSet = statement.executeQuery(String.format(query,"%"+key+"%"))) {
             while(resultSet.next()) {
                 String categoryId = resultSet.getString("categoryId");
                 String productId = resultSet.getString("productId");
