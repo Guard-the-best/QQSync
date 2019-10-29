@@ -27,7 +27,7 @@ public class GetItemByIdDao implements DBI<Item> {
                 BigDecimal listPrice = resultSet.getBigDecimal("listPrice");
                 Integer inventory = resultSet.getInt("inventory");
                 String[] attr = new String[5];
-                for(int i=0;i<=5;i++)
+                for(int i=0;i<5;i++)
                     attr[i] = resultSet.getString("attr"+(i+1));
                 res=new Item(itemId,productId,listPrice,inventory,attr);
             }

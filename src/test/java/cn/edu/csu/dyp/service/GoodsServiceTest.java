@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.service;
 
 
+import cn.edu.csu.dyp.model.goods.Category;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
 import org.junit.Test;
@@ -27,14 +28,23 @@ public class GoodsServiceTest {
 
     @Test
     public void getItemById() {
+        Item item = new GoodsService().getItemById("10001");
+        item.getInventory();
     }
 
     @Test
     public void getProductById() {
+        Item item = new GoodsService().getItemById("10001");
+        Product product = new GoodsService().getProductById(item.getProductId());
+        product.getProductId();
     }
 
     @Test
     public void getCategoryById() {
+        Item item = new GoodsService().getItemById("10001");
+        Product product = new GoodsService().getProductById(item.getProductId());
+        Category category = new GoodsService().getCategoryById(product.getCategoryId());
+        category.getCategoryName();
     }
 
     @Test
