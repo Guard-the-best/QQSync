@@ -17,12 +17,12 @@ public class SearchByKeyServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String key = request.getParameter("key");
-        System.out.println(key);
         GoodsService goodsService = new GoodsService();
 
         List<Product> products = goodsService.searchProductByKey(key);
         request.setAttribute("productLength", products.size());
         request.setAttribute("product", products);
+        System.out.println(key);
 
         request.getRequestDispatcher(PRODUCT_PAGE).forward(request, response);
     }
