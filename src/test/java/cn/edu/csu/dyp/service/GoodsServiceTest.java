@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.service;
 
 
+import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
 import org.junit.Test;
 
@@ -19,6 +20,9 @@ public class GoodsServiceTest {
 
     @Test
     public void getItemsByProduct() {
+        List<Product> temp= new GoodsService().getProductsByCategory("Dog");
+        List<Item> list = new GoodsService().getItemsByProduct(temp.get(0).getProductId());
+        list.size();
     }
 
     @Test
