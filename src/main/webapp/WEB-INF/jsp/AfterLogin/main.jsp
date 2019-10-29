@@ -73,15 +73,17 @@
 
         </button>
         </div>
-        <div>
+    </div>
+    <div>
+        <label>
         <c:if test="${productLength!=0}">
-        <c:forEach items="${prodcut}" var="productSearch">
+            <c:forEach items="${prodcut}" var="productSearch">
         <span><a onclick="searchPage('animalItemServlet')" href="javascript:void(0)" id="${productSearch.itemId}">
-            ${productSearch.productName}
+                ${productSearch.productName}
         </a></span>
-        </c:forEach>
+            </c:forEach>
         </c:if>
-        </div>
+        </label>
     </div>
                 </li>
                 <li class="nav-item">
