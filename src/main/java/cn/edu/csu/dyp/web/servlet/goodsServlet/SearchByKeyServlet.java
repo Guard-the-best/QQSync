@@ -21,7 +21,7 @@ public class SearchByKeyServlet extends HttpServlet {
 
         List<Product> products = goodsService.searchProductByKey(key);
         request.setAttribute("productLength", products.size());
-        request.setAttribute("product", products);
+        request.setAttribute("productList", products);
         System.out.println(key);
 
         request.getRequestDispatcher(PRODUCT_PAGE).forward(request, response);

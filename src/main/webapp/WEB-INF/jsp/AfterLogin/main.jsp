@@ -69,7 +69,7 @@
     <div class="input-group">
         <input onblur="checkSearchInfo()" id="searchInfo" name="searchInfo" type="text" class="form-control" placeholder="Search...">
         <div class="input-group-append">
-            <button class="btn btn-secondary" onclick="searchPage('/search')" href="javascript:void(0)">
+            <button class="btn btn-secondary" onclick="searchPage7()" href="javascript:void(0)">
 
         </button>
         </div>
@@ -190,13 +190,15 @@
 
     function checkSearchInfo() {
         var info = document.getElementById('searchInfo').value;
-        $.ajax({
-            type: "post",
-            url: "/search?key=" + info,
-            data: {},
-            success: function (Data) {
-            }
-        })
+        if(info!=null) {
+            $.ajax({
+                type: "post",
+                url: "/search?key=" + info,
+                data: {},
+                success: function (Data) {
+                }
+            })
+        }
     }
 
     function searchPage(url) {
@@ -211,6 +213,19 @@
         })
     }
     searchPage('/toCarousel')
+
+    function searchPage7() {
+        var key = document.getElementById('searchInfo').value;
+        $.ajax({
+            type: "get",
+            url: '/search?key=' + key,
+            data: "",
+            cache: false,
+            success: function (data) {
+                $("#changePart").html(data);
+            }
+        })
+    }
 </script>
 
 </html>
