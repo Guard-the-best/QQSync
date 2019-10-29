@@ -184,7 +184,7 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success btn-sm" onclick="searchPage('productInfoServlet')" value="Modify"/>
+                            <input type="submit" class="btn btn-success btn-sm" onclick="searchPage6('productInfoServlet')" value="Modify"/>
 
                         </form>
                     </div>
@@ -198,3 +198,16 @@
     </div>
 </div>
 
+<script>
+    function searchPage6(url) {
+        $.ajax({
+            type: "get",
+            url: url,
+            data: "",
+            cache: false,
+            success: function (data) {
+                $("#changePart").html(data);
+            }
+        })
+    }
+</script>

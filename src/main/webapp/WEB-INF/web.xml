@@ -127,6 +127,15 @@
         <url-pattern>/toOrderPage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>searchProductByKeyServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.goodsServlet.SearchByKeyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchProductByKeyServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>main</welcome-file>
     </welcome-file-list>

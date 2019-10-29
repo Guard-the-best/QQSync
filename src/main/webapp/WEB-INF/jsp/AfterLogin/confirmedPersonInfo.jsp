@@ -161,7 +161,7 @@
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="submit" class="btn btn-success" onclick="searchPage('/personInfoServlet')" value="Modify"/>
+                                    <input type="submit" class="btn btn-success" onclick="searchPage5('/personInfoServlet')" value="Modify"/>
 
                                 </form>
                             </div>
@@ -175,4 +175,17 @@
     </div>
 </div>
 
+<script>
+    function searchPage5(url) {
+        $.ajax({
+            type: "get",
+            url: url,
+            data: "",
+            cache: false,
+            success: function (data) {
+                $("#changePart").html(data);
+            }
+        })
+    }
+</script>
 
