@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetCartDao implements DBI<List<Pair<String,Integer>>> {
-    private static final String query = "select itemId,quantity from lineInfo where status=1 and parentId=%s";
+    private static final String query = "select itemId,quantity from lineInfo where status=0 and parentId=%s";
     private String userId;
 
     public GetCartDao(String userId) {

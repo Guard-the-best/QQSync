@@ -9,8 +9,8 @@ import cn.edu.csu.dyp.service.util.OrderStat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetOrderDao implements DBI<List<Order>> {
@@ -31,7 +31,7 @@ public class GetOrderDao implements DBI<List<Order>> {
         try(ResultSet resultSet = statement.executeQuery(String.format(query,userId))) {
             while(resultSet.next()) {
                 String orderId = resultSet.getString("orderId");
-                Date orderDate = resultSet.getDate("orderDate");
+                Date orderDate = resultSet.getTimestamp("orderDate");
                 String shipAddress = resultSet.getString("shipAddress");
                 String billAddress = resultSet.getString("billAddress");
                 int status = resultSet.getInt("status");

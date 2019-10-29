@@ -1,3 +1,7 @@
+set global time_zone = '+8:00';  ##修改mysql全局时区
+set time_zone = '+8:00';  ##修改当前会话时区
+flush privileges;  #立即生效
+
 DROP DATABASE IF EXISTS web;
 create database web;
 DROP USER IF EXISTS 'webUser'@'%';

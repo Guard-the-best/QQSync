@@ -7,15 +7,15 @@ import cn.edu.csu.dyp.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestDataBaseDao {
-    @Test
+public class DataBaseDaoTest {
+//    @Test
     public void testRegister() {
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"admin","123456",null,"Jacky"))));
         }
     }
 
-    @Test
+//    @Test
     public void testExist() {
         try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             Assert.assertTrue(dataBaseDao.query(new IsUserExistDao("admin")));

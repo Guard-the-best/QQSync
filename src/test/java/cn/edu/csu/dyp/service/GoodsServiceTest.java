@@ -10,10 +10,6 @@ import java.util.List;
 
 public class GoodsServiceTest {
     @Test
-    public void getCategories() {
-    }
-
-    @Test
     public void getProductsByCategory() {
         List<Product> list= new GoodsService().getProductsByCategory("Dog");
         list.size();
