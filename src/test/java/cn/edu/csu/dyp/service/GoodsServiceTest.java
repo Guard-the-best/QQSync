@@ -1,7 +1,10 @@
 package cn.edu.csu.dyp.service;
 
 
+import cn.edu.csu.dyp.model.goods.Product;
 import org.junit.Test;
+
+import java.util.List;
 
 public class GoodsServiceTest {
     @Test
@@ -10,6 +13,8 @@ public class GoodsServiceTest {
 
     @Test
     public void getProductsByCategory() {
+        List<Product> list= new GoodsService().getProductsByCategory("Dog");
+        list.size();
     }
 
     @Test
@@ -31,4 +36,5 @@ public class GoodsServiceTest {
     @Test
     public void searchProductByKey() {
     }
+
 }

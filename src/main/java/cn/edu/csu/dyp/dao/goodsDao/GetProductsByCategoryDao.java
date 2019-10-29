@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetProductsByCategoryDao implements DBI<List<Product>> {
-    private static final String query = "select * from productInfo where categoryName=%s";
+    private static final String getId = "select categoryId from categoryInfo where categoryName='%s'";
+    private static final String query = "select * from productInfo where categoryId=%s";
 
     public GetProductsByCategoryDao(String categoryName) {
         this.categoryName = categoryName;
@@ -20,17 +21,27 @@ public class GetProductsByCategoryDao implements DBI<List<Product>> {
 
     @Override
     public List<Product> query(Statement statement) {
-        List<Product> res = new ArrayList<>();
-        try(ResultSet resultSet = statement.executeQuery(String.format(query,categoryName))) {
-            while (resultSet.next()) {
-                String categoryId = resultSet.getString("categoryId");
-                String productId = resultSet.getString("productId");
-                String productName = resultSet.getString("productName");
-                res.add(new Product(categoryId,productId,productName));
-            }
+        String categoryId=null;
+        try(ResultSet resultSet = statement.executeQuery(String.format(getId,categoryName))) {
+            if(resultSet.next())
+                categoryId = resultSet.getString("categoryId");
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        }
+
+        List<Product> res = new ArrayList<>();
+        if(categoryId!=null) {
+            try(ResultSet resultSet = statement.executeQuery(String.format(query,categoryId))) {
+                while (resultSet.next()) {
+                    String productId = resultSet.getString("productId");
+                    String productName = resultSet.getString("productName");
+                    res.add(new Product(categoryId,productId,productName));
+                }
+            }
+            catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            }
         }
         return res;
     }

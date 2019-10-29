@@ -10,14 +10,14 @@ import org.junit.Test;
 public class TestDataBaseDao {
     @Test
     public void testRegister() {
-        try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             Assert.assertTrue(dataBaseDao.query(new RegisterDao(new User(null,"admin","123456",null,"Jacky"))));
         }
     }
 
     @Test
     public void testExist() {
-        try(DataBaseDao<Boolean> dataBaseDao = new DataBaseDao<>()) {
+        try(DataBaseDao dataBaseDao = new DataBaseDao()) {
             Assert.assertTrue(dataBaseDao.query(new IsUserExistDao("admin")));
             Assert.assertFalse(dataBaseDao.query(new IsUserExistDao("tst")));
         }
