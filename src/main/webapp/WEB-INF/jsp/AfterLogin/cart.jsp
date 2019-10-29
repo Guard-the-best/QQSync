@@ -26,21 +26,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                               <c:forEach items="${Item}" var="itemCart">
+                               <c:forEach items="${lineItems}" var="itemCart">
                                 <tr>
                                     <th scope="row">
                                         <div class="p-2">
                                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.productId})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.item.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="align-middle"><strong>$79.00</strong></td>
-                                    <td class="align-middle"><strong>
+                                    <td class="align-middle"><strong><c:out value="${itemCart.item.listPrice}"/></strong></td>
+                                    <td class="align-middle" ><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input onblur="checkNum()" id="${Item.productId}" type="text" style="width:50%;">
+                                            <input onblur="checkNum()" id="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
                                             &nbsp&nbsp&nbsp&nbsp
                                             <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
@@ -81,7 +81,8 @@
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                                 <h5 class="font-weight-bold" id="totalPrice2" name="totalPrice2">$${totalPrice}</h5>
                             </li>
-                        </ul><a onclick="searchPage8('/viewCategory')" href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        </ul>
+                        <a onclick="searchPage8()" href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                     </div>
                 </div>
             </div>
@@ -133,12 +134,11 @@
         })
     }
 
-    function searchPage8() {
+    function searchPage8(url) {
         $.ajax({
             type: "get",
-            url: '/search?key='
+            url: '/toProductInfo',
             data: "",
-            cache: false,
             success: function (data) {
                 $("#changePart").html(data);
             }

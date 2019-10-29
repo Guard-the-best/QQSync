@@ -19,10 +19,10 @@
         <td><br />${itemResult.productId}</td>
         <td><br />$ ${itemResult.listPrice}</td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" onclick="searchPage2(${itemResult.productId})" href="javascript:void(0)">Buy</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="searchPage2(${itemResult.itemId})" href="javascript:void(0)">Buy</button>
         </td>
         <td>
-            <button onclick="checkAnimal2(${itemResult.productId})" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Cart</button>
+            <button onclick="checkAnimal2(${itemResult.itemId})" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Cart</button>
         </td>
     </tr>
     </c:forEach>
@@ -51,7 +51,7 @@
     function checkAnimal2(animalid) {
         $.ajax({
             type: "post",
-            url: "/animalItemServlet?animalid=" + animalid,
+            url: "/addToCart?itemId=" + animalid,
             data: {},
             success: function (data) {
             }
@@ -59,9 +59,10 @@
     }
 
     function searchPage2(animalId) {
+        checkAnimal2(animalId);
         $.ajax({
             type: "get",
-            url: "servlet?animalId=" + animalId,
+            url: "/toCart",
             data: "",
             cache: false,
             success: function (data) {

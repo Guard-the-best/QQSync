@@ -144,6 +144,24 @@
         <servlet-name>viewProductServelet</servlet-name>
         <url-pattern>/viewProduct</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>addToCart</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.cartServlet.AddToCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addToCart</servlet-name>
+        <url-pattern>/addToCart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>toProductInfoServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToProductInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toProductInfoServlet</servlet-name>
+        <url-pattern>/toProductInfo</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

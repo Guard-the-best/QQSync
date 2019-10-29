@@ -20,6 +20,7 @@ public class AddToCartServlet extends HttpServlet {
         String itemId = request.getParameter("itemId");
         CartService cartService = new CartService();
         PrintWriter out = response.getWriter();
+        System.out.println(itemId);
 
         cartService.addToCart(user.getUserId(), itemId);
 
