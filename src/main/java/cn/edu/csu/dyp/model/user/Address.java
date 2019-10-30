@@ -79,6 +79,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return name + '\'' + phoneNumber + '\'' + province + '\'' + city + '\'' + county + '\'' + village + '\'' + detailedAddress;
+        return name + '#' + phoneNumber + '#' + province + '#' + city + '#' + county + '#' + village + '#' + detailedAddress;
     }
 }

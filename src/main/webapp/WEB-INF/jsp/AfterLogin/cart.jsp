@@ -82,7 +82,7 @@
                                 <h5 class="font-weight-bold" id="totalPrice2" name="totalPrice2">$${totalPrice}</h5>
                             </li>
                         </ul>
-                        <a onclick="searchPage8()" href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        <a onclick="findPage('/toProductInfo')" href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                     </div>
                 </div>
             </div>
@@ -92,6 +92,18 @@
 </div>
 
 <script>
+    function findPage(url) {
+        $.ajax({
+            type: "get",
+            url: url,
+            data: "",
+            success: function (data) {
+                console.log(data);
+                $("#changePart").html(data);
+            }
+        })
+    }
+
     function addQuantity() {
         $.ajax({
             type: "post",
@@ -112,7 +124,12 @@
             }
         })
     }
-    
+
+
+
+
+</script>
+<script>
     function checkNum() {
         var length = ${itemLength};
         var itemCart = ${Item};
@@ -127,22 +144,10 @@
             data: $('#addQ').serialize(),
             success: function (data) {
                 var totalPrice1 =document.getElementById('totalPrice1');
-                    totalPrice1.innerText=data;
+                totalPrice1.innerText=data;
                 var totalPrice2 =document.getElementById('totalPrice2');
                 totalPrice2.innerText=data;
-                }
-        })
-    }
-
-    function searchPage8(url) {
-        $.ajax({
-            type: "get",
-            url: '/toProductInfo',
-            data: "",
-            success: function (data) {
-                $("#changePart").html(data);
             }
         })
     }
-
 </script>

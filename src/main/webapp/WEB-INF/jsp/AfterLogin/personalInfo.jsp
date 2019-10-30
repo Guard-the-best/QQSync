@@ -69,25 +69,12 @@
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">First Name:</h5>
+                                                <h5 class="mb-0">Name:</h5>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="FirstName" name="FirstName" type="text" style="width:50%;">
-                                        <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Last Name:</h5>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <input id="LastName" name="LastName" id type="text" style="width:50%;">
+                                        <input id="Name" name="Name" id type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 <tr>

@@ -75,25 +75,12 @@
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h6 class="mb-0">First Name:</h6>
+                                                <h6 class="mb-0">Name:</h6>
                                             </div>
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="FirstName2" name="FirstName2" type="text" style="width:50%;">
-                                        <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h6 class="mb-0">Last Name:</h6>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <input id="LastName2" name="LastName2" type="text" style="width:50%;">
+                                        <input id="Name2" name="Name2" type="text" style="width:50%;">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -167,9 +154,8 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             <input type="submit" class="btn btn-success" onclick="submitAndProductSearch()" value="Confirm"/>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             <input type="reset" class="btn btn-info" value="Reset"/>
@@ -189,7 +175,7 @@
     function postProductData() {
         $.ajax({
             type: "post",
-            url: "servlet",
+            url: "/makeOrder",
             data: $('#productInfo').serialize(),
             success: function (data) {
                 console.log(data);

@@ -162,6 +162,15 @@
         <servlet-name>toProductInfoServlet</servlet-name>
         <url-pattern>/toProductInfo</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MakeOrderServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.MakeOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakeOrderServlet</servlet-name>
+        <url-pattern>/makeOrder</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

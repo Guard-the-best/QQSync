@@ -20,7 +20,6 @@ public class ToProductInfoServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         Address address = new UserService().getAddress(user.getUserId());
-
         if (address != null) {
             request.setAttribute("address", address);
             System.out.println(address.toString());
