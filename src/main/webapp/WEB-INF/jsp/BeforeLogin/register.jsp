@@ -62,7 +62,7 @@
         var username = document.getElementById('registerID').value;
         $.ajax({
             type: "post",
-            url: "/animalItemServlet?username=" + username,
+            url: "/isUsernameExist?username=" + username,
             data: {},
             success: function (data) {
                 var msg =document.getElementById('isExistInfo');

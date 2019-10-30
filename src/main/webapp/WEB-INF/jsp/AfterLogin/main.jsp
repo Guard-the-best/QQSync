@@ -201,9 +201,9 @@
                 }
             })
         }
-        <c:forEach items="Item" var="searchItem">
-        document.getElementById("suspensionPicCss").innerHTML=${searchItem.Item.id};
-        </c:forEach>
+<%--        <c:forEach items="Item" var="searchItem">--%>
+<%--        document.getElementById("suspensionPicCss").innerHTML=${searchItem.Item.id};--%>
+<%--        </c:forEach>--%>
     }
 
     function searchPage(url) {

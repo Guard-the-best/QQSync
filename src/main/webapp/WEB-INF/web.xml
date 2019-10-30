@@ -180,6 +180,59 @@
         <servlet-name>BotDetect Captcha</servlet-name>
         <url-pattern>/botdetectcaptcha</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>modifyInfoServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.ModifyInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modifyInfoServlet</servlet-name>
+        <url-pattern>/modifyInfo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>modifyQuantityServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.cartServlet.ModifyQuantityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modifyQuantityServlet</servlet-name>
+        <url-pattern>/modifyQuantity</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>toRegisterServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.skipServlet.ToRegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toRegisterServlet</servlet-name>
+        <url-pattern>/toRegister</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userNameCheckerServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.userServlet.IsUserNameExistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userNameCheckerServlet</servlet-name>
+        <url-pattern>/isUsernameExist</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

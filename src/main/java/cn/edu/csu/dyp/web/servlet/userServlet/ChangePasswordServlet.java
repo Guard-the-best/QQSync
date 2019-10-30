@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "ChangePasswordServlet")
 public class ChangePasswordServlet extends HttpServlet {
@@ -19,12 +20,16 @@ public class ChangePasswordServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String userName = ((User)session.getAttribute("user")).getUsername();
-        String oldPassword = request.getParameter("oldPassword");
-        String newPassword = request.getParameter("newPassword");
+        String oldPassword = request.getParameter("origin");
+        String newPassword = request.getParameter("new");
 
         ModifyInfoStat modifyInfoStat = userService.modifyPassword(userName, oldPassword, newPassword);
 
+        PrintWriter out = response.getWriter();
+
+        System.out.println("change");
         if (modifyInfoStat == ModifyInfoStat.Success) {
+            out.print(1);
             response.sendRedirect("/toLogin");
         }
         else {

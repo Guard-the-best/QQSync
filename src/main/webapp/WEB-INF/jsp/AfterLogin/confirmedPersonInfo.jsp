@@ -67,31 +67,31 @@
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${address.name}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row" class="border-0">
                                                 <div class="p-2">
                                                     <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0">Address1:</h5>
+                                                        <h5 class="mb-0">NickName:</h5>
                                                     </div>
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${sessionScope.user.nickname}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row" class="border-0">
                                                 <div class="p-2">
                                                     <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0">Address2:</h5>
+                                                        <h5 class="mb-0">Phone Number:</h5>
                                                     </div>
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${sessionScope.user.phoneNumber}
                                             </td>
                                         </tr>
                                         <tr>
@@ -103,7 +103,7 @@
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${address.city}
                                             </td>
                                         </tr>
                                         <tr>
@@ -115,21 +115,10 @@
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${address.province}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row" class="border-0">
-                                                <div class="p-2">
-                                                    <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0">Zip:</h5>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="border-0 align-middle">
-                                                something from input
-                                            </td>
-                                        </tr>
+
                                         <tr>
                                             <th scope="row" class="border-0">
                                                 <div class="p-2">
@@ -139,7 +128,7 @@
                                                 </div>
                                             </th>
                                             <td class="border-0 align-middle">
-                                                something from input
+                                                ${address.county}
                                             </td>
                                         </tr>
                                         </tbody>
@@ -151,7 +140,7 @@
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="submit" class="btn btn-success" onclick="searchPage5('/personInfoServlet')" value="Modify"/>
+                                    <input type="submit" class="btn btn-success" onclick="searchPage5('/toModifyInfoServlet')" value="Modify"/>
 
                                 </form>
                             </div>
