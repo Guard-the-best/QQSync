@@ -131,13 +131,6 @@
 </script>
 <script>
     function checkNum() {
-        var length = ${itemLength};
-        var itemCart = ${Item};
-        var number = new Array();
-        for (i = 0; i < length; i++) {
-
-            number[i] = document.getElementById(itemCart[i].productId);
-        }
         $.ajax({
             type: "post",
             url:  'servlet',
