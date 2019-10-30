@@ -2,6 +2,8 @@ package cn.edu.csu.dyp.web.servlet.userServlet;
 
 import cn.edu.csu.dyp.model.user.User;
 import cn.edu.csu.dyp.service.UserService;
+import com.captcha.botdetect.web.servlet.Captcha;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,8 @@ public class LoginServlet extends HttpServlet {
 
     // ----Need to fill the location---- //
 //    private static final String LOGIN_PAGE = "/WEB-INF/jsp/BeforeLogin/login.jsp";
+
+    private static Logger logger = Logger.getLogger(LoginServlet.class);
     private static final String LOGIN_PAGE = "/toLoginAndRegister";
     private static final String INDEX_PAGE = "/toMain";
 
@@ -23,7 +27,17 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("email");
         String password = request.getParameter("password");
 
-        User user = new UserService().login(username, password);
+        Captcha captcha = Captcha.load(request, "loginCaptcha");
+        boolean isHuman = captcha.validate(request.getParameter("captchaCode"));
+        User user = null;
+        String msg = "密码错误";
+
+        if (isHuman) {
+            user = new UserService().login(username, password);
+        }
+        else {
+            msg = "验证码错误";
+        }
 
         if (user != null) {
             HttpSession session = request.getSession();
@@ -33,7 +47,8 @@ public class LoginServlet extends HttpServlet {
         }
         else {
             // May need to leave a message in request.
-            System.out.println("wrongPassword");
+            logger.info(msg);
+            request.setAttribute("msg", msg);
             request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
         }
 

@@ -72,7 +72,14 @@
         top:10px;
         transition:all .4s ease;
         color:#bbb;}
+    div.form-item p.formLabel2 {
+        position: absolute;
+        left:26px;
+        top:80px;
+        transition:all .4s ease;
+        color:#bbb;}
     .formTop{top:-22px !important; left:26px; background-color: #fff; padding:0 5px; font-size: 14px; color:#58bff6 !important;}
+    .formTop2{top: 42px !important; left:26px; background-color: #fff; padding:0 5px; font-size: 14px; color:#58bff6 !important;}
     .formStatus{color:#8a8a8a !important;}
     input[type="submit"].login{
         float:right;
