@@ -150,13 +150,25 @@
                                         <input id="Country" name="Country" type="text" style="width:50%;">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th scope="row" class="border-0">
+                                        <div class="p-2">
+                                            <div class="ml-3 d-inline-block align-middle">
+                                                <h4 class="mb-0"><b>Country:</b></h4>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle">
+                                        <input id="passWord2" name="passWord2" type="text" style="width:50%;">
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success btn-sm" onclick="submitAndSearch()" value="Save"/>
+                            <input type="submit" class="btn btn-success btn-sm" onclick="postPersonData()" value="Save"/>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -181,12 +193,9 @@
             data: $('#personInfo').serialize(),
             success: function (data) {
                 console.log(data);
+                $("#changePart").html(data);
             }
         })
     }
 
-    function submitAndSearch(){
-        postPersonData();
-        searchPage('confirmServlet');
-    }
 </script>
