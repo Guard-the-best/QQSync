@@ -31,7 +31,7 @@ public class ToOrderPageServlet extends HttpServlet {
 
         System.out.println(orderLength);
 
-//        request.setAttribute("order", orderList);
+        request.setAttribute("orderList", orderList);
         request.setAttribute("orderLength", orderLength);
 
         request.getRequestDispatcher(ORDER_PAGE).forward(request, response);

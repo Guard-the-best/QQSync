@@ -32,7 +32,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="">
+                                <c:forEach items="${orderList}" var="orderLine">
+                                    <tr>
+                                        <th scope="row" class="border-0">
+                                            <div class="p-2">
+                                                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                <div class="ml-3 d-inline-block align-middle">
+                                                    <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">${orderLine.orderId}</a></h5><span class="text-muted font-weight-normal font-italic d-block"></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td class="border-0 align-middle"><strong></strong></td>
+                                        <td class="border-0 align-middle"><strong>
+                                            ${orderLine.orderDate}
+                                        </strong></td>
+                                        <td class="border-0 align-middle"><strong>
+
+                                        </strong></td>
+                                        <td class="border-0 align-middle"><strong>
+                                                ${orderLine.shipAddress}
+                                        </strong></td>
+
+                                    </tr>
+                                </c:forEach>
+
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
@@ -48,7 +71,7 @@
                                     </strong></td>
 
                                 </tr>
-                                </c:forEach>
+
                                 </tbody>
                             </table>
                         </form>

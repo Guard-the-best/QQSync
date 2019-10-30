@@ -11,52 +11,52 @@
                     <div class="table-responsive">
                         <form id="personInfo" action="javascript:void(0)" method="post">
                             <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col" class="border-0 bg-light" colspan="2">
-                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Profile Information</div>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Language Preference:</h5>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <label>
-                                            <select>
-                                                <option value="volvo">English</option>
-                                                <option value="saab">Chinese</option>
-                                                <option value="opel">Japanese</option>
-                                            </select>
-                                        </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div class="p-2">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">Favourite Category:</h5>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle">
-                                        <label>
-                                            <select>
-                                                <option value="fish">Fish</option>
-                                                <option value="dog">Dog</option>
-                                                <option value="cat">Cat</option>
-                                                <option value="parrot">parrot</option>
-                                            </select>
-                                        </label>
-                                    </td>
-                                </tr>
-                                </tbody>
+<%--                                <thead>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="col" class="border-0 bg-light" colspan="2">--%>
+<%--                                        <div class="p-2 px-3 text-uppercase" style="background-color: #a6a5c4">Profile Information</div>--%>
+<%--                                    </th>--%>
+<%--                                </tr>--%>
+<%--                                </thead>--%>
+<%--                                <tbody>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row" class="border-0">--%>
+<%--                                        <div class="p-2">--%>
+<%--                                            <div class="ml-3 d-inline-block align-middle">--%>
+<%--                                                <h5 class="mb-0">Language Preference:</h5>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </th>--%>
+<%--                                    <td class="border-0 align-middle">--%>
+<%--                                        <label>--%>
+<%--                                            <select>--%>
+<%--                                                <option value="volvo">English</option>--%>
+<%--                                                <option value="saab">Chinese</option>--%>
+<%--                                                <option value="opel">Japanese</option>--%>
+<%--                                            </select>--%>
+<%--                                        </label>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row" class="border-0">--%>
+<%--                                        <div class="p-2">--%>
+<%--                                            <div class="ml-3 d-inline-block align-middle">--%>
+<%--                                                <h5 class="mb-0">Favourite Category:</h5>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </th>--%>
+<%--                                    <td class="border-0 align-middle">--%>
+<%--                                        <label>--%>
+<%--                                            <select>--%>
+<%--                                                <option value="fish">Fish</option>--%>
+<%--                                                <option value="dog">Dog</option>--%>
+<%--                                                <option value="cat">Cat</option>--%>
+<%--                                                <option value="parrot">parrot</option>--%>
+<%--                                            </select>--%>
+<%--                                        </label>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                </tbody>--%>
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light" colspan="2">
