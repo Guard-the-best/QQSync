@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
@@ -171,7 +172,7 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="submit" class="btn btn-success btn-sm" onclick="searchPage6('productInfoServlet')" value="Modify"/>
+                            <input type="submit" class="btn btn-success btn-sm" onclick="searchPage6('/toProductInfo')" value="Modify"/>
 
                         </form>
                     </div>

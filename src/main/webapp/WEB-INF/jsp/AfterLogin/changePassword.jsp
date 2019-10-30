@@ -10,9 +10,9 @@
             <div class="col-md-4">
                 <form id="changepasswordfrom" action="javascript:void(0)">
                     <h3>修改密码</h3>
-<%--                    <c:if test="${error!=null}">--%>
-                        <div class="alert alert-danger" role="alert">???</div>
-<%--                    </c:if>--%>
+                    <c:if test="${error!=null}">
+                        <div class="alert alert-danger" role="alert">密码错误</div>
+                    </c:if>
                     <div class="form-group">
                         <label>原密码</label>
                         <input id="origin" name="origin" type="password" type="text" class="form-control"
