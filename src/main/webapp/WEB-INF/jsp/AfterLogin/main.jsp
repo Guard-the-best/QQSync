@@ -178,6 +178,7 @@
 
 <!-- Bootstrap core JavaScript -->
 <script src="../../../static/jquery/jquery.min.js"></script>
+<script src="../../../static/jquery/jquery-ui.min.js"></script>
 <script src="../../../static/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Plugin JavaScript -->
@@ -195,15 +196,15 @@
         if(info!=null) {
             $.ajax({
                 type: "post",
-                url: "/search?key=" + info,
+                url: "/search?info=" + info,
                 data: {},
                 success: function (Data) {
                 }
             })
         }
-        <c:forEach items="Item" var="searchItem">
-        document.getElementById("suspensionPicCss").innerHTML=${searchItem.Item.id};
-        </c:forEach>
+<%--        <c:forEach items="Item" var="searchItem">--%>
+<%--        document.getElementById("suspensionPicCss").innerHTML=${searchItem.Item.id};--%>
+<%--        </c:forEach>--%>
     }
 
     function searchPage(url) {
@@ -232,5 +233,22 @@
         })
     }
 </script>
-
+<script>
+    $( function() {
+        var availableTags = [
+            "Dog",
+            "Cokey",
+            "Parrot",
+            "Persian",
+            "Cat",
+            "Fish",
+            "carp",
+            "Hedgehog",
+            "Scheme"
+        ];
+        $( "#searchInfo" ).autocomplete({//调用补全功能
+            source: availableTags
+        });
+    } );
+</script>
 </html>

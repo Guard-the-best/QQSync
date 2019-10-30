@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <table class="table table-hover">
     <thead>
     <tr>
@@ -13,7 +12,7 @@
     </thead>
     <tbody>
     <c:forEach items="${itemList}" var="itemResult">
-    <tr>
+    <tr class="card0">
         <th scope="row"><br />1</th>
         <td><br />${itemResult.itemId}</td>
         <td><br />${itemResult.productId}</td>
@@ -25,6 +24,7 @@
             <button onclick="checkAnimal2(${itemResult.itemId})" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Cart</button>
         </td>
     </tr>
+
     </c:forEach>
     </tbody>
 </table>
@@ -71,3 +71,22 @@
         })
     }
 </script>
+<script>
+    $(".card0").hover(function(){
+        $(".card0").addClass('hover-show-bg');
+        $(".card2").show();
+    },function(){
+        $(".card2").removeClass('hover-show-bg');
+        $(".card2").hide();
+    });
+</script>
+<c:forEach items="${itemList}" var="itemResult">
+<div style="position: fixed;z-index: 99;top:150px;left:90px;width: 300px;" class="card2" >
+    <img class="card2-img-top" src="../../../static/img/carousel3.jpg" alt="Card image" style="width:100%">
+    <div class="card2-body">
+        <h4 style="color: #ddbb99;" class="card2-title">${itemResult.productId}</h4>
+        <p style="color: #ddbb99;" class="card2-text">${itemResult.itemId}</p>
+        <a href="#" class="btn btn-primary">$ ${itemResult.listPrice}</a>
+    </div>
+</div>
+</c:forEach>
