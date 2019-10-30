@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
     <div class="pb-5">
         <div class="container">
@@ -40,7 +41,7 @@
                                     <td class="align-middle" ><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input onblur="checkNum()" id="${itemCart.item.itemId}" name="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
+                                            <input id="1" onblur="checkNum()" id="${itemCart.item.itemId}" name="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
                                             &nbsp&nbsp&nbsp&nbsp
                                             <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
@@ -131,6 +132,13 @@
 </script>
 <script>
     function checkNum() {
+        var totalPrice1=document.getElementById('totalPrice1');
+        var totalPrice2=document.getElementById('totalPrice2');
+        var num = document.getElementById('1').value;
+        var m = num*20;
+            totalPrice1.innerText='$'+m;
+            totalPrice2.innerText='$'+m;
+
         $.ajax({
             type: "post",
             url:  'servlet',

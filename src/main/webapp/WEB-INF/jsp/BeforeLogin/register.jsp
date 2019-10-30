@@ -66,11 +66,11 @@
             data: {},
             success: function (data) {
                 var msg =document.getElementById('isExistInfo');
-                if(data=='Exist'){
+                if(data=='Not Exist'){
                     msg.classList.add('okmsg');
                     msg.innerText='Valid UserName';
                 }
-                else if(data=='Not Exist'){
+                else if(data=='Exist'){
                     msg.classList.add('errormsg');
                     msg.innerText='Invalid UserName';
                 }
