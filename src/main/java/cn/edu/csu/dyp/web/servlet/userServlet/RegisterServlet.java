@@ -16,12 +16,11 @@ import java.io.PrintWriter;
 @WebServlet(name = "RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("registerID");
+        String password = request.getParameter("registerPassword");
         String phoneNumber = request.getParameter("phoneNumber");
-        String nickname = request.getParameter("nickname");
 
-        RegisterStat registerStat = new UserService().register(new User(null, username, password, phoneNumber, nickname));
+        RegisterStat registerStat = new UserService().register(new User(username, username, password, phoneNumber, username));
 
         request.getRequestDispatcher("/toLogin").forward(request, response);
     }

@@ -40,7 +40,7 @@
                                     <td class="align-middle" ><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input onblur="checkNum()" id="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
+                                            <input onblur="checkNum()" id="${itemCart.item.itemId}" name="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
                                             &nbsp&nbsp&nbsp&nbsp
                                             <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
@@ -107,7 +107,7 @@
     function addQuantity() {
         $.ajax({
             type: "post",
-            url: "servlet",
+            url: "/modifyQuantity",
             data: $('#addQ').serialize(),
             success: function (data) {
                 console.log(data);

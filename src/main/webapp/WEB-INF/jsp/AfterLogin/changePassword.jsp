@@ -10,9 +10,9 @@
             <div class="col-md-4">
                 <form id="changepasswordfrom" action="javascript:void(0)">
                     <h3>修改密码</h3>
-                    <c:if test="${error!=null}">
-                        <div class="alert alert-danger" role="alert">${error}</div>
-                    </c:if>
+<%--                    <c:if test="${error!=null}">--%>
+                        <div class="alert alert-danger" role="alert">???</div>
+<%--                    </c:if>--%>
                     <div class="form-group">
                         <label>原密码</label>
                         <input id="origin" name="origin" type="password" type="text" class="form-control"
@@ -28,7 +28,7 @@
                         <input id="confirm" name="confirm" type="password" type="text" class="form-control"
                                placeholder="请再次输入您的新密码"/>
                     </div>
-                    <input type="submit" class="btn btn-success" onclick="changepassword()" value="OK"/>
+                    <input type="submit" class="btn btn-success" onclick="changePassword666()" href="javascript:void(0)" value="OK"/>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <input type="reset" class="btn btn-info" value="Reset"/>
                 </form>
@@ -42,14 +42,15 @@
 </div>
 
 <script>
-    function changepassword() {
+    function changePassword666() {
         $.ajax({
             type: "post",
-            url: "/servlet",
+            url: "/changePassword",
             data: $('#changepasswordfrom').serialize(),
             success: function(data) {
                 console.log(data);
-                alert("修改密码成功！");
+                    alert("修改密码成功！");
+
             }
         })
     }

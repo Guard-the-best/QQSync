@@ -74,7 +74,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Name" name="Name" id type="text" style="width:50%;">
+                                        <input id="Name" name="Name" id type="text" style="width:50%;" value="${address.name}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,7 +86,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="NickName" name="NickName" type="text" style="width:50%;">
+                                        <input id="NickName" name="NickName" type="text" style="width:50%;" value="${user.nickname}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +98,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Address" name="Address" type="text" style="width:50%;">
+                                        <input id="Address" name="Address" type="text" style="width:50%;" value="${address.detailedAddress}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,7 +110,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="PhoneNumber" name="PhoneNumber" type="text" style="width:50%;">
+                                        <input id="PhoneNumber" name="PhoneNumber" type="text" style="width:50%;" value="${user.phoneNumber}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,7 +122,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="City" name="City" type="text" style="width:50%;">
+                                        <input id="City" name="City" type="text" style="width:50%;" value="${address.city}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +134,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="State" name="State" type="text" style="width:50%;">
+                                        <input id="State" name="State" type="text" style="width:50%;" value="${address.province}">
                                     </td>
                                 </tr>
 
@@ -147,14 +147,14 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Country" name="Country" type="text" style="width:50%;">
+                                        <input id="Country" name="Country" type="text" style="width:50%;" ${address.county}>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h4 class="mb-0"><b>Country:</b></h4>
+                                                <h4 class="mb-0"><b>Password</b></h4>
                                             </div>
                                         </div>
                                     </th>
@@ -189,7 +189,7 @@
     function postPersonData() {
         $.ajax({
             type: "post",
-            url: "servlet",
+            url: "/modifyInfo",
             data: $('#personInfo').serialize(),
             success: function (data) {
                 console.log(data);

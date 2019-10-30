@@ -34,7 +34,7 @@
             </div>
             <br />
             <div class="form-item">
-                <p class="pull-left"><a onclick="getPage2(url)" href="javascript:void(0)"><small>Register</small></a></p>
+                <p class="pull-left"><a onclick="getPage2('/toRegister')" href="javascript:void(0)"><small>Register</small></a></p>
                 <input type="submit" class="login pull-right" value="Log In">
                 <div class="clear-fix"></div>
             </div>
