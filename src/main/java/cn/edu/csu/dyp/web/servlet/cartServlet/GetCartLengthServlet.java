@@ -21,10 +21,10 @@ public class GetCartLengthServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         CartService cartService = new CartService();
 
-        List<LineItem> list = cartService.getCart(user.getUserId());
+        int length = cartService.getNumber(user.getUserId());
 
         PrintWriter out = response.getWriter();
-        out.print(list.size());
+        out.print(length);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
