@@ -160,7 +160,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="passWord2" name="passWord2" type="text" style="width:50%;">
+                                        <input type="password" id="passWord2" name="passWord2" type="text" style="width:50%;">
                                     </td>
                                 </tr>
                                 </tbody>

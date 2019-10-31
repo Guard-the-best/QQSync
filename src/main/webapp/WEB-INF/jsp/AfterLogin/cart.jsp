@@ -31,7 +31,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="p-2">
-                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                            <img src="../../../static/img/carousel3.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
                                                 <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.item.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
                                             </div>
