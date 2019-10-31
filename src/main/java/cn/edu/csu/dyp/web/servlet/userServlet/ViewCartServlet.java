@@ -38,6 +38,7 @@ public class ViewCartServlet extends HttpServlet {
             shownCart.add(new Cart(lineItem.getItem().getItemId(),product.getProductName(),category.getCategoryName(),lineItem.getItem().getListPrice(),lineItem.getQuantity()));
         }
         request.setAttribute("lineItems", shownCart);
+        request.setAttribute("cartLength", shownCart.size());
 
         request.getRequestDispatcher(CART_PAGE).forward(request, response);
     }
