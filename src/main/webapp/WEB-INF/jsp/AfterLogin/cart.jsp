@@ -33,15 +33,15 @@
                                         <div class="p-2">
                                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.item.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">${itemCart.productName}</a></h5><span class="text-muted font-weight-normal font-italic">${itemCart.categoryName}</span>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="align-middle"><strong><c:out value="${itemCart.item.listPrice}"/></strong></td>
+                                    <td class="align-middle"><strong><c:out value="${itemCart.price}"/></strong></td>
                                     <td class="align-middle" ><strong>
                                         <br />
                                         <div class="input-group mb-3">
-                                            <input id="1" onblur="checkNum()" id="${itemCart.item.itemId}" name="${itemCart.item.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
+                                            <input id="1" onblur="checkNum()" id="${itemCart.itemId}" name="${itemCart.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
                                             &nbsp&nbsp&nbsp&nbsp
                                             <button onclick="addQuantity()">
                                                 <i class="fas fa-plus"></i>
