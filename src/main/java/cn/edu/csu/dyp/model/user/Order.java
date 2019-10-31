@@ -1,5 +1,6 @@
 package cn.edu.csu.dyp.model.user;
 
+import cn.edu.csu.dyp.model.order.OrderToOutside;
 import cn.edu.csu.dyp.service.util.OrderStat;
 
 import java.util.Date;

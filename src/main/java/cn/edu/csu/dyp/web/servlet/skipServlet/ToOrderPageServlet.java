@@ -1,7 +1,11 @@
 package cn.edu.csu.dyp.web.servlet.skipServlet;
 
+import cn.edu.csu.dyp.model.goods.Product;
+import cn.edu.csu.dyp.model.order.OrderToOutside;
+import cn.edu.csu.dyp.model.user.LineItem;
 import cn.edu.csu.dyp.model.user.Order;
 import cn.edu.csu.dyp.model.user.User;
+import cn.edu.csu.dyp.service.GoodsService;
 import cn.edu.csu.dyp.service.OrderService;
 
 import javax.servlet.ServletException;
@@ -11,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ToCheckOrderServlet")
@@ -25,13 +31,21 @@ public class ToOrderPageServlet extends HttpServlet {
         List<Order> orderList = orderService.getOrderByUser(user.getUserId());
         int orderLength = 0;
 
+        List<OrderToOutside> orderListOutside=new ArrayList<>();
         if (orderList != null) {
             orderLength = orderList.size();
+
+            for(Order order:orderList) {
+                for(LineItem lineItem:order.getLineItemList()) {
+                    Product product = new GoodsService().getProductById(lineItem.getItem().getProductId());
+                    orderListOutside.add(new OrderToOutside(order.getOrderId(),product.getProductName(),lineItem.getQuantity(),order.getOrderDate(),lineItem.getItem().getListPrice().multiply(new BigDecimal(lineItem.getQuantity())),order.getShipAddress()));
+                }
+            }
         }
 
         System.out.println(orderLength);
 
-        request.setAttribute("orderList", orderList);
+        request.setAttribute("orderList", orderListOutside);
         request.setAttribute("orderLength", orderLength);
 
         request.getRequestDispatcher(ORDER_PAGE).forward(request, response);
