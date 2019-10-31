@@ -233,6 +233,15 @@
         <servlet-name>userNameCheckerServlet</servlet-name>
         <url-pattern>/isUsernameExist</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>removeFromCartServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.cartServlet.RemoveFormCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>removeFromCartServlet</servlet-name>
+        <url-pattern>/removeFromCart</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

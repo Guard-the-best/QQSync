@@ -81,7 +81,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Name2" name="Name2" type="text" style="width:50%;">
+                                        <input id="Name2" name="Name2" type="text" style="width:50%;" value="${address.name}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -94,7 +94,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Address2" name="Address2" type="text" style="width:50%;">
+                                        <input id="Address2" name="Address2" type="text" style="width:50%;" value="${address.detailedAddress}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -107,7 +107,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="PhoneNumber2" name="PhoneNumber2" type="text" style="width:50%;">
+                                        <input id="PhoneNumber2" name="PhoneNumber2" type="text" style="width:50%;" value="${address.phoneNumber}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -120,7 +120,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="City2" name="City2" type="text" style="width:50%;">
+                                        <input id="City2" name="City2" type="text" style="width:50%;" value="${address.city}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -133,7 +133,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="State2" name="State2" type="text" style="width:50%;">
+                                        <input id="State2" name="State2" type="text" style="width:50%;" value="${address.province}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>
@@ -146,7 +146,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <input id="Country2" name="Country2" type="text" style="width:50%;">
+                                        <input id="Country2" name="Country2" type="text" style="width:50%;" value="${address.county}">
                                         <%--                                        用个常见的算法Ajax实时判断它是否合法-吴止境--%>
                                     </td>
                                 </tr>

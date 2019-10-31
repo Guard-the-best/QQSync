@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            System.out.println(user.getUsername());
+            logger.info(user.getUserId() + "登录了");
             response.sendRedirect(INDEX_PAGE);
         }
         else {

@@ -53,7 +53,7 @@ public class ModifyInfoServlet extends HttpServlet {
             address = userService.getAddress(userId);
             request.setAttribute("address", address);
             request.setAttribute("msg", "Nothing Changed");
-            request.getRequestDispatcher(MODIFY_INFO_PAGE).forward(request, response);
+            request.getRequestDispatcher(CONFIRM_INFO_PAGE).forward(request, response);
         }
         else {
             address = userService.getAddress(userId);

@@ -20,7 +20,7 @@ public class RemoveFormCartServlet extends HttpServlet {
         CartService cartService = new CartService();
         cartService.removeItem(user.getUserId(), itemId);
 
-        request.getRequestDispatcher("/toCart");
+        request.getRequestDispatcher("/toCart").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
