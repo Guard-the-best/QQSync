@@ -31,7 +31,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" onclick="searchPage('/meeting/tochartsthree')" href="javascript:void(0)">首页</a>
+        <a class="navbar-brand js-scroll-trigger" onclick="searchPage('/toCarousel')" href="javascript:void(0)">首页</a>
         <button class="navbar-toggler navbar-toggler-right"
                 type="button" data-toggle="collapse"
                 data-target="#navbarResponsive"
@@ -87,7 +87,7 @@
     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="直接跳转到welcome">退出登录</a>
+                    <a class="nav-link js-scroll-trigger"  href="/logout">退出登录</a>
 <%--                    退出登录直接跳转到欢迎界面--%>
                 </li>
             </ul>
