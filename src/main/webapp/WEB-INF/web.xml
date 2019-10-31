@@ -246,4 +246,8 @@
     <welcome-file-list>
         <welcome-file>main</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/static/error/404.html</location>
+    </error-page>
 </web-app>
