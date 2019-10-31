@@ -16,7 +16,7 @@ public class RemoveFormCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        String itemId = request.getParameter("itemId");
+        String itemId = request.getParameter("delId");
         CartService cartService = new CartService();
         cartService.removeItem(user.getUserId(), itemId);
 
