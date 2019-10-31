@@ -141,13 +141,13 @@
 
         $.ajax({
             type: "post",
-            url:  'servlet',
+            url:  '/modifyQuantity',
             data: $('#addQ').serialize(),
             success: function (data) {
-                var totalPrice1 =document.getElementById('totalPrice1');
-                totalPrice1.innerText=data;
-                var totalPrice2 =document.getElementById('totalPrice2');
-                totalPrice2.innerText=data;
+                // var totalPrice1 =document.getElementById('totalPrice1');
+                // totalPrice1.innerText=data;
+                // var totalPrice2 =document.getElementById('totalPrice2');
+                // totalPrice2.innerText=data;
             }
         })
     }
