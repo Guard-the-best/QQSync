@@ -49,7 +49,7 @@
 
                                         </div>
                                     </strong></td>
-                                    <td class="align-middle"><a href="#" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a>
+                                    <td class="align-middle"><a onclick="del(${itemCart.itemId})" href="javascript:void(0)" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                </c:forEach>
@@ -127,8 +127,17 @@
     }
 
 
-
-
+</script>
+<script>
+    function del(delId) {
+        $.ajax({
+            type: "post",
+            url: "/removeFromCart?delId=" + delId,
+            data: {},
+            success: function (data) {
+            }
+        })
+    }
 </script>
 <script>
     function checkNum() {
