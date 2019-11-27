@@ -14,9 +14,14 @@
     <tbody>
     <c:forEach items="${itemList}" var="itemResult">
     <tr class="card0">
-        <th scope="row"><br />1</th>
-        <td><br />${itemResult.itemId}</td>
+        <th scope="row"><br />${itemResult.itemId}</th>
         <td><br />${itemResult.productId}</td>
+        <td><br />
+            <c:forEach items="${itemResult.attributes}" var="attribute" varStatus="status">
+                <c:if test="${attribute != null && status.index != 0}">,</c:if>
+                ${attribute}
+            </c:forEach>
+        </td>
         <td><br />$ ${itemResult.listPrice}</td>
         <td>
             <button type="button" class="btn btn-info btn-sm" onclick="searchPage2(${itemResult.itemId})" href="javascript:void(0)">Buy</button>
@@ -82,12 +87,12 @@
     });
 </script>
 <c:forEach items="${itemList}" var="itemResult">
-<div style="position: fixed;z-index: 99;top:150px;left:90px;width: 300px;" class="card2" >
-    <img class="card2-img-top" src="../../../static/img/carousel3.jpg" alt="Card image" style="width:100%">
-    <div class="card2-body">
-        <h4 style="color: #ddbb99;" class="card2-title">${itemResult.productId}</h4>
-        <p style="color: #ddbb99;" class="card2-text">${itemResult.itemId}</p>
-        <a href="#" class="btn btn-primary">$ ${itemResult.listPrice}</a>
+    <div style="position: fixed;z-index: 99;top:150px;left:90px;width: 300px;" class="card2" >
+        <img class="card2-img-top" src="../../../static/img/carousel3.jpg" alt="Card image" style="width:100%">
+        <div class="card2-body">
+            <h4 style="color: #ddbb99;" class="card2-title">${itemResult.productId}</h4>
+            <p style="color: #ddbb99;" class="card2-text">${itemResult.itemId}</p>
+            <a href="#" class="btn btn-primary">$ ${itemResult.listPrice}</a>
+        </div>
     </div>
-</div>
 </c:forEach>
