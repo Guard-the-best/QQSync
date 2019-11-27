@@ -135,6 +135,7 @@
             url: "/removeFromCart?delId=" + delId,
             data: {},
             success: function (data) {
+                $("#changePart").html(data);
             }
         })
     }

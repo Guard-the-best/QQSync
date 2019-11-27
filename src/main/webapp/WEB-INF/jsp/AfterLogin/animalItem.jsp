@@ -13,7 +13,7 @@
     </thead>
     <tbody>
     <c:forEach items="${itemList}" var="itemResult">
-    <tr class="card0">
+    <tr class="card0" id="${itemResult.itemId}">
         <th scope="row"><br />${itemResult.itemId}</th>
         <td><br />${itemResult.productId}</td>
         <td><br />
@@ -78,16 +78,31 @@
     }
 </script>
 <script>
-    $(".card0").hover(function(){
-        $(".card0").addClass('hover-show-bg');
-        $(".card2").show();
-    },function(){
-        $(".card2").removeClass('hover-show-bg');
-        $(".card2").hide();
-    });
+    var d = document.getElementsByClassName('card0');
+    for(var i=0;i<d.length;i++){
+        d[i].onmouseover = function () {
+            var id0 = this.id +100;
+            var ele = document.getElementById(id0);
+            ele.style.visibility="visible";
+        }
+        d[i].onmouseout = function() {
+            var id0 = this.id +100;
+            var ele = document.getElementById(id0);
+            ele.style.visibility="hidden";
+        }
+    }
+
+    // $(".card0").hover(function() {
+    //
+    //     $(".card0").addClass('hover-show-bg');
+    //     $(".card2").show();
+    // },function(){
+    //     $(".card2").removeClass('hover-show-bg');
+    //     $(".card2").hide();
+    // });
 </script>
 <c:forEach items="${itemList}" var="itemResult">
-    <div style="position: fixed;z-index: 99;top:150px;left:90px;width: 300px;" class="card2" >
+    <div style="position: fixed;z-index: 99;top:150px;left:90px;width: 300px;visibility: hidden;" class="card2" id="${itemResult.itemId}100">
         <img class="card2-img-top" src="../../../static/img/carousel3.jpg" alt="Card image" style="width:100%">
         <div class="card2-body">
             <h4 style="color: #ddbb99;" class="card2-title">${itemResult.productId}</h4>
