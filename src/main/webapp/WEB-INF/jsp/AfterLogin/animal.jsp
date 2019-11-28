@@ -15,14 +15,6 @@
         <td>${productCategory.productName}</td>
     </tr>
 </c:forEach>
-    <tr>
-        <th scope="row"><a href="#">ES-2</a></th></th>
-        <td>Jacob</td>
-    </tr>
-    <tr>
-        <th scope="row"><a href="#">ES-3<br /></a></th></th>
-        <td>Larry the Bird<br /></td>
-    </tr>
     </tbody>
 </table>
 <script>

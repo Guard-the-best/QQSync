@@ -251,6 +251,15 @@
         <servlet-name>getCartLengthServlet</servlet-name>
         <url-pattern>/getCartLength</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>dynamicSearchByKeyServlet</servlet-name>
+        <servlet-class>cn.edu.csu.dyp.web.servlet.goodsServlet.DynamicSearchByKeyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dynamicSearchByKeyServlet</servlet-name>
+        <url-pattern>/dynamicSearch</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>main</welcome-file>

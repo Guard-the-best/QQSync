@@ -21,10 +21,25 @@ public class DynamicSearchByKeyServlet extends HttpServlet {
 
         List<Product> products = goodsService.searchProductByKey(key);
 
-        PrintWriter out = response.getWriter();
-        if (products.size() > 0) {
-        out.print(products.get(0).getProductName());
+        String result = "[ ";
+//        String result = "";
+
+        int maxIndex = products.size() - 1;
+        int ic = 0;
+
+        for (Product product:products) {
+            result += "\"" + product.getProductName() + "\"";
+//            result += product.getProductName();
+            if (ic == maxIndex) {
+                break;
+            }
+            result += ",";
+            ic++;
         }
+        result += " ]";
+
+        PrintWriter out = response.getWriter();
+        out.print(result);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

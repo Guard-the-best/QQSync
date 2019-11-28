@@ -260,6 +260,25 @@
             "Hedgehog",
             "Scheme"
         ];
+
+        $("#searchInfo").bind("input propertychange", function () {
+            var key = document.getElementById('searchInfo').value;
+            $.ajax({
+                type: "post",
+                url: "/dynamicSearch?key=" + key,
+                data: {},
+                success: function (data) {
+                    console.log('changed');
+                    // availableTags = data.split(",");
+                    availableTags = JSON.parse(data);
+                    console.log(availableTags);
+                    $( "#searchInfo" ).autocomplete({//调用补全功能
+                        source: availableTags
+                    });
+                }
+            })
+        })
+
         $( "#searchInfo" ).autocomplete({//调用补全功能
             source: availableTags
         });
