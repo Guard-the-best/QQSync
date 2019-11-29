@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sound.sampled.Line;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +33,17 @@ public class ViewCartServlet extends HttpServlet {
         CartService cartService = new CartService();
         List<LineItem> cart = cartService.getCart(user.getUserId());
         List<Cart> shownCart = new ArrayList<>();
+
+        BigDecimal price = new BigDecimal(0);
         for(LineItem lineItem:cart) {
             Product product = new GoodsService().getProductById(lineItem.getItem().getProductId());
             Category category = new GoodsService().getCategoryById(product.getCategoryId());
             shownCart.add(new Cart(lineItem.getItem().getItemId(),product.getProductName(),category.getCategoryName(),lineItem.getItem().getListPrice(),lineItem.getQuantity()));
+            price = price.add(lineItem.getItem().getListPrice().multiply(new BigDecimal(lineItem.getQuantity())));
         }
         request.setAttribute("lineItems", shownCart);
         request.setAttribute("cartLength", shownCart.size());
+        request.setAttribute("totalPrice", price);
 
         request.getRequestDispatcher(CART_PAGE).forward(request, response);
     }

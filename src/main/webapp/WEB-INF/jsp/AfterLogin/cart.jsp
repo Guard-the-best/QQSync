@@ -142,22 +142,25 @@
 </script>
 <script>
     function checkNum() {
-        var totalPrice1=document.getElementById('totalPrice1');
-        var totalPrice2=document.getElementById('totalPrice2');
-        var num = document.getElementById('1').value;
-        var m = num*20;
-            totalPrice1.innerText='$'+m;
-            totalPrice2.innerText='$'+m;
-
+        // var totalPrice1=document.getElementById('totalPrice1');
+        // var totalPrice2=document.getElementById('totalPrice2');
+        // var num = document.getElementById('1').value;
+        // var m = num*20;
+        //     totalPrice1.innerText='$'+m;
+        //     totalPrice2.innerText='$'+m;
         $.ajax({
             type: "post",
             url:  '/modifyQuantity',
             data: $('#addQ').serialize(),
             success: function (data) {
-                // var totalPrice1 =document.getElementById('totalPrice1');
+                var totalPrice1 = document.getElementById('totalPrice1');
                 // totalPrice1.innerText=data;
-                // var totalPrice2 =document.getElementById('totalPrice2');
+                var totalPrice2 = document.getElementById('totalPrice2');
                 // totalPrice2.innerText=data;
+                console.log(data);
+
+                totalPrice1.innerText='$'+ data;
+                totalPrice2.innerText='$'+ data;
             }
         })
     }

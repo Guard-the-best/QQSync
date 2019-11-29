@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.List;
 
 @WebServlet(name = "ModifyQuantityServlet")
@@ -21,11 +23,16 @@ public class ModifyQuantityServlet extends HttpServlet {
         CartService cartService = new CartService();
         List<LineItem> cart = cartService.getCart(user.getUserId());
 
+        BigDecimal price = new BigDecimal(0);
         for (int i = 0; i < cart.size(); i++) {
             LineItem cartItem = cart.get(i);
             int newQuantity = Integer.parseInt(request.getParameter(cartItem.getItem().getItemId()));
             cartService.changeNumber(user.getUserId(), cartItem.getItem().getItemId(), newQuantity);
+            price = price.add(cartItem.getItem().getListPrice().multiply(new BigDecimal(newQuantity)) );
         }
+
+        PrintWriter out = response.getWriter();
+        out.print(price.toPlainString());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
