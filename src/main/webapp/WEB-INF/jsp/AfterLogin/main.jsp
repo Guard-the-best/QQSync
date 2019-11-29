@@ -249,17 +249,7 @@
 </script>
 <script>
     $( function() {
-        var availableTags = [
-            "Dog",
-            "Cokey",
-            "Parrot",
-            "Persian",
-            "Cat",
-            "Fish",
-            "carp",
-            "Hedgehog",
-            "Scheme"
-        ];
+        var availableTags;
 
         $("#searchInfo").bind("input propertychange", function () {
             var key = document.getElementById('searchInfo').value;
@@ -269,7 +259,6 @@
                 data: {},
                 success: function (data) {
                     console.log('changed');
-                    // availableTags = data.split(",");
                     availableTags = JSON.parse(data);
                     console.log(availableTags);
                     $( "#searchInfo" ).autocomplete({//调用补全功能
