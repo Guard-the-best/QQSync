@@ -83,6 +83,9 @@
         d[i].onmouseover = function () {
             var id0 = this.id +100;
             var ele = document.getElementById(id0);
+            var h = (this.id-10000)*60 +'px';
+            console.log(h);
+            ele.style.top = h;
             ele.style.visibility="visible";
         }
         d[i].onmouseout = function() {
