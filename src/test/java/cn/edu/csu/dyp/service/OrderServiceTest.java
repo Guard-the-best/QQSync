@@ -3,13 +3,9 @@ package cn.edu.csu.dyp.service;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.user.LineItem;
 import cn.edu.csu.dyp.model.user.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class OrderServiceTest {
 

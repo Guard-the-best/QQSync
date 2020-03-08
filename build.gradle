@@ -1,12 +1,24 @@
 plugins {
     id 'java'
     id 'war'
+    id 'org.gretty' version '2.2.0'
 }
 
 group 'cn.edu.csu.dyp'
 version '0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+tomcat85Version = '8.5.45'
+gretty{
+    servletContainer = 'tomcat85'
+    contextPath = '/'
+    jvmArgs = ['-Dfile.encoding=UTF-8']
+}
 
 repositories {
     maven {
@@ -20,9 +32,7 @@ repositories {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
