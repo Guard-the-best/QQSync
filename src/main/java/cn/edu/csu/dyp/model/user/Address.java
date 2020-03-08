@@ -1,7 +1,5 @@
 package cn.edu.csu.dyp.model.user;
 
-import cn.edu.csu.archieve.model.location.DetailLocation;
-
 public class Address {
     private String name;
     private String phoneNumber;
