@@ -9,3 +9,4 @@
 ## 其他
 + idea中文乱码 : <https://www.kissman.cn/articles/2019/08/15/1565873654250.html>
 + gradle构建参考资料 : <https://guides.gradle.org/building-java-web-applications/>
++ swagger接口文档 : <http://localhost:8080/swagger-ui.html>
