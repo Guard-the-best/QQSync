@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    @GetMapping("/newCaptcha")
+    public Object newCaptcha() {
+        return null;
+    }
+
     @PostMapping("/login")
-    public String login(String username,String password,String captchaCode) {
+    public Object login(String username,String password,String captchaCode) {
         return null;
     }
 
@@ -19,7 +24,18 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(String username,String password,String userInfo){
+    public Object register(String username,String password,Object userInfo){
         return null;
     }
+
+    @PostMapping("/password/modify")
+    public Object modifyPassword(String username,String oldPassword,String newPassword){
+        return null;
+    }
+
+    @PostMapping("info/modify")
+    public Object modifyInfo(String username,String password,Object userInfo){
+        return null;
+    }
+
 }

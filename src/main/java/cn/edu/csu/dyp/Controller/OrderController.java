@@ -8,7 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order")
 public class OrderController {
     @PostMapping("/make")
-    public void makeorder(Object[] items){
+    public Object makeOrder(Object[] cartList){
+        return null;
+    }
 
+    @PostMapping("/amount")
+    public Integer amount(){
+        return 0;
+    }
+
+    @PostMapping("/get")
+    public Object get(Integer index){
+        return null;
     }
 }
