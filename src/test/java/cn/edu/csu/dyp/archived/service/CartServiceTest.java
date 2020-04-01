@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.archived.service;
 
 import cn.edu.csu.dyp.archived.model.user.LineItem;
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class CartServiceTest {
 
 //    @Test
     public void removeItem() {
-        Assert.assertTrue(new CartService().removeItem("1","10001"));
-        Assert.assertFalse(new CartService().removeItem("1","10001"));
+//        Assert.assertTrue(new CartService().removeItem("1","10001"));
+//        Assert.assertFalse(new CartService().removeItem("1","10001"));
     }
 
 //    @Test
