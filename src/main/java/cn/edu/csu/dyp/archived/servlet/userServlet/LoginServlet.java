@@ -2,7 +2,7 @@ package cn.edu.csu.dyp.archived.servlet.userServlet;
 
 import cn.edu.csu.dyp.archived.model.user.User;
 import cn.edu.csu.dyp.archived.service.UserService;
-import com.captcha.botdetect.web.servlet.Captcha;
+//import com.captcha.botdetect.web.servlet.Captcha;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -27,17 +27,17 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("email");
         String password = request.getParameter("password");
 
-        Captcha captcha = Captcha.load(request, "loginCaptcha");
-        boolean isHuman = captcha.validate(request.getParameter("captchaCode"));
+//        Captcha captcha = Captcha.load(request, "loginCaptcha");
+//        boolean isHuman = captcha.validate(request.getParameter("captchaCode"));
         User user = null;
         String msg = "密码错误";
 
-        if (isHuman) {
-            user = new UserService().login(username, password);
-        }
-        else {
-            msg = "验证码错误";
-        }
+//        if (isHuman) {
+//            user = new UserService().login(username, password);
+//        }
+//        else {
+//            msg = "验证码错误";
+//        }
 
         if (user != null) {
             HttpSession session = request.getSession();
