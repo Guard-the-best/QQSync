@@ -4,7 +4,7 @@
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.UserMapper">
     <select id="login" parameterType="User" resultType="User">
-        select * from `userinfo` where username=#{username} and password=#{password}
+        select * from userinfo where username=#{username} and password=#{password}
     </select>
 
     <select id="getUser" parameterType="String" resultType="User">
@@ -14,4 +14,18 @@
     <select id="getAddress" parameterType="String" resultType="Address">
         select * from addressInfo where userId=#{userId}
     </select>
+    
+    <select id="isUserExist" parameterType="String" resultType="Boolean">
+        select exists (select 1 from userInfo where username=#{username})
+--         感谢来自StackOverflow的指导，SQL语句中的 select 1 form 里的 1 是因为事实上这个地方只需要检验存在性，不需要任何属性。或许可以提升性能？
+    </select>
+    
+    <update id="modifyInfo" parameterType="User">
+        update userInfo
+        <set>
+            <if test="phoneNumber!=null">phoneNumber=#{phoneNumber},</if>
+            <if test="nickname!=null">nickname=#{nickname}</if>
+        </set>
+        where userId=#{userId}
+    </update>
 </mapper>

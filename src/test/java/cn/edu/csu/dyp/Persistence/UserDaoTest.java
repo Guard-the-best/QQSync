@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @MapperScan("cn.edu.csu.dyp.Persistence")
 public class UserDaoTest {
+
     @Autowired
     private UserMapper userMapper;
 
@@ -26,5 +27,23 @@ public class UserDaoTest {
     void getUserTest() {
         User user = userMapper.getUser("1");
         System.out.println(user.getNickname());
+    }
+
+    @Test
+    void isUserExistTest() {
+        System.out.println(userMapper.isUserExist("admin"));
+        System.out.println(userMapper.isUserExist("dyp"));
+    }
+
+    @Test
+    void ModifyInfoTest() {
+        User user = new User();
+        user.setPhoneNumber("10086");
+        user.setNickname("dyp");
+//        user.setPhoneNumber("10010");
+//        user.setNickname("bigQieZi");
+        user.setUserId("1");
+        userMapper.modifyInfo(user);
+        System.out.println(userMapper.getUser("1").getPhoneNumber());
     }
 }
