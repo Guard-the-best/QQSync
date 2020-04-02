@@ -36,7 +36,7 @@ public class UserDaoTest {
     }
 
     @Test
-    void ModifyInfoTest() {
+    void modifyInfoTest() {
         User user = new User();
         user.setPhoneNumber("10086");
         user.setNickname("dyp");
@@ -45,5 +45,22 @@ public class UserDaoTest {
         user.setUserId("1");
         userMapper.modifyInfo(user);
         System.out.println(userMapper.getUser("1").getPhoneNumber());
+    }
+
+    @Test
+    void modifyPasswordTest() {
+        User user = new User();
+        user.setUserId("1");
+        user.setPassword("123456");
+        userMapper.modifyPassword(user);
+    }
+
+    @Test
+    void newUserTest() {
+        User user = new User();
+        user.setUsername("123");
+        user.setPassword("123");
+        user.setNickname("wamess");
+        userMapper.register(user);
     }
 }

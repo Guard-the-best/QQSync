@@ -11,4 +11,7 @@ public interface UserMapper {
     Address getAddress(String userId);
     Boolean isUserExist (String username);
     void modifyInfo(User user);
+    void modifyPassword(User user);
+    void register(User user);
+
 }

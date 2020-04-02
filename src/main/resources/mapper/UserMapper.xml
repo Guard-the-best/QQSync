@@ -28,4 +28,25 @@
         </set>
         where userId=#{userId}
     </update>
+
+    <update id="modifyPassword" parameterType="User">
+        update userInfo set password=#{password} where userId=#{userId}
+    </update>
+
+    <insert id="register">
+<!--        insert into userInfo (username, passowrd, nickname-->
+<!--        <if test="phoneNumber!=null">-->
+<!--            ,phonenumber-->
+<!--        </if>-->
+<!--        ) values (#{username}, #{password}, #{nickname}-->
+<!--        <if test="phoneNumber!=null">-->
+<!--            ,#{phoneNumber}-->
+<!--        </if>-->
+<!--        )-->
+    insert into userInfo (username, password, nickname, phoneNumber)
+    values (#{username}, #{password}, #{nickname}, #{phoneNumber})
+--     事实证明这里并不需要动态SQL
+    </insert>
+
+
 </mapper>
