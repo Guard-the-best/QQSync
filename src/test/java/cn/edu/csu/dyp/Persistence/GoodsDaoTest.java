@@ -2,7 +2,6 @@ package cn.edu.csu.dyp.Persistence;
 
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
-import cn.edu.csu.dyp.model.user.Order;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
