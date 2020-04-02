@@ -60,7 +60,7 @@ public class UserDaoTest {
         User user = new User();
         user.setUsername("123");
         user.setPassword("123");
-        user.setNickname("wamess");
+        user.setNickname("wamess2");
         userMapper.register(user);
     }
 }

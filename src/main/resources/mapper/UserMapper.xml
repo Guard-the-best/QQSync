@@ -18,6 +18,7 @@
     <select id="isUserExist" parameterType="String" resultType="Boolean">
         select exists (select 1 from userInfo where username=#{username})
 --         感谢来自StackOverflow的指导，SQL语句中的 select 1 form 里的 1 是因为事实上这个地方只需要检验存在性，不需要任何属性。或许可以提升性能？
+--         谁知道呢
     </select>
     
     <update id="modifyInfo" parameterType="User">
