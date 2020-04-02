@@ -4,7 +4,7 @@ import cn.edu.csu.dyp.archived.dao.util.DBI;
 import cn.edu.csu.dyp.archived.model.goods.Item;
 import cn.edu.csu.dyp.archived.model.user.LineItem;
 import cn.edu.csu.dyp.archived.model.user.Order;
-import cn.edu.csu.dyp.archived.service.util.OrderStat;
+import cn.edu.csu.dyp.Service.util.OrderStat;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

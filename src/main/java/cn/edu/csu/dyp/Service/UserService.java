@@ -1,11 +1,11 @@
-package cn.edu.csu.dyp.archived.service;
+package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.archived.dao.userDao.*;
 import cn.edu.csu.dyp.archived.dao.util.DataBaseDao;
 import cn.edu.csu.dyp.archived.model.user.Address;
 import cn.edu.csu.dyp.archived.model.user.User;
-import cn.edu.csu.dyp.archived.service.util.ModifyInfoStat;
-import cn.edu.csu.dyp.archived.service.util.RegisterStat;
+import cn.edu.csu.dyp.Service.util.ModifyInfoStat;
+import cn.edu.csu.dyp.Service.util.RegisterStat;
 import javafx.util.Pair;
 import org.apache.log4j.Logger;
 

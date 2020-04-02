@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.archived.servlet.goodsServlet;
 
 import cn.edu.csu.dyp.archived.model.goods.Product;
-import cn.edu.csu.dyp.archived.service.GoodsService;
+import cn.edu.csu.dyp.Service.GoodsService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

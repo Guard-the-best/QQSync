@@ -2,7 +2,7 @@ package cn.edu.csu.dyp.archived.servlet.skipServlet;
 
 import cn.edu.csu.dyp.archived.model.user.Address;
 import cn.edu.csu.dyp.archived.model.user.User;
-import cn.edu.csu.dyp.archived.service.UserService;
+import cn.edu.csu.dyp.Service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

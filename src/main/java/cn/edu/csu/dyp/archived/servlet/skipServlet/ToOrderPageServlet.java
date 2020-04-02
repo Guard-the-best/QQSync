@@ -5,8 +5,8 @@ import cn.edu.csu.dyp.archived.model.order.OrderToOutside;
 import cn.edu.csu.dyp.archived.model.user.LineItem;
 import cn.edu.csu.dyp.archived.model.user.Order;
 import cn.edu.csu.dyp.archived.model.user.User;
-import cn.edu.csu.dyp.archived.service.GoodsService;
-import cn.edu.csu.dyp.archived.service.OrderService;
+import cn.edu.csu.dyp.Service.GoodsService;
+import cn.edu.csu.dyp.Service.OrderService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

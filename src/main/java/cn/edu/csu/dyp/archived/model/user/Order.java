@@ -1,6 +1,6 @@
 package cn.edu.csu.dyp.archived.model.user;
 
-import cn.edu.csu.dyp.archived.service.util.OrderStat;
+import cn.edu.csu.dyp.Service.util.OrderStat;
 
 import java.util.Date;
 import java.util.List;

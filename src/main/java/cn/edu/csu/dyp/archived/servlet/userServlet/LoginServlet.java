@@ -1,7 +1,6 @@
 package cn.edu.csu.dyp.archived.servlet.userServlet;
 
 import cn.edu.csu.dyp.archived.model.user.User;
-import cn.edu.csu.dyp.archived.service.UserService;
 //import com.captcha.botdetect.web.servlet.Captcha;
 import org.apache.log4j.Logger;
 

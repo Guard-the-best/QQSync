@@ -1,8 +1,8 @@
 package cn.edu.csu.dyp.archived.servlet.userServlet;
 
 import cn.edu.csu.dyp.archived.model.user.User;
-import cn.edu.csu.dyp.archived.service.UserService;
-import cn.edu.csu.dyp.archived.service.util.ModifyInfoStat;
+import cn.edu.csu.dyp.Service.UserService;
+import cn.edu.csu.dyp.Service.util.ModifyInfoStat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

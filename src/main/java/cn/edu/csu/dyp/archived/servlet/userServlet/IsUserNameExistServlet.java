@@ -1,6 +1,6 @@
 package cn.edu.csu.dyp.archived.servlet.userServlet;
 
-import cn.edu.csu.dyp.archived.service.UserService;
+import cn.edu.csu.dyp.Service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.archived.service;
 
 
+import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.archived.model.goods.Category;
 import cn.edu.csu.dyp.archived.model.goods.Item;
 import cn.edu.csu.dyp.archived.model.goods.Product;

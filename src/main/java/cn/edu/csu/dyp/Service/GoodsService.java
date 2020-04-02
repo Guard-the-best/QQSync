@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.archived.service;
+package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.archived.dao.goodsDao.*;
 import cn.edu.csu.dyp.archived.dao.util.DataBaseDao;
