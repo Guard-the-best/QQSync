@@ -1,6 +1,6 @@
-package cn.edu.csu.dyp.model;
+package cn.edu.csu.dyp.model.user;
 
-import cn.edu.csu.dyp.model.Item;
+import cn.edu.csu.dyp.model.goods.Item;
 
 public class LineItem {
     Item item;
