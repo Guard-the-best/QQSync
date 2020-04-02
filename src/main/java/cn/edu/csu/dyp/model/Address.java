@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.model.user;
+package cn.edu.csu.dyp.model;
 
 public class Address {
     private String name;

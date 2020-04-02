@@ -1,4 +1,4 @@
-package cn.edu.csu.dyp.model.order;
+package cn.edu.csu.dyp.model;
 import java.math.BigDecimal;
 
 public class Cart {

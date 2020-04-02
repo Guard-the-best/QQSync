@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.Persistence;
 
 
-import cn.edu.csu.dyp.model.user.User;
+import cn.edu.csu.dyp.model.User;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;

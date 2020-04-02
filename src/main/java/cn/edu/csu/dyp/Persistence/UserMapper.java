@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.Persistence;
 
-import cn.edu.csu.dyp.model.user.Address;
-import cn.edu.csu.dyp.model.user.User;
+import cn.edu.csu.dyp.model.Address;
+import cn.edu.csu.dyp.model.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
