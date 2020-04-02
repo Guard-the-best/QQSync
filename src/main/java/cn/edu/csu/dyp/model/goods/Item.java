@@ -3,13 +3,13 @@ package cn.edu.csu.dyp.model.goods;
 import java.math.BigDecimal;
 
 public class Item {
-    private String itemId;
-    private String productId;
+    private int itemId;
+    private int productId;
     private BigDecimal listPrice;
     private Integer inventory;
-    private String[] attributes;
+    private String attributes;
 
-    public Item(String itemId, String productId, BigDecimal listPrice, Integer inventory, String[] attributes) {
+    public Item(int itemId, int productId, BigDecimal listPrice, Integer inventory, String attributes) {
         this.itemId = itemId;
         this.productId = productId;
         this.listPrice = listPrice;
@@ -17,19 +17,19 @@ public class Item {
         this.attributes = attributes;
     }
 
-    public String getItemId() {
+    public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(int itemId) {
         this.itemId = itemId;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -49,11 +49,11 @@ public class Item {
         this.inventory = inventory;
     }
 
-    public String[] getAttributes() {
+    public String getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(String[] attributes) {
+    public void setAttributes(String attributes) {
         this.attributes = attributes;
     }
 }

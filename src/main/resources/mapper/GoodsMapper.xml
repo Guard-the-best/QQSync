@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.csu.dyp.Persistence.GoodsMapper">
+    <select id="searchProductByKey" parameterType="String" resultType="Product">
+    select *
+    from productInfo
+    where productName like #{key}
+    </select>
+
+    <resultMap id="getProductsByCategoryMap" type="Product">
+        <result column="productId" property="productId"/>
+        <result column="categoryId" property="categoryId"/>
+        <result column="productName" property="productName"/>
+    </resultMap>
+    <select id="getProductsByCategory" parameterType="String" resultMap="getProductsByCategoryMap">
+
+        select *
+        from productInfo natural join categoryInfo
+        where categoryName=#{categoryName}
+
+    </select>
+
+    <select id="getItemsByProductId" parameterType="String" resultType="Item">
+        select * from itemInfo where productId=#{productId}
+    </select>
+
+    <select id="getItemByItemId" parameterType="int" resultType="Item">
+        select * from itemInfo where itemId=#{itemId}
+    </select>
+
+
+</mapper>

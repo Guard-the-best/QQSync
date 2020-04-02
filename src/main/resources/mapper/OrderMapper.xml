@@ -19,18 +19,18 @@
 
     <select id="getOrder" parameterType="String" resultMap="getOrderMap">
         select *
-        from orderinfo
+        from orderInfo
         where userId = #{userId}
     </select>
 
     <select id="getOrderId" parameterType="String" resultType="String">
         select orderId
-        from orderinfo
+        from orderInfo
         where userId = #{userId}
     </select>
 
     <update id="modifyItemStatus">
-    update lineinfo
+    update lineInfo
     set status=1, parentId=#{orderId}
     where parentId=#{userId} and itemId=#{lineItem.getItem().getItemId()}
     --我不想测试了，错了就错了

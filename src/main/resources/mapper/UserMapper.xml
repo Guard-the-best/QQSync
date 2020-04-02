@@ -4,7 +4,7 @@
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.UserMapper">
     <select id="login" parameterType="User" resultType="User">
-        select * from userinfo where username=#{username} and password=#{password}
+        select * from userInfo where username=#{username} and password=#{password}
     </select>
 
     <select id="getUser" parameterType="String" resultType="User">
