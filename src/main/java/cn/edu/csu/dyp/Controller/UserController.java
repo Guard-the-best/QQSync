@@ -1,41 +1,55 @@
 package cn.edu.csu.dyp.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.edu.csu.dyp.Service.UserService;
+import cn.edu.csu.dyp.Util.BaseResponse;
+import cn.edu.csu.dyp.model.user.User;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")
+@AllArgsConstructor
 public class UserController {
-    @GetMapping("/newCaptcha")
-    public Object newCaptcha() {
-        return null;
-    }
+    private UserService userService;
 
     @PostMapping("/login")
-    public Object login(String username,String password,String captchaCode) {
-        return null;
+    public BaseResponse login(String username, String password) {
+        // need send a token
+        return new BaseResponse(userService.login(username,password));
     }
 
+    //reason for not using"/user/id": Username is not a proper get parameter.(May have invalid character)
     @GetMapping("/registered")
-    public Boolean registered(String username) {
-        return null;
+    public BaseResponse registered(String username) {
+        return new BaseResponse(userService.isUsernameExist(username));
     }
 
-    @PostMapping("/register")
-    public Object register(String username,String password,Object userInfo){
-        return null;
+    @PostMapping("/")
+    public BaseResponse register(User user){
+        // need send a token
+        return new BaseResponse(userService.register(user));
     }
 
-    @PostMapping("/password/modify")
-    public Object modifyPassword(String username,String oldPassword,String newPassword){
-        return null;
+    @PatchMapping("/password")
+    public BaseResponse modifyPassword(String username,String oldPassword,String newPassword){
+        // need make token overdue
+        userService.modifyPassword(username,oldPassword,newPassword);
+        return new BaseResponse("ok");
     }
 
-    @PostMapping("info/modify")
-    public Object modifyInfo(String username,String password,Object userInfo){
-        return null;
+    @PatchMapping("/username")
+    public BaseResponse modifyUsername(String oldUsername,String newUsername,String password){
+        // need make token overdue
+        userService.modifyUsername(oldUsername,newUsername,password);
+        return new BaseResponse("ok");
+    }
+
+    @PatchMapping("/")
+    public BaseResponse modifyInfo(User user){
+        userService.modifyInfo(user);
+        return new BaseResponse("ok");
     }
 
 }
