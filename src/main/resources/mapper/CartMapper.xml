@@ -7,6 +7,6 @@
         values (#{parentId},#{itemId},1,0)
     </insert>
 
-    <select id="getCart" parameterType="int" resultType="C"
+<!--    <select id="getCart" parameterType="int" resultType="C"-->
 
 </mapper>

@@ -3,12 +3,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.UserMapper">
-    <select id="login" parameterType="User" resultType="User">
+    <select id="getUserByUsernameAndPassword" parameterType="User" resultType="User">
         select * from userInfo where username=#{username} and password=#{password}
     </select>
 
-    <select id="getUser" parameterType="String" resultType="User">
+    <select id="getUserByUserId" parameterType="String" resultType="User">
         select * from userInfo where userId=#{userId}
+    </select>
+
+    <select id="getUserByUsername" parameterType="String" resultType="User">
+        select * from userInfo where username=#{username}
     </select>
 
     <select id="getAddress" parameterType="String" resultType="Address">
@@ -21,20 +25,18 @@
 --         谁知道呢
     </select>
     
-    <update id="modifyInfo" parameterType="User">
+    <update id="update" parameterType="User">
         update userInfo
         <set>
+            <if test="username!=null">username=#{username},</if>
+            <if test="password!=null">password=#{password},</if>
             <if test="phoneNumber!=null">phoneNumber=#{phoneNumber},</if>
             <if test="nickname!=null">nickname=#{nickname}</if>
         </set>
         where userId=#{userId}
     </update>
 
-    <update id="modifyPassword" parameterType="User">
-        update userInfo set password=#{password} where userId=#{userId}
-    </update>
-
-    <insert id="register">
+    <insert id="insert">
 <!--        insert into userInfo (username, passowrd, nickname-->
 <!--        <if test="phoneNumber!=null">-->
 <!--            ,phonenumber-->

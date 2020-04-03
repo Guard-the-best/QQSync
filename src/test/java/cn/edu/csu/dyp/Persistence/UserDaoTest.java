@@ -19,13 +19,13 @@ public class UserDaoTest {
         User user = new User();
         user.setUsername("admin");
         user.setPassword("123456");
-        User loginUser = userMapper.login(user);
+        User loginUser = userMapper.getUserByUsernameAndPassword(user);
         System.out.println(loginUser.getNickname());
     }
 
     @Test
     void getUserTest() {
-        User user = userMapper.getUser("1");
+        User user = userMapper.getUserByUsername("1");
         System.out.println(user.getNickname());
     }
 
@@ -43,8 +43,8 @@ public class UserDaoTest {
 //        user.setPhoneNumber("10010");
 //        user.setNickname("bigQieZi");
         user.setUserId("1");
-        userMapper.modifyInfo(user);
-        System.out.println(userMapper.getUser("1").getPhoneNumber());
+//        userMapper.modifyInfo(user);
+//        System.out.println(userMapper.getUser("1").getPhoneNumber());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class UserDaoTest {
         User user = new User();
         user.setUserId("1");
         user.setPassword("123456");
-        userMapper.modifyPassword(user);
+//        userMapper.modifyPassword(user);
     }
 
     @Test
@@ -61,6 +61,6 @@ public class UserDaoTest {
         user.setUsername("123");
         user.setPassword("123");
         user.setNickname("wamess2");
-        userMapper.register(user);
+        userMapper.insert(user);
     }
 }

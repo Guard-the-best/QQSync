@@ -3,36 +3,36 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.OrderMapper">
-    <insert id="addOrder">
-        insert into orderInfo (userId, orderDate, shipAddressId, billAddressId, status)
-        values(#{userId},now(),#{shipAddress},#{billAddress},1)
-    </insert>
+<!--    <insert id="addOrder">-->
+<!--        insert into orderInfo (userId, orderDate, shipAddressId, billAddressId, status)-->
+<!--        values(#{userId},now(),#{shipAddress},#{billAddress},1)-->
+<!--    </insert>-->
 
-    <resultMap id="getOrderMap" type="Order">
-        <result column="orderId" property="orderId"/>
-        <result column="userId" property="userId"/>
-        <result column="orderData" property="orderData"/>
-        <result column="shipAddressId" property="shipAddress"/>
-        <result column="billAddressId" property="billAddress"/>
-        <result column="status" property="status" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
-    </resultMap>
+<!--    <resultMap id="getOrderMap" type="Order">-->
+<!--        <result column="orderId" property="orderId"/>-->
+<!--        <result column="userId" property="userId"/>-->
+<!--        <result column="orderData" property="orderData"/>-->
+<!--        <result column="shipAddressId" property="shipAddress"/>-->
+<!--        <result column="billAddressId" property="billAddress"/>-->
+<!--        <result column="status" property="status" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>-->
+<!--    </resultMap>-->
 
-    <select id="getOrder" parameterType="String" resultMap="getOrderMap">
-        select *
-        from orderInfo
-        where userId = #{userId}
-    </select>
+<!--    <select id="getOrder" parameterType="String" resultMap="getOrderMap">-->
+<!--        select *-->
+<!--        from orderInfo-->
+<!--        where userId = #{userId}-->
+<!--    </select>-->
 
-    <select id="getOrderId" parameterType="String" resultType="String">
-        select orderId
-        from orderInfo
-        where userId = #{userId}
-    </select>
+<!--    <select id="getOrderId" parameterType="String" resultType="String">-->
+<!--        select orderId-->
+<!--        from orderInfo-->
+<!--        where userId = #{userId}-->
+<!--    </select>-->
 
-    <update id="modifyItemStatus">
-    update lineInfo
-    set status=1, parentId=#{orderId}
-    where parentId=#{userId} and itemId=#{lineItem.getItem().getItemId()}
-    --我不想测试了，错了就错了
-    </update>
+<!--    <update id="modifyItemStatus">-->
+<!--    update lineInfo-->
+<!--    set status=1, parentId=#{orderId}-->
+<!--    where parentId=#{userId} and itemId=#{lineItem.getItem().getItemId()}-->
+<!--    &#45;&#45;我不想测试了，错了就错了-->
+<!--    </update>-->
 </mapper>

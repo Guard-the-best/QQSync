@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserMapper {
-    User login(User user);
-    User getUser(String userId);
-    Address getAddress(String userId);
+    User getUserByUserId(String userId);
+    User getUserByUsername(String username);
+    User getUserByUsernameAndPassword(User user);
+    void insert(User user);
+    void update(User user);
+    @Deprecated
     Boolean isUserExist (String username);
-    void modifyInfo(User user);
-    void modifyPassword(User user);
-    void register(User user);
-
+    Address getAddress(String userId);
 }

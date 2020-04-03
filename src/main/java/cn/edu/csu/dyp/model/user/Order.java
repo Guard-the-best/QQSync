@@ -1,7 +1,9 @@
 package cn.edu.csu.dyp.model.user;
 
-import cn.edu.csu.dyp.archived.model.user.LineItem;
-import cn.edu.csu.dyp.Service.util.OrderStat;
+//import cn.edu.csu.dyp.archived.model.user.LineItem;
+//import cn.edu.csu.dyp.Service.util.OrderStat;
+
+import cn.edu.csu.dyp.model.util.OrderStat;
 
 import java.util.Date;
 import java.util.List;
@@ -13,21 +15,21 @@ public class Order {
     private String shipAddress;
     private String billAddress;
     private OrderStat status;
-    private List<cn.edu.csu.dyp.archived.model.user.LineItem> lineItemList;
+//    private List<cn.edu.csu.dyp.archived.model.user.LineItem> lineItemList;
 
     public Order(){
 
     }
 
-    public Order(String orderId, String userId, Date orderDate, String shipAddress, String billAddress, OrderStat status, List<cn.edu.csu.dyp.archived.model.user.LineItem> lineItemList) {
-        this.orderId = orderId;
-        this.userId = userId;
-        this.orderDate = orderDate;
-        this.shipAddress = shipAddress;
-        this.billAddress = billAddress;
-        this.status = status;
-        this.lineItemList = lineItemList;
-    }
+//    public Order(String orderId, String userId, Date orderDate, String shipAddress, String billAddress, OrderStat status, List<cn.edu.csu.dyp.archived.model.user.LineItem> lineItemList) {
+//        this.orderId = orderId;
+//        this.userId = userId;
+//        this.orderDate = orderDate;
+//        this.shipAddress = shipAddress;
+//        this.billAddress = billAddress;
+//        this.status = status;
+//        this.lineItemList = lineItemList;
+//    }
 
     public String getOrderId() {
         return orderId;
@@ -37,13 +39,13 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<cn.edu.csu.dyp.archived.model.user.LineItem> getLineItemList() {
-        return lineItemList;
-    }
+//    public List<cn.edu.csu.dyp.archived.model.user.LineItem> getLineItemList() {
+//        return lineItemList;
+//    }
 
-    public void setLineItemList(List<LineItem> lineItemList) {
-        this.lineItemList = lineItemList;
-    }
+//    public void setLineItemList(List<LineItem> lineItemList) {
+//        this.lineItemList = lineItemList;
+//    }
 
     public String getUserId() {
         return userId;
