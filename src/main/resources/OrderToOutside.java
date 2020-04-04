@@ -1,5 +1,3 @@
-package cn.edu.csu.dyp.model.order;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
