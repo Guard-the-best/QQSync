@@ -11,4 +11,4 @@ insert into iteminfo values (10002, 1001, 20, 1, 'bad boy-angry-long tail');
 insert into iteminfo values (10003, 1001, 30, 1, 'king-lonely-bold');
 insert into iteminfo values (10010, 1002, 50, 1, 'jet-curious-smart');
 insert into iteminfo values (10011, 1002, 50, 1, 'funk-angry-crazy');
-insert into iteminfo values (10012, 1002, 60, 1, 'star-calm-handsome');
+insert into iteminfo values (10013, 1002, 60, 1, 'star-calm-handsome');

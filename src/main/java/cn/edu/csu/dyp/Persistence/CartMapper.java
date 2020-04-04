@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartMapper {
-    void addItem(int parentId,int itemId);
-//    Cart getCart(int userId);
+    void addCart(int userId,int itemId,int quantity);
+    void deleteCartByItemId(int itemId);
+    void getCartByUserId(int UserId);
+    void updateCartQuantity(int userId,int itemId,int quantity);
 }

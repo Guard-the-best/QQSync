@@ -17,8 +17,11 @@ public class CartDaoTest {
 
     @Test
     void addItemTest(){
-        int parentId = 10086;
-        int itemId = 12306;
-        cartMapper.addItem(parentId,itemId);
+        cartMapper.addCart(6,6,6);
+    }
+
+    @Test
+    void updateCartTest(){
+        cartMapper.updateCartQuantity(6,6,8);
     }
 }
