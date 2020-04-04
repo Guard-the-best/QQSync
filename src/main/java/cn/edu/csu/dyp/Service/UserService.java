@@ -2,6 +2,8 @@ package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.UserMapper;
 import cn.edu.csu.dyp.model.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,6 +14,7 @@ public class UserService {
     private UserMapper userMapper;
 //    private static Logger logger=Logger.getLogger(UserService.class);
 
+    @Autowired
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
     }

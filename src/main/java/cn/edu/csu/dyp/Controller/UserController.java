@@ -4,15 +4,20 @@ import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.user.User;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")
-@AllArgsConstructor
 public class UserController {
     private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/login")
     public BaseResponse login(String username, String password) {
@@ -26,7 +31,7 @@ public class UserController {
         return new BaseResponse(userService.isUsernameExist(username));
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public BaseResponse register(User user){
         // need send a token
         return new BaseResponse(userService.register(user));

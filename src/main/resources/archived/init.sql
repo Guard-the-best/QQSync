@@ -39,7 +39,7 @@ CREATE TABLE `userInfo`
     `username`    VARCHAR(100) NOT NULL,
     `password`    VARCHAR(100) NOT NULL,
     `phoneNumber` VARCHAR(100),
-    `nickname`    VARCHAR(100) NOT NULL,
+    `nickname`    VARCHAR(100),
     PRIMARY KEY (`userId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
