@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.Persistence;
 
 
-import cn.edu.csu.dyp.model.user.Order;
+import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.util.OrderStat;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
