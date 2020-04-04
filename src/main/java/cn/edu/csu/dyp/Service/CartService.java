@@ -19,11 +19,11 @@ public class CartService {
     private CartMapper cartMapper;
 
     public Boolean addToCart(String userId,String itemId) {
-//        if(userId==null || itemId == null){
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID and ItemID are required");
-//        }
-//
-//        List<LineItem> lineItems = new ArrayList<>();
+        if(userId==null || itemId == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID and ItemID are required");
+        }
+
+        List<LineItem> lineItems = new ArrayList<>();
 
 
         return null;
