@@ -12,7 +12,7 @@ use web;
 
 -- --------------------------------------------------
 -- --------------------------------------------------
--- location
+-- location (Deprecated)
 -- --------------------------------------------------
 -- --------------------------------------------------
 # DROP TABLE IF EXISTS `locationInfo`;
@@ -77,20 +77,29 @@ CREATE TABLE `orderInfo`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `orderItems`;
+CREATE TABLE `orderItems`
+(
+    `orderId`     INT UNSIGNED AUTO_INCREMENT,
+    `itemId`      INT UNSIGNED NOT NULL,
+    `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
+    `attributes`     VARCHAR(100),
+    `number`      INT UNSIGNED NOT NULL,
+    PRIMARY KEY (`orderId`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
 -- --------------------------------------------------
--- shopping cart line
+-- shopping cart
 -- --------------------------------------------------
-DROP TABLE IF EXISTS `lineInfo`;
+DROP TABLE IF EXISTS `cartInfo`;
 CREATE TABLE `lineInfo`
 (
     `lineId`   INT UNSIGNED AUTO_INCREMENT,
-    -- Based on property `status`. In the cart, it store userId. After ordered, it store orderId.
-    `parentId` INT UNSIGNED NOT NULL,           -- userId or orderId
+    `userId` INT UNSIGNED NOT NULL,
     `itemId`   INT UNSIGNED NOT NULL,
-    `quantity` INT UNSIGNED NOT NULL DEFAULT 1,
-    `status`   INT UNSIGNED NOT NULL DEFAULT 0, -- In cart: 0; Ordered: 1; ...
-    PRIMARY KEY (`lineId`),
-    KEY (`status`)
+    `quantity` INT UNSIGNED NOT NULL,
+    PRIMARY KEY (`lineId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -126,11 +135,7 @@ CREATE TABLE `itemInfo`
     `productId` INT UNSIGNED            NOT NULL,
     `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
     `inventory` INT UNSIGNED            NOT NULL,
-    `attr1`     VARCHAR(100),
-    `attr2`     VARCHAR(100),
-    `attr3`     VARCHAR(100),
-    `attr4`     VARCHAR(100),
-    `attr5`     VARCHAR(100),
+    `attributes`     VARCHAR(100)
     PRIMARY KEY (`itemId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
