@@ -2,11 +2,13 @@ package cn.edu.csu.dyp.Persistence;
 
 
 import cn.edu.csu.dyp.model.user.Order;
+import cn.edu.csu.dyp.model.util.OrderStat;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -33,10 +35,17 @@ public class OrderDaoTest {
     }
 
     @Test
-    void getOrderIdTest(){
-        String userId = "LiHua";
-        String orderId = orderMapper.getOrderId(userId);
-        System.out.println(orderId);
+    void updateOrderTest(){
+        Date date = new Date();
+        OrderStat orderStat = OrderStat.success;
+        Order order = new Order();
+        order.setBillAddress("dada");
+        order.setShipAddress("ship");
+        order.setUserId("WDNMD");
+        order.setOrderDate(date);
+        order.setOrderId("1");
+        order.setStatus(orderStat);
+        orderMapper.updateOrder(order);
     }
 
 }

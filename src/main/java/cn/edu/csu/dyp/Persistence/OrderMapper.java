@@ -11,6 +11,6 @@ import java.util.List;
 public interface OrderMapper {
     void addOrder(Order order);
     List<Order> getOrder(String userId);
-    String getOrderId(String userId);
-//    void modifyItemStatus(String userId, String orderId, List<LineItem> lineItemList);
+    void deleteOrder(Order order);
+    void updateOrder(Order order);
 }

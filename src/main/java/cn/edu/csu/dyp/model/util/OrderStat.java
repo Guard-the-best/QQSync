@@ -1,4 +1,6 @@
 package cn.edu.csu.dyp.model.util;
 
-public class OrderStat {
+public enum OrderStat {
+    success,
+    fail,
 }
