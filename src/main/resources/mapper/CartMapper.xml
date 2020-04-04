@@ -2,11 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.csu.dyp.Persistence.CartMapper">
-    <insert id="addItem" parameterType="Item">
-        insert Into lineInfo (parentId,itemId,quantity,status)
-        values (#{parentId},#{itemId},1,0)
+    <insert id="addCart" parameterType="int">
+        insert Into lineInfo (userId,itemId,quantity)
+        values (#{userId},#{itemId},#{quantity})
     </insert>
 
-<!--    <select id="getCart" parameterType="int" resultType="C"-->
+    <delete id="deleteCartByItemId" parameterType="int">
+        delete from lineinfo where itemId = #{itemId}
+    </delete>
+
+    <select id="getCartByUserId" parameterType="int">
+        select *
+from lineinfo
+where userId = #{userId}
+    </select>
+
+    <update id="updateCartQuantity" parameterType="int">
+        update lineinfo
+<set>
+    <if test="quantity!=null">
+        quantity=#{quantity}
+    </if>
+</set>
+    where userId = #{userId} and itemId = #{itemId}
+    </update>
+
 
 </mapper>
