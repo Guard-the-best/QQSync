@@ -135,7 +135,7 @@ CREATE TABLE `itemInfo`
     `productId` INT UNSIGNED            NOT NULL,
     `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
     `inventory` INT UNSIGNED            NOT NULL,
-    `attributes`     VARCHAR(100)
+    `attributes`     VARCHAR(100),
     PRIMARY KEY (`itemId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
