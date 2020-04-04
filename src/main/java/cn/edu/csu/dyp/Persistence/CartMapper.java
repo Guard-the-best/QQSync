@@ -9,4 +9,5 @@ public interface CartMapper {
     void deleteCartByItemId(int itemId);
     void getCartByUserId(int UserId);
     void updateCartQuantity(int userId,int itemId,int quantity);
+    int getCartNumber(int userId,int itemId);
 }

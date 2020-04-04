@@ -12,9 +12,15 @@
     </delete>
 
     <select id="getCartByUserId" parameterType="int">
-        select *
-from lineinfo
-where userId = #{userId}
+    select *
+    from lineinfo
+    where userId = #{userId}
+</select>
+
+    <select id="getCartNumber" parameterType="int" resultType="int">
+        select quantity
+        from lineinfo
+        where userId = #{userId} and itemId = #{itemId}
     </select>
 
     <update id="updateCartQuantity" parameterType="int">

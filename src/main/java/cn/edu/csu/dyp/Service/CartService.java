@@ -17,27 +17,56 @@ public class CartService {
     @Autowired
     private CartMapper cartMapper;
 
-    public Boolean addToCart(String userId,String itemId) {
-        if(userId==null || itemId == null){
+    public boolean isUserIdAndItemIdNULL(String userId,String itemId){
+        boolean isNULL = true;
+        if(userId==null && itemId == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID and ItemID are required");
         }
-
-
-
-        return null;
+        else if(userId==null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID are required");
+        }
+        else if(itemId == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"ItemID are required");
+        }
+        else {
+            isNULL=false;
+        }
+        return isNULL;
     }
 
-    public Boolean changeNumber(String userId,String itemId,int newQuantity) {
-        return null;
+    public void addToCart(String userId,String itemId,int quantity) {
+        if(!isUserIdAndItemIdNULL(userId,itemId)){
+            int intUserId = Integer.parseInt(userId);
+            int intItemId =  Integer.parseInt(itemId);
+            cartMapper.addCart(intUserId,intItemId,quantity);
+        }
     }
 
-    public Boolean removeItem(String userId,String itemId) {
-        return null;
+    public void changeNumber(String userId,String itemId,int newQuantity) {
+        if(!isUserIdAndItemIdNULL(userId,itemId)){
+            int intUserId = Integer.parseInt(userId);
+            int intItemId =  Integer.parseInt(itemId);
+            cartMapper.updateCartQuantity(intUserId,intItemId,newQuantity);
+        }
     }
 
-    public Integer getNumber(String userId) {
-        return null;
+    public void removeItem(String userId,String itemId) {
+        if(!isUserIdAndItemIdNULL(userId,itemId)){
+            int intItemId =  Integer.parseInt(itemId);
+            cartMapper.deleteCartByItemId(intItemId);
+        }
     }
+
+    public Integer getNumber(String userId,String itemId) {
+        int numOfCartItem=0;
+        if(!isUserIdAndItemIdNULL(userId,itemId)){
+            int intUserId = Integer.parseInt(userId);
+            int intItemId =  Integer.parseInt(itemId);
+            cartMapper.getCartNumber(intUserId,intItemId);
+        }
+        return numOfCartItem;
+    }
+
 
     /*
     * 不方便的操作可以每次修改都调用一次？
