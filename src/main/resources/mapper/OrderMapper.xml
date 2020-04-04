@@ -4,7 +4,7 @@
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.OrderMapper">
     <insert id="addOrder">
-        insert into orderInfo (userId, orderDate, shipAddressId, billAddressId, status)
+        insert into orderInfo (userId, orderDate, shipAddress, billAddress, status)
         values(#{userId},now(),#{shipAddress},#{billAddress},1)
     </insert>
 
@@ -12,8 +12,8 @@
         <result column="orderId" property="orderId"/>
         <result column="userId" property="userId"/>
         <result column="orderData" property="orderData"/>
-        <result column="shipAddressId" property="shipAddress"/>
-        <result column="billAddressId" property="billAddress"/>
+        <result column="shipAddress" property="shipAddress"/>
+        <result column="billAddress" property="billAddress"/>
         <result column="status" property="status" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
     </resultMap>
 
@@ -23,7 +23,6 @@
         where userId = #{userId}
     </select>
 
-
     <delete id="deleteOrder" parameterType="Order">
         delete
         from orderinfo
@@ -32,7 +31,7 @@
 
     <update id="updateOrder" parameterType="Order">
         update orderinfo
-        <set >
+        <set>
             <if test="userId!=null">userId=#{userId},</if>
             <if test="orderDate!=null">orderDate=#{orderDate},</if>
             <if test="shipAddress!=null">shipAddress=#{shipAddress},</if>
@@ -42,4 +41,12 @@
         where orderId=#{orderId}
     </update>
 
+
+<!--    下为orderItem的代码-->
+    <insert id="addOrderItem" parameterType="java.util.List">
+        insert into orderItems (itemId, listPrice, attributes, number) values
+        <foreach collection="list" item="orderItem" index="index" separator=",">
+            (#{orderItem.itemId}, #{orderItem.listPrice}, #{orderItem.attributes}, #{orderItem.number})
+        </foreach>
+    </insert>
 </mapper>
