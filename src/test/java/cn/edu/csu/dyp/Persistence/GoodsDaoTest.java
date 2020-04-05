@@ -18,9 +18,9 @@ public class GoodsDaoTest {
 
     @Test
     void searchProductByKeyTest(){
-        String key = "e";
+        String key = "";
         List<Product> products = goodsMapper.searchProductByKey(key);
-        System.out.println(products.isEmpty());
+        System.out.println(products.size());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class GoodsDaoTest {
     @Test
     void getItemByItemIdTest(){
         int key =10001;
-        List<Item> items = goodsMapper.getItemByItemId(key);
-        System.out.println(items.isEmpty());
+        Item item = goodsMapper.getItemByItemId(key);
+        System.out.println(item.getAttributes());
     }
 }

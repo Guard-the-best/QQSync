@@ -5,7 +5,7 @@
     <select id="searchProductByKey" parameterType="String" resultType="Product">
     select *
     from productInfo
-    where productName like #{key}
+    where productName like concat('%',#{key},'%')
     </select>
 
     <resultMap id="getProductsByCategoryMap" type="Product">
@@ -14,11 +14,9 @@
         <result column="productName" property="productName"/>
     </resultMap>
     <select id="getProductsByCategory" parameterType="String" resultMap="getProductsByCategoryMap">
-
         select *
         from productInfo natural join categoryInfo
         where categoryName=#{categoryName}
-
     </select>
 
     <select id="getItemsByProductId" parameterType="String" resultType="Item">
