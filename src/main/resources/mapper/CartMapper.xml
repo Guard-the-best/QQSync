@@ -2,34 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.csu.dyp.Persistence.CartMapper">
-    <insert id="addCart" parameterType="int">
-        insert Into lineInfo (userId,itemId,quantity)
+    <insert id="addCart">
+        insert Into cartInfo (userId,itemId,quantity)
         values (#{userId},#{itemId},#{quantity})
     </insert>
 
-    <delete id="deleteCartByItemId" parameterType="int">
-        delete from lineinfo where itemId = #{itemId}
+    <delete id="deleteCartByItemId">
+        delete from cartinfo where userId =#{userId} and itemId = #{itemId}
     </delete>
 
-    <select id="getCartByUserId" parameterType="int">
-    select *
-    from lineinfo
-    where userId = #{userId}
-</select>
+    <delete id="deleteCartByUserId">
+        delete from cartinfo where userId =#{userId}
+    </delete>
 
-    <select id="getCartNumber" parameterType="int" resultType="int">
+    <select id="getCartByUserId" parameterType="int" resultType="CartItem">
+    select cartInfo.itemId,productName,listPrice,attributes,quantity
+    from cartInfo,itemInfo,productInfo
+    where userId = #{userId} and cartInfo.itemId = itemInfo.itemId and itemInfo.productId = productInfo.productId
+    </select>
+
+    <select id="getQuantityByItemId" resultType="java.lang.Integer">
         select quantity
-        from lineinfo
+        from cartInfo
         where userId = #{userId} and itemId = #{itemId}
     </select>
 
-    <update id="updateCartQuantity" parameterType="int">
-        update lineinfo
-<set>
-    <if test="quantity!=null">
-        quantity=#{quantity}
-    </if>
-</set>
+    <update id="updateCartQuantity">
+        update cartInfo
+    <set>
+        <if test="quantity!=null">
+            quantity=#{quantity}
+        </if>
+    </set>
     where userId = #{userId} and itemId = #{itemId}
     </update>
 

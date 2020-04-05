@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.UserMapper;
 import cn.edu.csu.dyp.model.user.User;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -115,6 +116,10 @@ public class UserService {
                 userMapper.update(user);
             }
         }
+    }
+
+    public Integer getUserId(String username){
+        return userMapper.getUserByUsername(username).getUserId();
     }
 
     public String getAddress(String userId) {

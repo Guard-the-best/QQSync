@@ -42,7 +42,7 @@ public class UserDaoTest {
         user.setNickname("dyp");
 //        user.setPhoneNumber("10010");
 //        user.setNickname("bigQieZi");
-        user.setUserId("1");
+        user.setUserId(1);
 //        userMapper.modifyInfo(user);
 //        System.out.println(userMapper.getUser("1").getPhoneNumber());
     }
@@ -50,7 +50,7 @@ public class UserDaoTest {
     @Test
     void modifyPasswordTest() {
         User user = new User();
-        user.setUserId("1");
+        user.setUserId(1);
         user.setPassword("123456");
 //        userMapper.modifyPassword(user);
     }

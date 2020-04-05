@@ -1,34 +1,50 @@
 package cn.edu.csu.dyp.Controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.edu.csu.dyp.Service.CartService;
+import cn.edu.csu.dyp.Service.UserService;
+import cn.edu.csu.dyp.Util.BaseResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-    @PostMapping("/add")
-    public Object add(Object item,Integer number){
-        return null;
+    private UserService userService;
+    private CartService cartService;
+
+    @Autowired
+    public CartController(UserService userService, CartService cartService) {
+        this.userService = userService;
+        this.cartService = cartService;
     }
 
-    @PostMapping("/decrease")
-    public Object decrease(Object item,Integer number){
-        return null;
+    @PatchMapping("/{itemId}")
+    public BaseResponse modify(String username,@PathVariable("itemId")Integer itemId, Integer delta){
+        if(!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+//        if(productService.getItemByItemId(itemId)==null)
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"item not exist");
+        cartService.modify(userService.getUserId(username),itemId,delta);
+
+        return get(username);
     }
 
-    @PostMapping("/remove")
-    public Object remove(Object item) {
-        return null;
+    @DeleteMapping("")
+    public BaseResponse clear(String username){
+        if(!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+        cartService.deleteAll(userService.getUserId(username));
+
+        return new BaseResponse("ok");
     }
 
-    @PostMapping("/clear")
-    public Object clear(){
-        return null;
-    }
-
-    @PostMapping("/all")
-    public Object get(){
-        return null;
+    @GetMapping("")
+    public BaseResponse get(String username){
+        if(!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+        return new BaseResponse(cartService.getCart(userService.getUserId(username)));
     }
 }

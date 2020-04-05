@@ -1,19 +1,16 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.OrderMapper;
-import cn.edu.csu.dyp.Persistence.UserMapper;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.order.OrderItem;
-import cn.edu.csu.dyp.model.user.Address;
-import cn.edu.csu.dyp.model.user.Cart;
+import cn.edu.csu.dyp.model.cart.Cart;
 import cn.edu.csu.dyp.model.util.OrderStat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;

@@ -1,10 +1,16 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.CartMapper;
+import cn.edu.csu.dyp.model.cart.Cart;
+import cn.edu.csu.dyp.model.cart.CartItem;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -14,8 +20,7 @@ public class CartService {
     @Autowired
     private CartMapper cartMapper;
 
-    public boolean isUserIdAndItemIdNULL(String userId,String itemId){
-        boolean isNULL = true;
+    private void testNotNull(Integer userId, Integer itemId, Integer delta){
         if(userId==null && itemId == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID and ItemID are required");
         }
@@ -25,51 +30,50 @@ public class CartService {
         else if(itemId == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"ItemID are required");
         }
-        else {
-            isNULL=false;
-        }
-        return isNULL;
+
+        if(delta==null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"delta are required");
     }
 
-    public void addToCart(String userId,String itemId,int quantity) {
-        if(!isUserIdAndItemIdNULL(userId,itemId)){
-            int intUserId = Integer.parseInt(userId);
-            int intItemId =  Integer.parseInt(itemId);
-            cartMapper.addCart(intUserId,intItemId,quantity);
+    public void modify(Integer userId,Integer itemId,Integer delta) {
+        testNotNull(userId,itemId,delta);
+        //购物车中不存在该商品
+        if(getNumber(userId, itemId)==null){
+            if(delta<=0)
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"quantity must be positive");
+            else
+                addToCart(userId,itemId,delta);
         }
-    }
-
-    public void changeNumber(String userId,String itemId,int newQuantity) {
-        if(!isUserIdAndItemIdNULL(userId,itemId)){
-            int intUserId = Integer.parseInt(userId);
-            int intItemId =  Integer.parseInt(itemId);
-            cartMapper.updateCartQuantity(intUserId,intItemId,newQuantity);
-        }
-    }
-
-    public void removeItem(String userId,String itemId) {
-        if(!isUserIdAndItemIdNULL(userId,itemId)){
-            int intItemId =  Integer.parseInt(itemId);
-            cartMapper.deleteCartByItemId(intItemId);
+        else{
+            int newQuantity=getNumber(userId,itemId)+delta;
+            if(newQuantity<=0)
+                removeItem(userId,itemId);
+            else
+                changeNumber(userId,itemId,newQuantity);
         }
     }
 
-    public Integer getNumber(String userId,String itemId) {
-        int numOfCartItem=0;
-        if(!isUserIdAndItemIdNULL(userId,itemId)){
-            int intUserId = Integer.parseInt(userId);
-            int intItemId =  Integer.parseInt(itemId);
-            cartMapper.getCartNumber(intUserId,intItemId);
-        }
-        return numOfCartItem;
+    private void addToCart(Integer userId,Integer itemId,Integer quantity) {
+        cartMapper.addCart(userId,itemId,quantity);
     }
 
+    private void changeNumber(Integer userId,Integer itemId,Integer newQuantity) {
+        cartMapper.updateCartQuantity(userId,itemId,newQuantity);
+    }
 
-    /*
-    * 不方便的操作可以每次修改都调用一次？
-    * 在购物车页面进行物品数量删减可以不调用？
-    * */
-//    public List<LineItem> getCart(String userId) {
-//        return null;
-//    }
+    private void removeItem(Integer userId,Integer itemId) {
+        cartMapper.deleteCartByItemId(userId,itemId);
+    }
+
+    private Integer getNumber(Integer userId,Integer itemId) {
+        return cartMapper.getQuantityByItemId(userId,itemId);
+    }
+
+    public List<CartItem> getCart(Integer userId) {
+        return cartMapper.getCartByUserId(userId);
+    }
+
+    public void deleteAll(Integer userId){
+        cartMapper.deleteCartByUserId(userId);
+    }
 }

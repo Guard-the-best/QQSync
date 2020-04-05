@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `orderItems`;
 CREATE TABLE `orderItems`
 (
     `orderItemId` INT UNSIGNED AUTO_INCREMENT,
-    `orderId`     INT UNSIGNED,
+    `orderId`     INT UNSIGNED NOT NULL,
     `itemId`      INT UNSIGNED NOT NULL,
     `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
     `attributes`     VARCHAR(100),
@@ -94,7 +94,7 @@ CREATE TABLE `orderItems`
 -- shopping cart
 -- --------------------------------------------------
 DROP TABLE IF EXISTS `cartInfo`;
-CREATE TABLE `lineInfo`
+CREATE TABLE `cartInfo`
 (
     `lineId`   INT UNSIGNED AUTO_INCREMENT,
     `userId` INT UNSIGNED NOT NULL,

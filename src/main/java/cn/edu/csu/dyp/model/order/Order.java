@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
-    private String orderId;
-    private String userId;
+    private Integer orderId;
+    private Integer userId;
     private Date orderDate;
     private String shipAddress;
     private String billAddress;
