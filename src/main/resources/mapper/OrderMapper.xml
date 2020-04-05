@@ -50,6 +50,10 @@
         </foreach>
     </insert>
 
+    <delete id="deleteOrderItemsByOrderId" parameterType="int">
+        delete from orderItems where orderId=#{orderId}
+    </delete>
+
     <select id="getOrderItems" parameterType="int" resultType="OrderItem">
         select * from orderItems where orderId=#{orderId}
     </select>
