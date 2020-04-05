@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.UserMapper;
+import cn.edu.csu.dyp.model.user.Address;
 import cn.edu.csu.dyp.model.user.User;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,8 +123,8 @@ public class UserService {
         return userMapper.getUserByUsername(username).getUserId();
     }
 
-    public String getAddress(String userId) {
-        return null;
+    public Address getAddress(Integer userId) {
+        return userMapper.getAddress(userId);
     }
 //
 //    /*

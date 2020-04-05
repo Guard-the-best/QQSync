@@ -13,6 +13,5 @@ public interface UserMapper {
     void update(User user);
     @Deprecated
     Boolean isUserExist (String username);
-    @Deprecated
-    Address getAddress(String userId);
+    Address getAddress(Integer userId);
 }

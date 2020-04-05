@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.OrderMapper;
 import cn.edu.csu.dyp.Util.BaseResponse;
+import cn.edu.csu.dyp.model.cart.CartDto;
 import cn.edu.csu.dyp.model.cart.CartItem;
 import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.order.OrderItem;
@@ -32,9 +33,12 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Order makeOrder(Integer userId, String shipAddress, String billAddress, Cart cart) {
-        if (cart.getItems().isEmpty()) {
+    public Order makeOrder(Integer userId, String shipAddress, String billAddress, List<OrderItem> cart) {
+        if (cart==null || cart.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "empty order is not allowed");
+        }
+        else if(shipAddress==null || billAddress == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"please fill the address first");
         }
         if(haveOrderingOrder(userId))
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"server error: ordering terminated.");
@@ -42,26 +46,19 @@ public class OrderService {
         order.setUserId(userId);
         order.setShipAddress(shipAddress);
         order.setBillAddress(billAddress);
-        order.setStatus(OrderStat.ordering); // 这里查看了一下过去的代码，似乎dao层原本会填入一个-1，而不是一个orderStat，因此这里先默认为success。
+        order.setStatus(OrderStat.ordering);
         orderMapper.addOrder(order);
         order = orderMapper.getOrderByStatus(userId,OrderStat.ordering);
 
-        List<OrderItem> orderItems = new ArrayList<>();
-        for (CartItem it : cart.getItems()) {
-            OrderItem temp = new OrderItem();
-            temp.setItemId(it.getItemId());
-            temp.setListPrice(it.getListPrice());
-            temp.setAttributes(it.getAttributes());
-            temp.setNumber(it.getQuantity());
-            temp.setOrderId(order.getOrderId());
-            orderItems.add(temp);
+        for (OrderItem it : cart) {
+            it.setOrderId(order.getOrderId());
         }
-        orderMapper.addOrderItem(orderItems);
+        orderMapper.addOrderItem(cart);
 
         order.setStatus(OrderStat.success);
         orderMapper.updateOrder(order);
 
-        order.setItems(orderItems);
+        order.setItems(cart);
         return order;
     }
 

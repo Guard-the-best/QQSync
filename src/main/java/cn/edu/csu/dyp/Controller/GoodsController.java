@@ -1,32 +1,40 @@
 package cn.edu.csu.dyp.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.models.auth.In;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {
-    @GetMapping("/all")
+    @GetMapping("/category/all")
+    List<Object> allCategory() {
+        return null;
+    }
+
+    @GetMapping("/product")
+    List<Object> getProducts(String categoryName){
+        return null;
+    }
+
+    @GetMapping("/product/all")
     List<Object> allProducts(){
         return null;
     }
 
-    @GetMapping("/search")
-    List<Object> search(String key) {
+    @GetMapping("/item")
+    List<Object> getItems(String productName) {
         return null;
     }
 
-    @GetMapping("/")
-    Object getProduct(String id) {
+    @GetMapping("/item/{itemId}")
+    Object getItem(@PathVariable("itemId")Integer itemId){
         return null;
     }
 
-    @GetMapping("/get/{type}")
-    List<Object> getProducts(@PathVariable("type")String type){
+    @PostMapping("/search")
+    List<Object> searchForProducts(String key) {
         return null;
     }
 }
