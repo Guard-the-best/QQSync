@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.OrderMapper;
+import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.cart.CartItem;
 import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.order.OrderItem;
@@ -35,13 +36,15 @@ public class OrderService {
         if (cart.getItems().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "empty order is not allowed");
         }
+        if(haveOrderingOrder(userId))
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"server error: ordering terminated.");
         Order order = new Order();
         order.setUserId(userId);
-        order.setOrderDate(new Date());
         order.setShipAddress(shipAddress);
         order.setBillAddress(billAddress);
-        order.setStatus(OrderStat.success); // 这里查看了一下过去的代码，似乎dao层原本会填入一个-1，而不是一个orderStat，因此这里先默认为success。
+        order.setStatus(OrderStat.ordering); // 这里查看了一下过去的代码，似乎dao层原本会填入一个-1，而不是一个orderStat，因此这里先默认为success。
         orderMapper.addOrder(order);
+        order = orderMapper.getOrderByStatus(userId,OrderStat.ordering);
 
         List<OrderItem> orderItems = new ArrayList<>();
         for (CartItem it : cart.getItems()) {
@@ -50,12 +53,21 @@ public class OrderService {
             temp.setListPrice(it.getListPrice());
             temp.setAttributes(it.getAttributes());
             temp.setNumber(it.getQuantity());
-            temp.setOrderId(order.getOrderId());//?
+            temp.setOrderId(order.getOrderId());
             orderItems.add(temp);
         }
         orderMapper.addOrderItem(orderItems);
+
+        order.setStatus(OrderStat.success);
+        orderMapper.updateOrder(order);
+
         order.setItems(orderItems);
         return order;
+    }
+
+    public boolean haveOrderingOrder(Integer userId){
+        if (userId == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "userId is required");
+        return orderMapper.getOrderByStatus(userId,OrderStat.ordering)!=null;
     }
 //
     public List<Order> getOrderByUser(Integer userId) {

@@ -5,7 +5,7 @@
 <mapper namespace="cn.edu.csu.dyp.Persistence.OrderMapper">
     <insert id="addOrder" useGeneratedKeys="true" keyProperty="orderId" parameterType="Order">
         insert into orderInfo (userId, orderDate, shipAddress, billAddress, status)
-        values(#{userId},now(),#{shipAddress},#{billAddress},1)
+        values(#{userId},now(),#{shipAddress},#{billAddress},#{status,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler})
     </insert>
 
     <resultMap id="getOrderMap" type="Order">
