@@ -6,9 +6,7 @@ import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.cart.Cart;
 import cn.edu.csu.dyp.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -22,20 +20,20 @@ public class OrderController {
         this.userService = userService;
     }
 
-    @PostMapping("/make")
+    @PostMapping("")
     public BaseResponse makeOrder(Cart cart , User user){
         Integer userId = user.getUserId();
 //        return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId), userService.getAddress(userId), cart));
         return null;
     }
 
-    @PostMapping("/amount")
+    @GetMapping("/amount")
     public Integer amount(){
         return 0;
     }
 
-    @PostMapping("/get")
-    public Object get(Integer index){
+    @GetMapping("/{index}")
+    public Object get(@PathVariable("index")Integer index){
         return null;
     }
 }
