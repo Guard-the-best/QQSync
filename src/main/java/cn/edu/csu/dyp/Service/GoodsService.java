@@ -1,13 +1,16 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.GoodsMapper;
+import cn.edu.csu.dyp.model.cart.CartDto;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
+import cn.edu.csu.dyp.model.order.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,5 +51,20 @@ public class GoodsService {
 //        return null;
 //    }
 //
+    public List<OrderItem> toOrderList(List<CartDto> cart) {
+        if (cart == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "cart is required");
 
+        List<OrderItem> list = new ArrayList<>();
+        for (CartDto cartDto : cart) {
+            Item item = getItemById(cartDto.getItemId());
+            OrderItem temp = new OrderItem();
+            temp.setItemId(cartDto.getItemId());
+            temp.setListPrice(item.getListPrice());
+            temp.setAttributes(item.getAttributes());
+            temp.setNumber(cartDto.getQuantity());
+            list.add(temp);
+        }
+        return list;
+    }
 }

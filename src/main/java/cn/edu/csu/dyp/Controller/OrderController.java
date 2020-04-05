@@ -1,5 +1,6 @@
 package cn.edu.csu.dyp.Controller;
 
+import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.Service.OrderService;
 import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
@@ -18,11 +19,13 @@ import java.util.List;
 public class OrderController {
     OrderService orderService;
     UserService userService;
+    GoodsService goodsService;
 
     @Autowired
-    public OrderController(OrderService orderService, UserService userService) {
+    public OrderController(OrderService orderService, UserService userService, GoodsService goodsService) {
         this.orderService = orderService;
         this.userService = userService;
+        this.goodsService = goodsService;
     }
 
     @PostMapping("")
@@ -30,8 +33,7 @@ public class OrderController {
         if(!userService.isUsernameExist(username))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
         Integer userId = userService.getUserId(username);
-//        return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId).toString(), userService.getAddress(userId).toString(), productService.toOrderList(cart)));
-        return null;
+        return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId).toString(), userService.getAddress(userId).toString(), goodsService.toOrderList(cart)));
     }
 
     @GetMapping("/amount")
