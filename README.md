@@ -17,6 +17,7 @@
 
 ## 工具
 + swagger接口文档 : <http://localhost:8080/swagger-ui.html>
++ swagger注解使用 : <https://zhuanlan.zhihu.com/p/49996147> , <https://zhuanlan.zhihu.com/p/76991268>
 + lombok: 简化pojo代码、java语法(idea需安装插件)
 + *mockito : mock测试(测试组件需要调用未完成的接口的可以用mock简单实现)
 + *selenium : 功能测试

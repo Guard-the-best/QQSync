@@ -3,6 +3,10 @@ package cn.edu.csu.dyp.Controller;
 import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.user.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +21,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @ApiResponses({
+            @ApiResponse(code = 400,message = "参数缺少"),
+            @ApiResponse(code = 401,message = "用户名不存在或密码错误")
+    })
     public BaseResponse login(String username, String password) {
         // need send a token
         return new BaseResponse(userService.login(username,password));
@@ -24,6 +32,7 @@ public class UserController {
 
     //reason for not using"/user/id": Username is not a proper get parameter.(May have invalid character)
     @GetMapping("/registered")
+
     public BaseResponse registered(String username) {
         return new BaseResponse(userService.isUsernameExist(username));
     }
