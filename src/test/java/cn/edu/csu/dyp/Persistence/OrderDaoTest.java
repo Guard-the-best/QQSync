@@ -25,7 +25,7 @@ public class OrderDaoTest {
     void insertOrderTest(){
         Order order = new Order();
         System.out.println(order.getOrderId());
-        order.setUserId("1");
+        order.setUserId(1);
         order.setShipAddress("Beijing");
         order.setBillAddress("Shanghai");
         orderMapper.addOrder(order);
@@ -34,7 +34,7 @@ public class OrderDaoTest {
 
     @Test
     void getOrderTest(){
-        String userId = "1";
+        int userId = 1;
         List<Order> list = orderMapper.getOrder(userId);
         System.out.println(list.get(0).getBillAddress());
     }
@@ -46,9 +46,9 @@ public class OrderDaoTest {
         Order order = new Order();
         order.setBillAddress("dada");
         order.setShipAddress("ship");
-        order.setUserId("1");
+        order.setUserId(1);
         order.setOrderDate(date);
-        order.setOrderId("2");
+        order.setOrderId(1);
         order.setStatus(orderStat);
         orderMapper.updateOrder(order);
     }
@@ -56,14 +56,14 @@ public class OrderDaoTest {
     @Test
     void addOrderItemTest() {
         List<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem("2", 1, new BigDecimal("10.00"), "badboi", 10));
-        orderItems.add(new OrderItem("2", 1, new BigDecimal("10.00"), "goodaboi", 120));
+        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "badboi", 10));
+        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "goodaboi", 120));
         orderMapper.addOrderItem(orderItems);
     }
 
     @Test
     void getOrderItemsTest() {
-        List<OrderItem> orderItems = orderMapper.getOrderItems("2");
+        List<OrderItem> orderItems = orderMapper.getOrderItems(1);
         System.out.println(orderItems.size());
     }
 }

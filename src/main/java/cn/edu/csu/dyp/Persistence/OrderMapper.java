@@ -18,5 +18,7 @@ public interface OrderMapper {
 
     // 下为OrderItem的代码
     void addOrderItem(List<OrderItem> orderItems);
+    void deleteOrderItemsByOrderId(int orderId);
+//    void updateOrderItems(OrderItem orderItem); 不知道这个改用不用的上
     List<OrderItem> getOrderItems(int orderId);
 }
