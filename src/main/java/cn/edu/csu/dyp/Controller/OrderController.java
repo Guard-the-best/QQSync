@@ -4,9 +4,14 @@ import cn.edu.csu.dyp.Service.OrderService;
 import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.cart.Cart;
+import cn.edu.csu.dyp.model.cart.CartDto;
 import cn.edu.csu.dyp.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -21,9 +26,11 @@ public class OrderController {
     }
 
     @PostMapping("")
-    public BaseResponse makeOrder(Cart cart , User user){
-        Integer userId = user.getUserId();
-//        return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId), userService.getAddress(userId), cart));
+    public BaseResponse makeOrder(String username, List<CartDto> cart){
+        if(!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+        Integer userId = userService.getUserId(username);
+//        return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId).toString(), userService.getAddress(userId).toString(), productService.toOrderList(cart)));
         return null;
     }
 
