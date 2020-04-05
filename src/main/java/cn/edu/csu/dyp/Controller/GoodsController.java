@@ -20,7 +20,7 @@ public class GoodsController {
         return null;
     }
 
-    @GetMapping("/get")
+    @GetMapping("/")
     Object getProduct(String id) {
         return null;
     }

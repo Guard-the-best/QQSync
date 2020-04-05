@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface OrderMapper {
     void addOrder(Order order);
-    List<Order> getOrder(String userId);
+    List<Order> getOrder(int userId);
     void deleteOrder(Order order);
     void updateOrder(Order order);
 
     // 下为OrderItem的代码
     void addOrderItem(List<OrderItem> orderItems);
-    List<OrderItem> getOrderItems(String orderId);
+    List<OrderItem> getOrderItems(int orderId);
 }

@@ -17,7 +17,7 @@
         <result column="status" property="status" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
     </resultMap>
 
-    <select id="getOrder" parameterType="String" resultMap="getOrderMap">
+    <select id="getOrder" parameterType="int" resultMap="getOrderMap">
         select *
         from orderInfo
         where userId = #{userId}
@@ -50,7 +50,7 @@
         </foreach>
     </insert>
 
-    <select id="getOrderItems" parameterType="String" resultType="OrderItem">
+    <select id="getOrderItems" parameterType="int" resultType="OrderItem">
         select * from orderItems where orderId=#{orderId}
     </select>
 </mapper>
