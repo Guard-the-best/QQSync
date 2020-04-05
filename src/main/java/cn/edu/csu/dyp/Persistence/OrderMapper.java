@@ -16,4 +16,5 @@ public interface OrderMapper {
 
     // 下为OrderItem的代码
     void addOrderItem(List<OrderItem> orderItems);
+    List<OrderItem> getOrderItems(String orderId);
 }

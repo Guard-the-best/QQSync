@@ -80,12 +80,13 @@ CREATE TABLE `orderInfo`
 DROP TABLE IF EXISTS `orderItems`;
 CREATE TABLE `orderItems`
 (
-    `orderId`     INT UNSIGNED AUTO_INCREMENT,
+    `orderItemId` INT UNSIGNED AUTO_INCREMENT,
+    `orderId`     INT UNSIGNED,
     `itemId`      INT UNSIGNED NOT NULL,
     `listPrice` DECIMAL(10, 2) UNSIGNED NOT NULL,
     `attributes`     VARCHAR(100),
     `number`      INT UNSIGNED NOT NULL,
-    PRIMARY KEY (`orderId`)
+    PRIMARY KEY (`orderItemId`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.edu.csu.dyp.Persistence.OrderMapper">
-    <insert id="addOrder">
+    <insert id="addOrder" useGeneratedKeys="true" keyProperty="orderId" parameterType="Order">
         insert into orderInfo (userId, orderDate, shipAddress, billAddress, status)
         values(#{userId},now(),#{shipAddress},#{billAddress},1)
     </insert>
@@ -44,9 +44,13 @@
 
 <!--    下为orderItem的代码-->
     <insert id="addOrderItem" parameterType="java.util.List">
-        insert into orderItems (itemId, listPrice, attributes, number) values
+        insert into orderItems (orderId, itemId, listPrice, attributes, number) values
         <foreach collection="list" item="orderItem" index="index" separator=",">
-            (#{orderItem.itemId}, #{orderItem.listPrice}, #{orderItem.attributes}, #{orderItem.number})
+            (#{orderItem.orderId}, #{orderItem.itemId}, #{orderItem.listPrice}, #{orderItem.attributes}, #{orderItem.number})
         </foreach>
     </insert>
+
+    <select id="getOrderItems" parameterType="String" resultType="OrderItem">
+        select * from orderItems where orderId=#{orderId}
+    </select>
 </mapper>

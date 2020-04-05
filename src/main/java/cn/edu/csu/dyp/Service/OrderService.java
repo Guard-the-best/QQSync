@@ -9,7 +9,12 @@ import cn.edu.csu.dyp.model.user.Address;
 import cn.edu.csu.dyp.model.user.Cart;
 import cn.edu.csu.dyp.model.util.OrderStat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,23 +33,39 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
-    public void makeOrder(String userId, String shipAddress, String billAddress, Cart cart) {
-        Order order = new Order();
-        List<OrderItem> orderItems = new ArrayList<>();
-        for (Map.Entry<Item, Integer> it : cart.getItems().entrySet()) {
-            OrderItem temp = new OrderItem(it.getKey().getItemId(), it.getKey().getListPrice(), it.getKey().getAttributes(), it.getValue());
-            orderItems.add(temp);
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Order makeOrder(String userId, String shipAddress, String billAddress, Cart cart) {
+        if (cart.getItems().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "empty order is not allowed");
         }
-        if(orderItems.size() == 0) return;
+        Order order = new Order();
         order.setUserId(userId);
         order.setShipAddress(shipAddress);
         order.setBillAddress(billAddress);
         order.setStatus(OrderStat.success); // 这里查看了一下过去的代码，似乎dao层原本会填入一个-1，而不是一个orderStat，因此这里先默认为success。
         orderMapper.addOrder(order);
+
+        List<OrderItem> orderItems = new ArrayList<>();
+        for (Map.Entry<Item, Integer> it : cart.getItems().entrySet()) {
+            OrderItem temp = new OrderItem();
+            temp.setItemId(it.getKey().getItemId());
+            temp.setListPrice(it.getKey().getListPrice());
+            temp.setAttributes(it.getKey().getAttributes());
+            temp.setNumber(it.getValue());
+            temp.setOrderId(order.getOrderId());
+            orderItems.add(temp);
+        }
         orderMapper.addOrderItem(orderItems);
+        order.setItems(orderItems);
+        return order;
     }
 //
-//    public List<Order> getOrderByUser(String userId) {
-//        return null;
-//    }
+    public List<Order> getOrderByUser(String userId) {
+        if (userId == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "userId is required for querying orders");
+        List<Order> orders = orderMapper.getOrder(userId);
+        for (Order it : orders) {
+            it.setItems(orderMapper.getOrderItems(it.getOrderId()));
+        }
+        return orders;
+    }
 }
