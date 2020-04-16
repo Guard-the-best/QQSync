@@ -17,23 +17,7 @@ public class CartService {
     @Autowired
     private CartMapper cartMapper;
 
-    private void testNotNull(Integer userId, Integer itemId, Integer delta){
-        if(userId==null && itemId == null){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID and ItemID are required");
-        }
-        else if(userId==null){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"UserID are required");
-        }
-        else if(itemId == null){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"ItemID are required");
-        }
-
-        if(delta==null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"delta are required");
-    }
-
     public void modify(Integer userId,Integer itemId,Integer delta) {
-        testNotNull(userId,itemId,delta);
         //购物车中不存在该商品
         if(getNumber(userId, itemId)==null){
             if(delta<=0)

@@ -1,7 +1,7 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.GoodsMapper;
-import cn.edu.csu.dyp.model.cart.CartDto;
+import cn.edu.csu.dyp.Dto.order.CartDto;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
 import cn.edu.csu.dyp.model.order.OrderItem;
@@ -23,12 +23,10 @@ public class GoodsService {
 
     //    private static Logger logger=Logger.getLogger(DataBaseDao.class);
     public List<Product> getProductsByCategory(String categoryName) {
-        if(categoryName == null || categoryName.equals("")) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "category name is required");
         return goodsMapper.getProductsByCategory(categoryName);
     }
 //
     public List<Item> getItemsByProduct(String productId) {
-        if(productId == null || productId.equals("")) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "product name is required");
         return goodsMapper.getItemsByProductId(productId);
     }
 //
@@ -37,7 +35,6 @@ public class GoodsService {
     }
 
     public List<Product> searchProductByKey(String key) {
-        if (key == null) key = "";
         return goodsMapper.searchProductByKey(key);
     }
 //
@@ -51,18 +48,18 @@ public class GoodsService {
 //        return null;
 //    }
 //
-    public List<OrderItem> toOrderList(List<CartDto> cart) {
+    public List<OrderItem> toOrderList(CartDto.CartItem[] cart) {
         if (cart == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "cart is required");
 
         List<OrderItem> list = new ArrayList<>();
-        for (CartDto cartDto : cart) {
-            Item item = getItemById(cartDto.getItemId());
+        for (CartDto.CartItem cartItem : cart) {
+            Item item = getItemById(cartItem.getItemId());
             OrderItem temp = new OrderItem();
-            temp.setItemId(cartDto.getItemId());
+            temp.setItemId(cartItem.getItemId());
             temp.setListPrice(item.getListPrice());
             temp.setAttributes(item.getAttributes());
-            temp.setNumber(cartDto.getQuantity());
+            temp.setNumber(cartItem.getQuantity());
             list.add(temp);
         }
         return list;
