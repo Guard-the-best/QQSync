@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.csu.dyp.Persistence.GoodsMapper">
+    <select id="getAllCategory" resultType="String">
+        select categoryName from categoryInfo
+    </select>
+    
     <select id="searchProductByKey" parameterType="String" resultType="Product">
     select *
     from productInfo
@@ -19,8 +23,8 @@
         where categoryName=#{categoryName}
     </select>
 
-    <select id="getItemsByProductId" parameterType="String" resultType="Item">
-        select * from itemInfo where productId=#{productId}
+    <select id="getItemsByProductName" parameterType="String" resultType="Item">
+        select * from itemInfo where productName=#{productName}
     </select>
 
     <select id="getItemByItemId" parameterType="int" resultType="Item">

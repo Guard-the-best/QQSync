@@ -1,9 +1,11 @@
 package cn.edu.csu.dyp.Controller;
 
+import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,19 +16,31 @@ import java.util.List;
         @ApiResponse(code = 400,message = "缺少参数或参数错误")
 })
 public class GoodsController {
+    private GoodsService goodsService;
+
+    @Autowired
+    public GoodsController(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
+
     @GetMapping("/categories")
     BaseResponse allCategory() {
-        return null;
+        return new BaseResponse(goodsService.getCategories());
+    }
+
+    @GetMapping("/categories/{categoryName}/products")
+    BaseResponse getProducts(@PathVariable String categoryName){
+        return new BaseResponse(goodsService.getProductsByCategory(categoryName));
     }
 
     @GetMapping("/products")
-    List<Object> getProducts(String categoryName,String key){
-        return null;
+    BaseResponse searchProducts(@RequestBody String key){
+        return new BaseResponse(goodsService.searchProductByKey(key));
     }
 
     @GetMapping("/products/{productName}/items")
-    List<Object> getItems(@PathVariable String productName) {
-        return null;
+    BaseResponse getItems(@PathVariable String productName) {
+        return new BaseResponse(goodsService.getItemsByProduct(productName));
     }
 
     @GetMapping("/items/{itemId}")

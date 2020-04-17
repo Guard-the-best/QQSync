@@ -32,8 +32,8 @@ public class GoodsDaoTest {
 
     @Test
     void getItemsByProductIdTest(){
-        String key = "1001";
-        List<Item> items = goodsMapper.getItemsByProductId(key);
+        String name = "dog";
+        List<Item> items = goodsMapper.getItemsByProductName(name);
         System.out.println(items.isEmpty());
     }
 

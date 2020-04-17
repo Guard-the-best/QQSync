@@ -15,9 +15,26 @@
         select * from userInfo where username=#{username}
     </select>
 
-    <select id="getAddress" parameterType="String" resultType="Address">
+    <select id="getAddress" parameterType="Integer" resultType="Address">
         select * from addressInfo where userId=#{userId}
     </select>
+
+    <insert id="setAddress">
+        insert into addressInfo (userId,name,phoneNumber,province,city,county,village,detailedAddress)
+        values (#{userId},#{address.name},#{address.phoneNumber},#{address.province},#{address.city},#{address.county},#{address.village},#{address.detailedAddress})
+    </insert>
+
+    <update id="updateAddress">
+        update addressInfo set
+            name=#{address.name},
+            phoneNumber=#{address.phoneNumber},
+            province=#{address.province},
+            city=#{address.city},
+            county=#{address.county},
+            village=#{address.village},
+            detailedAddress=#{address.detailedAddress}
+        where userId=#{userId}
+    </update>
     
     <select id="isUserExist" parameterType="String" resultType="Boolean">
         select exists (select 1 from userInfo where username=#{username})

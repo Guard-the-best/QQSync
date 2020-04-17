@@ -9,7 +9,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -67,13 +69,23 @@ public class UserController {
         return new BaseResponse("ok");
     }
 
-    @PatchMapping("/")
+    @PatchMapping("")
     public BaseResponse modifyInfo(@RequestBody @Valid InfoDto infoDto){
         User user =new User();
         user.setUsername(infoDto.getUsername());
         user.setNickname(infoDto.getNickname());
         user.setPhoneNumber(infoDto.getPhoneNumber());
         userService.modifyInfo(user);
+        return new BaseResponse("ok");
+    }
+
+    @PatchMapping("/address")
+    @PostMapping("/address")
+    public BaseResponse modifyAddress(@RequestBody @Valid AddressDto addressDto) {
+        if(!userService.isUsernameExist(addressDto.getUsername()))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+        Integer userId=userService.getUserId(addressDto.getUsername());
+        userService.setAddress(userId,addressDto.getAddress());
         return new BaseResponse("ok");
     }
 

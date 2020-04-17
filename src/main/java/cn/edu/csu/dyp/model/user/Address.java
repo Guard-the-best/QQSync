@@ -1,12 +1,27 @@
 package cn.edu.csu.dyp.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotEmpty;
+
+@Data
+@NoArgsConstructor
 public class Address {
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String phoneNumber;
+    @NotEmpty
     private String province;
+    @NotEmpty
     private String city;
+    @NotEmpty
     private String county;
+    @NotEmpty
     private String village;
+    @NotEmpty
     private String detailedAddress;
 
     public Address(String name, String phoneNumber, String province, String city, String county, String village, String detailedAddress) {
@@ -16,62 +31,6 @@ public class Address {
         this.city = city;
         this.county = county;
         this.village = village;
-        this.detailedAddress = detailedAddress;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public String getVillage() {
-        return village;
-    }
-
-    public void setVillage(String village) {
-        this.village = village;
-    }
-
-    public String getDetailedAddress() {
-        return detailedAddress;
-    }
-
-    public void setDetailedAddress(String detailedAddress) {
         this.detailedAddress = detailedAddress;
     }
 

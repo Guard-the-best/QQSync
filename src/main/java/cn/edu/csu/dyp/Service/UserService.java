@@ -107,6 +107,13 @@ public class UserService {
     public Address getAddress(Integer userId) {
         return userMapper.getAddress(userId);
     }
+
+    public void setAddress(Integer userId,Address address){
+        if(getAddress(userId)==null)
+            userMapper.setAddress(userId,address);
+        else
+            userMapper.updateAddress(userId,address);
+    }
 //
 //    /*
 //    * 没有输入判断，全部替换（因为dyp说是表单）

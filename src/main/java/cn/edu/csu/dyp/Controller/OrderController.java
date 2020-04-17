@@ -40,8 +40,11 @@ public class OrderController {
         return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId).toString(), userService.getAddress(userId).toString(), goodsService.toOrderList(cart.getCart())));
     }
 
-    @GetMapping("/")
-    public List<Object> get(){
-        return null;
+    @GetMapping("")
+    public BaseResponse get(@RequestBody String username){
+        if (!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
+        Integer userId = userService.getUserId(username);
+        return new  BaseResponse(orderService.getOrderByUser(userId));
     }
 }

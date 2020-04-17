@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.Persistence;
 
 import cn.edu.csu.dyp.model.user.Address;
 import cn.edu.csu.dyp.model.user.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,4 +15,6 @@ public interface UserMapper {
     @Deprecated
     Boolean isUserExist (String username);
     Address getAddress(Integer userId);
+    void updateAddress(@Param("userId") Integer userId, @Param("address")Address address);
+    void setAddress(@Param("userId") Integer userId, @Param("address")Address address);
 }

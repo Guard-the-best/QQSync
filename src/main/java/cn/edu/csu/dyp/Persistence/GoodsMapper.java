@@ -8,8 +8,9 @@ import java.util.List;
 
 @Repository
 public interface GoodsMapper {
+    List<String> getAllCategory();
     List<Product> searchProductByKey(String key);
     List<Product> getProductsByCategory(String categoryName);
-    List<Item> getItemsByProductId(String productId);
+    List<Item> getItemsByProductName(String productId);
     Item getItemByItemId(int itemId);
 }

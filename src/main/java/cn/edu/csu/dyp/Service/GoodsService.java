@@ -22,32 +22,27 @@ public class GoodsService {
     }
 
     //    private static Logger logger=Logger.getLogger(DataBaseDao.class);
+
+    public List<String> getCategories() {
+        return goodsMapper.getAllCategory();
+    }
+
     public List<Product> getProductsByCategory(String categoryName) {
         return goodsMapper.getProductsByCategory(categoryName);
-    }
-//
-    public List<Item> getItemsByProduct(String productId) {
-        return goodsMapper.getItemsByProductId(productId);
-    }
-//
-    public Item getItemById(Integer itemId) {
-        return goodsMapper.getItemByItemId(itemId);
     }
 
     public List<Product> searchProductByKey(String key) {
         return goodsMapper.searchProductByKey(key);
     }
 //
-//    @Deprecated
-//    public Product getProductById(String productId) {
-//        return null;
-//    }
+    public List<Item> getItemsByProduct(String productName) {
+        return goodsMapper.getItemsByProductName(productName);
+    }
 //
-//    @Deprecated
-//    public Category getCategoryById(String categoryId) {
-//        return null;
-//    }
-//
+    public Item getItemById(Integer itemId) {
+        return goodsMapper.getItemByItemId(itemId);
+    }
+
     public List<OrderItem> toOrderList(CartDto.CartItem[] cart) {
         if (cart == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "cart is required");
