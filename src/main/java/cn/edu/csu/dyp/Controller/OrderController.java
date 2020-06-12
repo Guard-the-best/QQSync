@@ -1,5 +1,6 @@
 package cn.edu.csu.dyp.Controller;
 
+import cn.edu.csu.dyp.Security.JwtUser;
 import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.Service.OrderService;
 import cn.edu.csu.dyp.Service.UserService;
@@ -9,8 +10,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,16 +36,18 @@ public class OrderController {
         this.goodsService = goodsService;
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')  or #jwtUser.username == #cart.username")
     @PostMapping("")
-    public BaseResponse makeOrder(@RequestBody @Valid CartDto cart){
+    public BaseResponse makeOrder(@RequestBody @Valid CartDto cart, @ApiIgnore @AuthenticationPrincipal JwtUser jwtUser){
         if(!userService.isUsernameExist(cart.getUsername()))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
         Integer userId = userService.getUserId(cart.getUsername());
         return new BaseResponse(orderService.makeOrder(userId, userService.getAddress(userId).toString(), userService.getAddress(userId).toString(), goodsService.toOrderList(cart.getCart())));
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')  or #jwtUser.username == #username")
     @GetMapping("")
-    public BaseResponse get(@RequestBody String username){
+    public BaseResponse get(@RequestParam String username, @ApiIgnore @AuthenticationPrincipal JwtUser jwtUser){
         if (!userService.isUsernameExist(username))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
         Integer userId = userService.getUserId(username);

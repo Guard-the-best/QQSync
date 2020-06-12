@@ -61,6 +61,14 @@ CREATE TABLE `addressInfo`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `rolesInfo`;
+CREATE TABLE `rolesInfo`
+(
+    `userId`          INT UNSIGNED NOT NULL,
+    `roles`           VARCHAR(100) NOT NULL,
+    UNIQUE (`userId`,`roles`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------
 -- orders
 -- --------------------------------------------------

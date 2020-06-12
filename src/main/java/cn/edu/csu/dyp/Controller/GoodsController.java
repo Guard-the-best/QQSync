@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods")
 @ApiResponses({
-        @ApiResponse(code = 400,message = "缺少参数或参数错误")
+        @ApiResponse(code = 400, message = "缺少参数或参数错误")
 })
 public class GoodsController {
     private GoodsService goodsService;
@@ -29,12 +30,12 @@ public class GoodsController {
     }
 
     @GetMapping("/categories/{categoryName}/products")
-    BaseResponse getProducts(@PathVariable String categoryName){
+    BaseResponse getProducts(@PathVariable String categoryName) {
         return new BaseResponse(goodsService.getProductsByCategory(categoryName));
     }
 
     @GetMapping("/products")
-    BaseResponse searchProducts(@RequestBody String key){
+    BaseResponse searchProducts(@RequestParam String key) {
         return new BaseResponse(goodsService.searchProductByKey(key));
     }
 
@@ -44,7 +45,7 @@ public class GoodsController {
     }
 
     @GetMapping("/items/{itemId}")
-    Object getItem(@PathVariable Integer itemId){
+    Object getItem(@PathVariable Integer itemId) {
         return null;
     }
 }

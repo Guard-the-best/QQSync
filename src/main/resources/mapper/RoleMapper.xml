@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.csu.dyp.Persistence.RoleMapper">
+    <select id="getRolesByUserId" parameterType="Integer" resultType="String">
+        select roles from rolesInfo where userId=#{userId}
+    </select>
+
+    <insert id="addRoles">
+        insert into rolesInfo values(#{userId},#{role})
+    </insert>
+
+    <delete id="deleteRoles" parameterType="Integer">
+        delete from rolesInfo where userId=#{userId}
+    </delete>
+</mapper>

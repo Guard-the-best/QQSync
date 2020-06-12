@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 @MapperScan("cn.edu.csu.dyp.Persistence")
 public class OrderDaoTest {
 
