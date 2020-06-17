@@ -11,6 +11,7 @@ public interface GoodsMapper {
     List<String> getAllCategory();
     List<Product> searchProductByKey(String key);
     List<Product> getProductsByCategory(String categoryName);
-    List<Item> getItemsByProductName(String productId);
+    Integer getProductId(String productName);
+    List<Item> getItemsByProductId(Integer productId);
     Item getItemByItemId(int itemId);
 }

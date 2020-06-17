@@ -33,9 +33,14 @@ public class GoodsDaoTest {
     }
 
     @Test
+    void getProductId(){
+        System.out.println(goodsMapper.getProductId("Labrador Retriever"));
+    }
+
+    @Test
     void getItemsByProductIdTest(){
         String name = "dog";
-        List<Item> items = goodsMapper.getItemsByProductName(name);
+        List<Item> items = goodsMapper.getItemsByProductId(1002);
         System.out.println(items.isEmpty());
     }
 

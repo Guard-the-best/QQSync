@@ -23,8 +23,12 @@
         where categoryName=#{categoryName}
     </select>
 
-    <select id="getItemsByProductName" parameterType="String" resultType="Item">
-        select * from itemInfo where productName=#{productName}
+    <select id="getProductId" parameterType="String" resultType="Integer">
+        select productId from productInfo where productName=#{productName}
+    </select>
+
+    <select id="getItemsByProductId" parameterType="Integer" resultType="Item">
+        select * from itemInfo where productId=#{productId}
     </select>
 
     <select id="getItemByItemId" parameterType="int" resultType="Item">

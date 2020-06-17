@@ -36,7 +36,7 @@ public class GoodsService {
     }
 //
     public List<Item> getItemsByProduct(String productName) {
-        return goodsMapper.getItemsByProductName(productName);
+        return goodsMapper.getItemsByProductId(goodsMapper.getProductId(productName));
     }
 //
     public Item getItemById(Integer itemId) {
