@@ -5,6 +5,7 @@ import cn.edu.csu.dyp.Security.JwtUser;
 import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.user.User;
+import com.captcha.botdetect.web.servlet.SimpleCaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
@@ -37,8 +39,11 @@ public class UserController {
     @ApiResponses({
             @ApiResponse(code = 401, message = "用户名不存在或密码错误")
     })
-    public BaseResponse login(@RequestBody @Valid LoginDto loginDto) {
-        // need send a token
+    public BaseResponse login(@RequestBody @Valid LoginDto loginDto,@ApiIgnore HttpServletRequest request) {
+        SimpleCaptcha yourFirstCaptcha = SimpleCaptcha.load(request);
+        boolean isHuman = yourFirstCaptcha.validate(loginDto.getCaptchaCode(), loginDto.getCaptchaId());
+        if(!isHuman)
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"验证码错误");
         return new BaseResponse(userService.login(loginDto.getUsername(), loginDto.getPassword()));
     }
 
@@ -51,7 +56,6 @@ public class UserController {
 
     @PostMapping("")
     public BaseResponse register(@RequestBody @Valid RegisterDto registerDto) {
-        // need send a token
         User user = new User();
         user.setUsername(registerDto.getUsername());
         user.setPassword(registerDto.getPassword());
