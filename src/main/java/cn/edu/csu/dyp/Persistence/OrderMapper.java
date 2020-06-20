@@ -4,6 +4,7 @@ package cn.edu.csu.dyp.Persistence;
 import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.order.OrderItem;
 import cn.edu.csu.dyp.model.util.OrderStat;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface OrderMapper {
     void addOrder(Order order);
     List<Order> getOrder(int userId);
-    Order getOrderByStatus(int userId, OrderStat stat);
+    Order getOrderByStatus(@Param("userId")int userId,@Param("status") OrderStat stat);
     void deleteOrder(Order order);
     void updateOrder(Order order);
 

@@ -26,31 +26,37 @@ public class OrderDaoTest {
     @Test
     void insertOrderTest(){
         Order order = new Order();
-        System.out.println(order.getOrderId());
         order.setUserId(1);
         order.setShipAddress("Beijing");
         order.setBillAddress("Shanghai");
+        order.setOrderDate(new Date());
+        order.setStatus(OrderStat.ordering);
         orderMapper.addOrder(order);
         System.out.println(order.getOrderId());
+    }
+
+    @Test
+    void getOrderByStatus(){
+        Order order = orderMapper.getOrderByStatus(1,OrderStat.ordering);
+        System.out.println(order);
     }
 
     @Test
     void getOrderTest(){
         int userId = 1;
         List<Order> list = orderMapper.getOrder(userId);
-        System.out.println(list.get(0).getBillAddress());
+        System.out.println(list.get(0));
     }
 
     @Test
     void updateOrderTest(){
         Date date = new Date();
         OrderStat orderStat = OrderStat.success;
-        Order order = new Order();
+        Order order = orderMapper.getOrderByStatus(1,OrderStat.ordering);
         order.setBillAddress("dada");
         order.setShipAddress("ship");
         order.setUserId(1);
         order.setOrderDate(date);
-        order.setOrderId(1);
         order.setStatus(orderStat);
         orderMapper.updateOrder(order);
     }

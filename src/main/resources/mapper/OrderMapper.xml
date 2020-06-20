@@ -5,7 +5,7 @@
 <mapper namespace="cn.edu.csu.dyp.Persistence.OrderMapper">
     <insert id="addOrder" useGeneratedKeys="true" keyProperty="orderId" parameterType="Order">
         insert into orderInfo (userId, orderDate, shipAddress, billAddress, status)
-        values(#{userId},now(),#{shipAddress},#{billAddress},#{status,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler})
+        values(#{userId},now(),#{shipAddress},#{billAddress},#{status})
     </insert>
 
     <resultMap id="getOrderMap" type="Order">
@@ -14,7 +14,7 @@
         <result column="orderData" property="orderData"/>
         <result column="shipAddress" property="shipAddress"/>
         <result column="billAddress" property="billAddress"/>
-        <result column="status" property="status" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <result column="status" property="status"/>
     </resultMap>
 
     <select id="getOrder" parameterType="int" resultMap="getOrderMap">
@@ -23,20 +23,26 @@
         where userId = #{userId}
     </select>
 
+    <select id="getOrderByStatus" resultMap="getOrderMap">
+        select *
+        from orderInfo
+        where userId = #{userId} and status=#{status}
+    </select>
+
     <delete id="deleteOrder" parameterType="Order">
         delete
-        from orderinfo
+        from orderInfo
         where orderId = #{orderId}
     </delete>
 
     <update id="updateOrder" parameterType="Order">
-        update orderinfo
+        update orderInfo
         <set>
             <if test="userId!=null">userId=#{userId},</if>
             <if test="orderDate!=null">orderDate=#{orderDate},</if>
             <if test="shipAddress!=null">shipAddress=#{shipAddress},</if>
             <if test="billAddress!=null">billAddress=#{billAddress},</if>
-            <if test="status!=null">status=#{status,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}</if>
+            <if test="status!=null">status=#{status}</if>
         </set>
         where orderId=#{orderId}
     </update>
