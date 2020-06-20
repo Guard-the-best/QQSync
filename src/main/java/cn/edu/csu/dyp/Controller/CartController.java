@@ -48,7 +48,7 @@ public class CartController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')  or #jwtUser.username == #username")
-    @DeleteMapping("")
+    @PostMapping("")
     public BaseResponse clear(@RequestBody @NotEmpty String username, @ApiIgnore @AuthenticationPrincipal JwtUser jwtUser) {
         if (!userService.isUsernameExist(username))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "user not exist");
