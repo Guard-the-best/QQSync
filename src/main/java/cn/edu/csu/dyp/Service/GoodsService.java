@@ -98,6 +98,13 @@ public class GoodsService {
         goodsMapper.updateItem(new Item(itemId,null,null,max(goodsMapper.getItemByItemId(itemId).getInventory()+delta,0),null));
     }
 
+    public void modifyItem(Item item) {
+        if (item.getItemId()==null)
+            addItem(item);
+        else
+            updateItem(item);
+    }
+
     public List<OrderItem> toOrderList(CartDto.CartItem[] cart) {
         if (cart == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "cart is required");

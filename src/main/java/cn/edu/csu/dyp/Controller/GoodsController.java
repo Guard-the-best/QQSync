@@ -3,6 +3,7 @@ package cn.edu.csu.dyp.Controller;
 import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.model.goods.Category;
+import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -57,6 +58,14 @@ public class GoodsController {
     @ApiOperation(value = "添加和修改。添加就不用id，修改加上id")
     BaseResponse modifyProduct(@RequestBody Product product){
         goodsService.modifyProduct(product);
+        return new BaseResponse("ok");
+    }
+
+    @PostMapping("/items")
+    @Secured("ROLE_ADMIN")
+    @ApiOperation(value = "添加和修改。添加就不用id，修改加上id")
+    BaseResponse modifyItem(@RequestBody Item item) {
+        goodsService.modifyItem(item);
         return new BaseResponse("ok");
     }
 
