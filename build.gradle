@@ -24,9 +24,9 @@ repositories {
     maven{
         url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
     }
-//    maven {
-//        url "https://git.captcha.com/botdetect-java-captcha.git/blob_plain/HEAD:/"
-//    }
+    maven {
+        url "https://git.captcha.com/botdetect-java-captcha.git/blob_plain/HEAD:/"
+    }
 }
 
 
@@ -35,7 +35,7 @@ dependencies {
 //    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 //    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
-//    compile 'com.captcha:botdetect-jsp20:4.0.beta3.7'
+    compile 'com.captcha:botdetect-servlet:4.0.beta3.7'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-web'

@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()//no session
             .authorizeRequests()
                 .antMatchers("/swagger*/**", "/webjars/**", "/v2/**").permitAll()
+                .antMatchers("/captcha-endpoint").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login", "/user").permitAll()
                 .antMatchers(HttpMethod.GET, "/user/registered").permitAll()
                 .antMatchers("/goods/**").permitAll()
