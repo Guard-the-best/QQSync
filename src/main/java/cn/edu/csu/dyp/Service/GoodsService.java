@@ -2,6 +2,7 @@ package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.GoodsMapper;
 import cn.edu.csu.dyp.Dto.order.CartDto;
+import cn.edu.csu.dyp.model.goods.Category;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.goods.Product;
 import cn.edu.csu.dyp.model.order.OrderItem;
@@ -12,6 +13,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Math.max;
 
 @Service
 public class GoodsService {
@@ -41,6 +44,58 @@ public class GoodsService {
 //
     public Item getItemById(Integer itemId) {
         return goodsMapper.getItemByItemId(itemId);
+    }
+
+    public void updateItem(Item item){
+        goodsMapper.updateItem(item);
+    }
+
+    public void addItem(Item item){
+        goodsMapper.addItem(item);
+    }
+
+    public void clearItem(Integer itemId){
+        goodsMapper.updateItem(new Item(itemId,null,null,0,null));
+    }
+
+    public void modifyProduct(Product product){
+        if(product.getProductId()==null)
+            goodsMapper.addProduct(product);
+        else
+            goodsMapper.updateProduct(product);
+    }
+
+    public void clearProduct(String productName){
+        List<Item> items=goodsMapper.getItemsByProductId(goodsMapper.getProductId(productName));
+        for(Item item:items){
+            clearItem(item.getItemId());
+        }
+    }
+
+    public void modifyCategory(Category category){
+        if(category.getCategoryId()==null)
+            goodsMapper.addCategory(category);
+        else
+            goodsMapper.updateCategory(category);
+    }
+
+
+    public void clearCategory(String categoryName){
+        List<Product> list=getProductsByCategory(categoryName);
+        for(Product product:list){
+            clearProduct(product.getProductName());
+        }
+    }
+
+    public void clearAll(){
+        List<String> list=getCategories();
+        for(String name:list){
+            clearCategory(name);
+        }
+    }
+
+    public void modifyItemInventory(Integer itemId,Integer delta){
+        goodsMapper.updateItem(new Item(itemId,null,null,max(goodsMapper.getItemByItemId(itemId).getInventory()+delta,0),null));
     }
 
     public List<OrderItem> toOrderList(CartDto.CartItem[] cart) {

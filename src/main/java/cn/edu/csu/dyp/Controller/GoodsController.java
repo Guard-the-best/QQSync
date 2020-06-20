@@ -2,6 +2,8 @@ package cn.edu.csu.dyp.Controller;
 
 import cn.edu.csu.dyp.Service.GoodsService;
 import cn.edu.csu.dyp.Util.BaseResponse;
+import cn.edu.csu.dyp.model.goods.Category;
+import cn.edu.csu.dyp.model.goods.Product;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.models.auth.In;
@@ -47,5 +49,21 @@ public class GoodsController {
     @GetMapping("/items/{itemId}")
     Object getItem(@PathVariable Integer itemId) {
         return null;
+    }
+
+    @PostMapping("/product")
+    @PatchMapping("/product")
+    @Secured("ROLE_ADMIN")
+    BaseResponse modifyProduct(@RequestBody Product product){
+        goodsService.modifyProduct(product);
+        return new BaseResponse("ok");
+    }
+
+    @PostMapping("/category")
+    @PatchMapping("/category")
+    @Secured("ROLE_ADMIN")
+    BaseResponse modifyCategory(@RequestBody Category category){
+        goodsService.modifyCategory(category);
+        return new BaseResponse("ok");
     }
 }

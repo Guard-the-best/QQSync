@@ -95,6 +95,14 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')  or #jwtUser.username == #addressDto.username")
+    @GetMapping("")
+    public BaseResponse getUser(@RequestParam @NotEmpty String username, @ApiIgnore @AuthenticationPrincipal JwtUser jwtUser) {
+        if (!userService.isUsernameExist(username))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "user not exist");
+        return new BaseResponse(userService.getUser(username));
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')  or #jwtUser.username == #addressDto.username")
     @GetMapping("/address")
     public BaseResponse getAddress(@RequestParam @NotEmpty String username, @ApiIgnore @AuthenticationPrincipal JwtUser jwtUser) {
         if (!userService.isUsernameExist(username))

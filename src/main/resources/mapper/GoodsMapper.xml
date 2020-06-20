@@ -35,5 +35,43 @@
         select * from itemInfo where itemId=#{itemId}
     </select>
 
+    <update id="updateItem" parameterType="Item">
+        update itemInfo
+        <set>
+            <if test="productId!=null">productId=#{productId},</if>
+            <if test="listPrice!=null">listPrice=#{listPrice},</if>
+            <if test="inventory!=null">inventory=#{inventory},</if>
+            <if test="attributes!=null">attributes=#{attributes},</if>
+        </set>
+        where itemId=#{itemId}
+    </update>
 
+    <insert id="addItem" parameterType="Item">
+        insert into itemInfo (productId,listPrice,inventory,attributes) value (#{productId},#{listPrice},#{inventory},#{attributes})
+    </insert>
+
+    <update id="updateProduct" parameterType="Product">
+        update productInfo
+        <set>
+            <if test="categoryId!=null">categoryId=#{categoryId},</if>
+            <if test="productName!=null">productName=#{productName},</if>
+        </set>
+        where productId=#{productId}
+    </update>
+
+    <insert id="addProduct" parameterType="Product">
+        insert into productInfo (categoryId,productName) value (#{categoryId},#{productName})
+    </insert>
+
+    <update id="updateCategory" parameterType="Category">
+        update categoryInfo
+        <set>
+            <if test="categoryName!=null">categoryName=#{categoryName},</if>
+        </set>
+        where categoryId=#{categoryId}
+    </update>
+
+    <insert id="addCategory" parameterType="Category">
+        insert into categoryInfo (categoryName) value (#{categoryName})
+    </insert>
 </mapper>

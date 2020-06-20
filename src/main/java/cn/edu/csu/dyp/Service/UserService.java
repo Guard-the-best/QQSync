@@ -119,6 +119,10 @@ public class UserService {
         }
     }
 
+    public User getUser(String username){
+        return userMapper.getUserByUsername(username);
+    }
+
     public Integer getUserId(String username) {
         return userMapper.getUserByUsername(username).getUserId();
     }

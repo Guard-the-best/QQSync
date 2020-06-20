@@ -1,6 +1,7 @@
 package cn.edu.csu.dyp.Service;
 
 import cn.edu.csu.dyp.Persistence.OrderMapper;
+import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.order.Order;
 import cn.edu.csu.dyp.model.order.OrderItem;
 import cn.edu.csu.dyp.model.util.OrderStat;
@@ -20,10 +21,12 @@ public class OrderService {
 //     * Date sql自动填写,lineItem only use itemId and quantity
 //     * */
     private OrderMapper orderMapper;
+    private GoodsService goodsService;
 
     @Autowired
-    public OrderService(OrderMapper orderMapper) {
+    public OrderService(OrderMapper orderMapper,GoodsService goodsService) {
         this.orderMapper = orderMapper;
+        this.goodsService = goodsService;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -36,6 +39,12 @@ public class OrderService {
         }
         if(haveOrderingOrder(userId))
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"server error: ordering terminated.");
+        for (OrderItem it : cart)
+            if(it.getNumber()>goodsService.getItemById(it.getItemId()).getInventory())
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,it.getItemId()+"超出库存");
+        for (OrderItem it : cart) {
+            goodsService.modifyItemInventory(it.getItemId(),-it.getNumber());
+        }
         Order order = new Order();
         order.setUserId(userId);
         order.setShipAddress(shipAddress);
