@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItem {
+    private Integer orderItemId;
     private Integer orderId;
     private Integer itemId;
     private BigDecimal listPrice;

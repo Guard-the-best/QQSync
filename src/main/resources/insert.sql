@@ -3,6 +3,7 @@ use web;
 insert into userInfo values(1,'admin','$2a$10$hJxGqTH1WbPqGGpp0P3AheBtbsvuUjV99X0le3PP7xY3BF48.WxmW','10086','dyp'); -- password=123456
 insert into rolesInfo values(1,'ROLE_ADMIN');
 insert into rolesInfo values(1,'ROLE_USER');
+insert into addressInfo value(1,1,'dyp','10086','ah','sh','pd','sj','csu');
 
 insert into categoryInfo values(101,'Dog');
 insert into productInfo values (1001,101,'Golden Retriever');

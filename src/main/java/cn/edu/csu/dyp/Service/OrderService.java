@@ -1,5 +1,6 @@
 package cn.edu.csu.dyp.Service;
 
+import cn.edu.csu.dyp.Dto.order.CartDto;
 import cn.edu.csu.dyp.Persistence.OrderMapper;
 import cn.edu.csu.dyp.model.goods.Item;
 import cn.edu.csu.dyp.model.order.Order;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -77,5 +79,33 @@ public class OrderService {
             it.setItems(orderMapper.getOrderItems(it.getOrderId()));
         }
         return orders;
+    }
+
+    public void updateOrder(Order order){
+        orderMapper.updateOrder(order);
+    }
+
+    public void addToOrder(Integer orderId, CartDto.CartItem cartItem){
+        List<OrderItem> list=new ArrayList();
+        Item item=goodsService.getItemById(cartItem.getItemId());
+        OrderItem orderItem = new OrderItem();
+
+        orderItem.setOrderId(orderId);
+        orderItem.setItemId(cartItem.getItemId());
+        orderItem.setNumber(cartItem.getQuantity());
+        orderItem.setListPrice(item.getListPrice());
+        orderItem.setAttributes(item.getAttributes());
+        list.add(orderItem);
+
+        orderMapper.addOrderItem(list);
+    }
+
+    @Transactional
+    public void deleteOrderItem(Integer orderId,Integer orderItemId){
+        Integer itemId=orderMapper.getOrderItem(orderItemId).getItemId();
+        Integer number=orderMapper.getOrderItem(orderItemId).getNumber();
+
+        goodsService.modifyItemInventory(itemId,number);
+        orderMapper.deleteOrderItemsByOrderIdAndOrderItemId(orderId,orderItemId);
     }
 }

@@ -60,6 +60,16 @@
         delete from orderItems where orderId=#{orderId}
     </delete>
 
+    <delete id="deleteOrderItemsByOrderIdAndOrderItemId">
+        delete
+        from orderItems
+        where orderId = #{orderId} and orderItemId=#{orderItemId}
+    </delete>
+
+    <select id="getOrderItem" parameterType="int" resultType="OrderItem">
+        select * from orderItems where orderItemId=#{orderItemId}
+    </select>
+
     <select id="getOrderItems" parameterType="int" resultType="OrderItem">
         select * from orderItems where orderId=#{orderId}
     </select>
