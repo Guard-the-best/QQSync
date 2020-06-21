@@ -123,6 +123,10 @@ public class UserService {
         return userMapper.getUserByUsername(username);
     }
 
+    public List<User> getUsers(){
+        return userMapper.getUsers();
+    }
+
     public Integer getUserId(String username) {
         return userMapper.getUserByUsername(username).getUserId();
     }

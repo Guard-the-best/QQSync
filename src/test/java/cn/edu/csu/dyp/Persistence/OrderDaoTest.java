@@ -64,8 +64,8 @@ public class OrderDaoTest {
     @Test
     void addOrderItemTest() {
         List<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "badboi", 10));
-        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "goodaboi", 120));
+//        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "badboi", 10));
+//        orderItems.add(new OrderItem(2, 1, new BigDecimal("10.00"), "goodaboi", 120));
         orderMapper.addOrderItem(orderItems);
     }
 

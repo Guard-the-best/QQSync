@@ -8,6 +8,7 @@ import cn.edu.csu.dyp.Service.UserService;
 import cn.edu.csu.dyp.Util.BaseResponse;
 import cn.edu.csu.dyp.Dto.order.CartDto;
 import cn.edu.csu.dyp.model.order.Order;
+import cn.edu.csu.dyp.model.user.User;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import org.springframework.web.server.ResponseStatusException;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -54,6 +57,17 @@ public class OrderController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"user not exist");
         Integer userId = userService.getUserId(username);
         return new  BaseResponse(orderService.getOrderByUser(userId));
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/all")
+    public BaseResponse get(){
+        List<Order> res = new ArrayList<>();
+        List<User> users = userService.getUsers();
+        for(User user:users){
+            res.addAll(orderService.getOrderByUser(user.getUserId()));
+        }
+        return new BaseResponse(res);
     }
 
     @Secured("ROLE_ADMIN")

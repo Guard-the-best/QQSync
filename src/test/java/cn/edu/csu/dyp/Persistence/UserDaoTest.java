@@ -21,6 +21,11 @@ public class UserDaoTest {
     private UserMapper userMapper;
 
     @Test
+    void getUsers(){
+        System.out.println(userMapper.getUsers());
+    }
+
+    @Test
     void userTest() {
         User user = new User();
         user.setUsername("admin");

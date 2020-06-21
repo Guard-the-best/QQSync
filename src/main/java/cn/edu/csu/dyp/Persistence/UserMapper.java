@@ -5,8 +5,11 @@ import cn.edu.csu.dyp.model.user.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserMapper {
+    List<User> getUsers();
     User getUserByUserId(String userId);
     User getUserByUsername(String username);
     User getUserByUsernameAndPassword(User user);
