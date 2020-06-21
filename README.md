@@ -1,5 +1,8 @@
 # QQSync
  This is a Web-project
+ 
+ ##前端
+ <https://github.com/Guard-the-best/QQDiff>
 
 ## 构建
 1. 构建运行 gradle appRun 或 gradle tomcatRun
